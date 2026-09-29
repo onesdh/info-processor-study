@@ -172,10 +172,14 @@ body {
 }
 
 .content img {
+  display: block;
   max-width: 100%;
-  border-radius: 10px;
-  margin: 10px 0;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  margin: 16px auto;
   border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }
 
 .content table {
@@ -183,6 +187,8 @@ body {
   border-collapse: collapse;
   margin: 16px 0;
   border: 1px solid var(--border);
+  display: block;
+  overflow-x: auto;
 }
 
 .content th,
@@ -190,6 +196,7 @@ body {
   border: 1px solid var(--border);
   padding: 10px 12px;
   text-align: left;
+  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
@@ -199,5 +206,27 @@ body {
 
   .viewer {
     min-height: 50vh;
+    padding: 14px 12px;
+  }
+
+  .content {
+    font-size: 0.96rem;
+  }
+
+  .content h1,
+  .content h2,
+  .content h3,
+  .content h4 {
+    line-height: 1.35;
+  }
+
+  .content p,
+  .content li {
+    font-size: 0.97rem;
+  }
+
+  .content img {
+    margin: 12px auto;
   }
 }
+

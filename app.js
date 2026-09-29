@@ -46,9 +46,33 @@ function setActiveGroup(folderPath, button) {
   sessionStorage.setItem('active-group', folderPath);
 }
 
-function renderMarkdown(markdown, title) {
+function resolveAssetUrl(filePath, assetPath) {
+  if (!assetPath) return assetPath;
+
+  if (/^https?:\/\//i.test(assetPath) || /^data:/i.test(assetPath) || assetPath.startsWith('//')) {
+    return assetPath;
+  }
+
+  const directory = filePath.split('/').slice(0, -1).join('/');
+  const baseUrl = directory
+    ? `https://raw.githubusercontent.com/${repo}/${branch}/${directory}/`
+    : `https://raw.githubusercontent.com/${repo}/${branch}/`;
+
+  return new URL(assetPath, baseUrl).toString();
+}
+
+function renderMarkdown(markdown, title, filePath = '') {
   const html = marked.parse(markdown || '# 문서를 불러오는 중입니다...');
-  contentEl.innerHTML = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+
+  wrapper.querySelectorAll('img').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (!src) return;
+    img.setAttribute('src', resolveAssetUrl(filePath, src));
+  });
+
+  contentEl.innerHTML = wrapper.innerHTML;
   document.title = `${title} | 정보처리기사 실기 문제집`;
 }
 
@@ -64,7 +88,7 @@ async function loadFile(path) {
     const response = await fetch(buildFileUrl(path));
     if (!response.ok) throw new Error('문서를 불러오지 못했습니다.');
     const markdown = await response.text();
-    renderMarkdown(markdown, formatLabel(path));
+    renderMarkdown(markdown, formatLabel(path), path);
   } catch (error) {
     contentEl.innerHTML = `<p>오류가 발생했습니다: ${error.message}</p>`;
   }
