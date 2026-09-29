@@ -3,6 +3,10 @@ const branch = 'main';
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
 
+function formatGroupLabel(folderPath) {
+  return folderPath.replace(/\//g, ' / ');
+}
+
 function formatLabel(path) {
   const base = path.replace(/\.md$/i, '').replace(/^\//, '');
   const parts = base.split('/');
@@ -14,7 +18,7 @@ function formatLabel(path) {
 
   const m = last.match(/^(\d+)$/);
   if (m) {
-    return `${parts.slice(0, -1).join(' / ')} ${m[1]}번`;
+    return `${m[1].padStart(2, '0')}번`;
   }
 
   return base.replace(/\//g, ' / ');
@@ -26,8 +30,20 @@ function buildFileUrl(path) {
 
 function setActiveButton(path, button) {
   document.querySelectorAll('.file-link').forEach((el) => el.classList.remove('active'));
-  button.classList.add('active');
+  if (button) button.classList.add('active');
   sessionStorage.setItem('active-file', path);
+}
+
+function setActiveGroup(folderPath, button) {
+  document.querySelectorAll('.group-link').forEach((el) => el.classList.remove('active'));
+  if (button) button.classList.add('active');
+
+  document.querySelectorAll('.group-items').forEach((list) => {
+    const isActive = list.dataset.group === folderPath;
+    list.style.display = isActive ? 'flex' : 'none';
+  });
+
+  sessionStorage.setItem('active-group', folderPath);
 }
 
 function renderMarkdown(markdown, title) {
@@ -38,7 +54,11 @@ function renderMarkdown(markdown, title) {
 
 async function loadFile(path) {
   const button = document.querySelector(`button[data-path="${CSS.escape(path)}"]`);
+  const folderPath = path.split('/').slice(0, -1).join('/');
+  const groupButton = document.querySelector(`button[data-group="${CSS.escape(folderPath)}"]`);
+
   if (button) setActiveButton(path, button);
+  if (groupButton) setActiveGroup(folderPath, groupButton);
 
   try {
     const response = await fetch(buildFileUrl(path));
@@ -59,6 +79,7 @@ async function init() {
     const mdFiles = (data.tree || [])
       .filter((item) => item.type === 'blob' && /\.md$/i.test(item.path))
       .map((item) => item.path)
+      .filter((path) => !path.endsWith('README.md'))
       .sort();
 
     if (!mdFiles.length) {
@@ -66,26 +87,85 @@ async function init() {
       return;
     }
 
-    const filtered = mdFiles.filter((path) => !path.endsWith('README.md'));
-    const files = filtered.length ? filtered : mdFiles;
-
-    files.forEach((path) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'file-link';
-      button.dataset.path = path;
-      button.textContent = formatLabel(path);
-      button.addEventListener('click', () => loadFile(path));
-      fileListEl.appendChild(button);
+    const groups = new Map();
+    mdFiles.forEach((path) => {
+      const folderPath = path.split('/').slice(0, -1).join('/');
+      if (!folderPath) return;
+      if (!groups.has(folderPath)) {
+        groups.set(folderPath, []);
+      }
+      groups.get(folderPath).push(path);
     });
 
-    const initial = sessionStorage.getItem('active-file') || files[0];
-    const matched = files.find((path) => path === initial) || files[0];
-    const initialButton = document.querySelector(`button[data-path="${CSS.escape(matched)}"]`);
-    if (initialButton) {
-      setActiveButton(matched, initialButton);
+    const sortedGroups = [...groups.entries()].sort(([left], [right]) => left.localeCompare(right, 'ko'));
+
+    sortedGroups.forEach(([folderPath, files]) => {
+      const groupWrap = document.createElement('div');
+      groupWrap.className = 'exam-group';
+
+      const groupButton = document.createElement('button');
+      groupButton.type = 'button';
+      groupButton.className = 'group-link';
+      groupButton.dataset.group = folderPath;
+      groupButton.textContent = formatGroupLabel(folderPath);
+      groupButton.addEventListener('click', () => {
+        const current = fileListEl.querySelector(`.group-items[data-group="${CSS.escape(folderPath)}"]`);
+        const isVisible = current && current.style.display !== 'none';
+
+        if (isVisible) {
+          current.style.display = 'none';
+          groupButton.classList.remove('active');
+          return;
+        }
+
+        const targetFiles = groups.get(folderPath) || [];
+        const firstPath = targetFiles[0];
+        if (firstPath) {
+          loadFile(firstPath);
+        }
+      });
+
+      const itemList = document.createElement('div');
+      itemList.className = 'group-items';
+      itemList.dataset.group = folderPath;
+
+      files.sort().forEach((path) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'file-link';
+        button.dataset.path = path;
+        button.textContent = formatLabel(path);
+        button.addEventListener('click', () => loadFile(path));
+        itemList.appendChild(button);
+      });
+
+      groupWrap.appendChild(groupButton);
+      groupWrap.appendChild(itemList);
+      fileListEl.appendChild(groupWrap);
+    });
+
+    const savedGroup = sessionStorage.getItem('active-group') || sortedGroups[0][0];
+    const savedFile = sessionStorage.getItem('active-file') || (groups.get(savedGroup) || [])[0];
+
+    let initialGroup = savedGroup;
+    if (!groups.has(initialGroup)) {
+      initialGroup = sortedGroups[0][0];
     }
-    loadFile(matched);
+
+    const initialFiles = groups.get(initialGroup) || [];
+    const initialPath = initialFiles.includes(savedFile) ? savedFile : initialFiles[0];
+
+    const initialGroupButton = document.querySelector(`button[data-group="${CSS.escape(initialGroup)}"]`);
+    if (initialGroupButton) {
+      setActiveGroup(initialGroup, initialGroupButton);
+    }
+
+    const initialButton = document.querySelector(`button[data-path="${CSS.escape(initialPath)}"]`);
+    if (initialButton) {
+      setActiveButton(initialPath, initialButton);
+    }
+
+    loadFile(initialPath);
   } catch (error) {
     contentEl.innerHTML = `<p>오류: ${error.message}</p>`;
   }
