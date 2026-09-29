@@ -2,6 +2,7 @@ const repo = 'onesdh/info-processor-study';
 const branch = 'main';
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
+const currentRoundEl = document.getElementById('current-round');
 
 function formatGroupLabel(folderPath) {
   return folderPath.replace(/\//g, ' / ');
@@ -28,10 +29,20 @@ function buildFileUrl(path) {
   return `https://raw.githubusercontent.com/${repo}/${branch}/${path}`;
 }
 
+function updateCurrentRoundLabel(folderPath) {
+  if (!currentRoundEl) return;
+  currentRoundEl.textContent = folderPath ? formatGroupLabel(folderPath) : '문서 선택';
+}
+
 function setActiveButton(path, button) {
   document.querySelectorAll('.file-link').forEach((el) => el.classList.remove('active'));
   if (button) button.classList.add('active');
   sessionStorage.setItem('active-file', path);
+
+  const folderPath = path.split('/').slice(0, -1).join('/');
+  if (folderPath) {
+    updateCurrentRoundLabel(folderPath);
+  }
 }
 
 function setActiveGroup(folderPath, button) {
@@ -44,6 +55,7 @@ function setActiveGroup(folderPath, button) {
   });
 
   sessionStorage.setItem('active-group', folderPath);
+  updateCurrentRoundLabel(folderPath);
 }
 
 function resolveAssetUrl(filePath, assetPath) {
@@ -139,6 +151,7 @@ async function init() {
         if (isVisible) {
           current.style.display = 'none';
           groupButton.classList.remove('active');
+          updateCurrentRoundLabel(folderPath);
           return;
         }
 
