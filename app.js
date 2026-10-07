@@ -1,12 +1,13 @@
 const repo = 'onesdh/info-processor-study';
 const branch = 'main';
 const statusCsvUrl = `https://raw.githubusercontent.com/${repo}/${branch}/data/problem-status.csv`;
+const statusLabelsUrl = `https://raw.githubusercontent.com/${repo}/${branch}/data/status-labels.json`;
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
 const currentRoundEl = document.getElementById('current-round');
 const groupLookup = new Map();
 const groupOrder = [];
-const STATUS_CODE_TO_LABEL = {
+const DEFAULT_STATUS_CODE_TO_LABEL = {
   0: '안 품',
   1: '맞음',
   2: '틀림',
@@ -14,8 +15,9 @@ const STATUS_CODE_TO_LABEL = {
   4: '다시 풀기',
   5: '복습 완료',
 };
+const STATUS_CODE_TO_LABEL = { ...DEFAULT_STATUS_CODE_TO_LABEL };
 const STATUS_LABEL_TO_CODE = Object.fromEntries(
-  Object.entries(STATUS_CODE_TO_LABEL).map(([code, label]) => [label, Number(code)])
+  Object.entries(DEFAULT_STATUS_CODE_TO_LABEL).map(([code, label]) => [label, Number(code)])
 );
 const statusMeta = {
   틀림: { className: 'status-badge status-wrong', label: '틀림' },
@@ -159,8 +161,33 @@ function parseCsvRows(csvText) {
   });
 }
 
+async function loadStatusLabels() {
+  try {
+    const response = await fetch(statusLabelsUrl);
+    if (!response.ok) throw new Error('상태 라벨 JSON을 불러오지 못했습니다.');
+    const data = await response.json();
+
+    if (data && typeof data === 'object') {
+      Object.keys(data).forEach((code) => {
+        const label = String(data[code]).trim();
+        if (label) {
+          STATUS_CODE_TO_LABEL[Number(code)] = label;
+        }
+      });
+
+      Object.entries(STATUS_CODE_TO_LABEL).forEach(([code, label]) => {
+        STATUS_LABEL_TO_CODE[label] = Number(code);
+      });
+    }
+  } catch (error) {
+    console.warn(error.message);
+  }
+}
+
 async function loadProblemStatusMap() {
   try {
+    await loadStatusLabels();
+
     const response = await fetch(statusCsvUrl);
     if (!response.ok) throw new Error('문제 상태 CSV를 불러오지 못했습니다.');
     const csvText = await response.text();
