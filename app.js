@@ -6,6 +6,17 @@ const contentEl = document.getElementById('content');
 const currentRoundEl = document.getElementById('current-round');
 const groupLookup = new Map();
 const groupOrder = [];
+const STATUS_CODE_TO_LABEL = {
+  0: '안 품',
+  1: '맞음',
+  2: '틀림',
+  3: '개념 정리 필요',
+  4: '다시 풀기',
+  5: '복습 완료',
+};
+const STATUS_LABEL_TO_CODE = Object.fromEntries(
+  Object.entries(STATUS_CODE_TO_LABEL).map(([code, label]) => [label, Number(code)])
+);
 const statusMeta = {
   틀림: { className: 'status-badge status-wrong', label: '틀림' },
   맞음: { className: 'status-badge status-correct', label: '맞음' },
@@ -17,6 +28,33 @@ const statusMeta = {
 const problemStatusMap = new Map();
 const statusFilterOrder = ['전체', '틀림', '맞음', '개념 정리 필요', '다시 풀기', '복습 완료', '안 품'];
 let activeStatusFilter = '전체';
+
+function normalizeStatusCode(value) {
+  if (value === undefined || value === null || value === '') return null;
+
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? Number(value) : null;
+  }
+
+  const trimmed = String(value).trim();
+  if (!trimmed) return null;
+  if (/^\d+$/.test(trimmed)) {
+    return Number(trimmed);
+  }
+
+  const mapped = STATUS_LABEL_TO_CODE[trimmed];
+  return mapped !== undefined ? mapped : null;
+}
+
+function getStatusLabel(row) {
+  if (!row || row.status === undefined || row.status === null || row.status === '') {
+    return null;
+  }
+
+  const code = normalizeStatusCode(row.status);
+  if (code === null) return null;
+  return STATUS_CODE_TO_LABEL[code] || String(row.status);
+}
 
 function formatGroupLabel(folderPath) {
   return folderPath.replace(/\//g, ' / ');
@@ -132,6 +170,13 @@ async function loadProblemStatusMap() {
     rows.forEach((row) => {
       const normalizedPath = normalizeProblemPath(row.path);
       if (!normalizedPath) return;
+
+      const normalizedCode = normalizeStatusCode(row.status);
+      if (normalizedCode !== null) {
+        row.status = normalizedCode;
+        row.status_label = STATUS_CODE_TO_LABEL[normalizedCode] || String(row.status);
+      }
+
       problemStatusMap.set(normalizedPath, row);
     });
   } catch (error) {
@@ -144,10 +189,16 @@ function getStatusForPath(filePath) {
   const row = problemStatusMap.get(normalizedPath);
   if (!row) return null;
 
-  if (row.status === '틀림' && !normalizedPath.startsWith('2026년')) {
+  const normalizedCode = normalizeStatusCode(row.status);
+  if (normalizedCode === null) return null;
+
+  const label = STATUS_CODE_TO_LABEL[normalizedCode] || String(row.status);
+  if (label === '틀림' && !normalizedPath.startsWith('2026년')) {
     return null;
   }
 
+  row.status = normalizedCode;
+  row.status_label = label;
   return row;
 }
 
@@ -158,7 +209,8 @@ function getVisibleFilesForFilter(files) {
 
   return files.filter((path) => {
     const status = getStatusForPath(path);
-    return status && status.status === activeStatusFilter;
+    const statusLabel = getStatusLabel(status);
+    return statusLabel === activeStatusFilter;
   });
 }
 
@@ -171,7 +223,8 @@ function getFilteredVisiblePaths() {
   return mdFiles.filter((path) => {
     if (path.endsWith('README.md')) return false;
     const status = getStatusForPath(path);
-    return status && status.status === activeStatusFilter;
+    const statusLabel = getStatusLabel(status);
+    return statusLabel === activeStatusFilter;
   });
 }
 
@@ -184,9 +237,10 @@ function updateFileButtonStatus(path, button) {
     statusEl.remove();
   }
 
-  if (!status || !status.status) return;
+  const statusLabel = getStatusLabel(status);
+  if (!statusLabel) return;
 
-  const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+  const meta = statusMeta[statusLabel] || { className: 'status-badge status-default', label: statusLabel };
   const chip = document.createElement('span');
   chip.className = meta.className;
   chip.textContent = meta.label;
@@ -304,11 +358,12 @@ function renderMarkdown(markdown, title, filePath = '') {
   const status = getStatusForPath(filePath);
   contentEl.innerHTML = '';
 
-  if (status && status.status) {
+  const statusLabel = getStatusLabel(status);
+  if (statusLabel) {
     const statusWrap = document.createElement('div');
     statusWrap.className = 'status-panel';
 
-    const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+    const meta = statusMeta[statusLabel] || { className: 'status-badge status-default', label: statusLabel };
     const badge = document.createElement('span');
     badge.className = meta.className;
     badge.textContent = meta.label;
@@ -452,9 +507,10 @@ function renderFileList() {
       button.appendChild(label);
 
       const status = getStatusForPath(path);
-      if (status && status.status) {
+      const statusLabel = getStatusLabel(status);
+      if (statusLabel) {
         const chip = document.createElement('span');
-        const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+        const meta = statusMeta[statusLabel] || { className: 'status-badge status-default', label: statusLabel };
         chip.className = meta.className + ' status-chip';
         chip.textContent = meta.label;
         button.appendChild(chip);
