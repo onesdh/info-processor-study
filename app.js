@@ -3,6 +3,8 @@ const branch = 'main';
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
 const currentRoundEl = document.getElementById('current-round');
+const groupLookup = new Map();
+const groupOrder = [];
 
 function formatGroupLabel(folderPath) {
   return folderPath.replace(/\//g, ' / ');
@@ -73,9 +75,78 @@ function resolveAssetUrl(filePath, assetPath) {
   return new URL(assetPath, baseUrl).toString();
 }
 
+function getAdjacentPath(currentPath, direction) {
+  const folderPath = currentPath.split('/').slice(0, -1).join('/');
+  const files = groupLookup.get(folderPath) || [];
+  const currentIndex = files.indexOf(currentPath);
+
+  if (direction === 'prev') {
+    if (currentIndex > 0) {
+      return files[currentIndex - 1];
+    }
+
+    const groupIndex = groupOrder.indexOf(folderPath);
+    if (groupIndex > 0) {
+      const previousGroup = groupOrder[groupIndex - 1];
+      const previousFiles = groupLookup.get(previousGroup) || [];
+      return previousFiles[0] || null;
+    }
+
+    return null;
+  }
+
+  if (direction === 'next') {
+    if (currentIndex >= 0 && currentIndex < files.length - 1) {
+      return files[currentIndex + 1];
+    }
+
+    const groupIndex = groupOrder.indexOf(folderPath);
+    if (groupIndex >= 0 && groupIndex < groupOrder.length - 1) {
+      const nextGroup = groupOrder[groupIndex + 1];
+      const nextFiles = groupLookup.get(nextGroup) || [];
+      return nextFiles[0] || null;
+    }
+
+    return null;
+  }
+
+  return null;
+}
+
+function buildNavigation(filePath) {
+  const nav = document.createElement('div');
+  nav.className = 'content-nav';
+
+  const folderPath = filePath.split('/').slice(0, -1).join('/');
+  const prevPath = getAdjacentPath(filePath, 'prev');
+  if (prevPath) {
+    const prevButton = document.createElement('button');
+    prevButton.type = 'button';
+    prevButton.className = 'nav-button nav-button-prev';
+    const prevFolder = prevPath.split('/').slice(0, -1).join('/');
+    prevButton.textContent = prevFolder === folderPath ? '이전 문제' : '이전 회차';
+    prevButton.addEventListener('click', () => loadFile(prevPath));
+    nav.appendChild(prevButton);
+  }
+
+  const nextPath = getAdjacentPath(filePath, 'next');
+  if (nextPath) {
+    const nextButton = document.createElement('button');
+    nextButton.type = 'button';
+    nextButton.className = 'nav-button nav-button-next';
+    const nextFolder = nextPath.split('/').slice(0, -1).join('/');
+    nextButton.textContent = nextFolder === folderPath ? '다음 문제' : '다음 회차';
+    nextButton.addEventListener('click', () => loadFile(nextPath));
+    nav.appendChild(nextButton);
+  }
+
+  return nav;
+}
+
 function renderMarkdown(markdown, title, filePath = '') {
   const html = marked.parse(markdown || '# 문서를 불러오는 중입니다...');
   const wrapper = document.createElement('div');
+  wrapper.className = 'content-body';
   wrapper.innerHTML = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
 
   wrapper.querySelectorAll('img').forEach((img) => {
@@ -84,7 +155,12 @@ function renderMarkdown(markdown, title, filePath = '') {
     img.setAttribute('src', resolveAssetUrl(filePath, src));
   });
 
-  contentEl.innerHTML = wrapper.innerHTML;
+  contentEl.innerHTML = '';
+  const nav = buildNavigation(filePath);
+  if (nav.children.length) {
+    contentEl.appendChild(nav);
+  }
+  contentEl.appendChild(wrapper);
   document.title = `${title} | 정보처리기사 실기 문제집`;
 }
 
@@ -133,7 +209,15 @@ async function init() {
       groups.get(folderPath).push(path);
     });
 
-    const sortedGroups = [...groups.entries()].sort(([left], [right]) => left.localeCompare(right, 'ko'));
+    groupLookup.clear();
+    groupOrder.length = 0;
+    groups.forEach((files, folderPath) => {
+      groupLookup.set(folderPath, files.slice().sort());
+      groupOrder.push(folderPath);
+    });
+    groupOrder.sort((left, right) => left.localeCompare(right, 'ko'));
+
+    const sortedGroups = [...groupLookup.entries()].sort(([left], [right]) => left.localeCompare(right, 'ko'));
 
     sortedGroups.forEach(([folderPath, files]) => {
       const groupWrap = document.createElement('div');
