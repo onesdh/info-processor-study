@@ -1,10 +1,19 @@
 const repo = 'onesdh/info-processor-study';
 const branch = 'main';
+const statusCsvUrl = `https://raw.githubusercontent.com/${repo}/${branch}/data/problem-status.csv`;
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
 const currentRoundEl = document.getElementById('current-round');
 const groupLookup = new Map();
 const groupOrder = [];
+const statusMeta = {
+  틀림: { className: 'status-badge status-wrong', label: '틀림' },
+  맞음: { className: 'status-badge status-correct', label: '맞음' },
+  '개념 정리 필요': { className: 'status-badge status-review', label: '개념 정리 필요' },
+  '다시 풀기': { className: 'status-badge status-repeat', label: '다시 풀기' },
+  '복습 완료': { className: 'status-badge status-done', label: '복습 완료' },
+};
+const problemStatusMap = new Map();
 
 function formatGroupLabel(folderPath) {
   return folderPath.replace(/\//g, ' / ');
@@ -58,6 +67,96 @@ function setActiveGroup(folderPath, button) {
 
   sessionStorage.setItem('active-group', folderPath);
   updateCurrentRoundLabel(folderPath);
+}
+
+function normalizeProblemPath(value) {
+  return String(value || '')
+    .trim()
+    .replace(/\\/g, '/')
+    .replace(/^\.\//, '')
+    .replace(/^\//, '');
+}
+
+function parseCsvLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    if (char === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        current += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      result.push(current);
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+
+  result.push(current);
+  return result.map((part) => part.trim());
+}
+
+function parseCsvRows(csvText) {
+  const lines = csvText.split(/\r?\n/).filter((line) => line.trim().length > 0);
+  if (lines.length < 2) return [];
+
+  const headers = parseCsvLine(lines[0]);
+  return lines.slice(1).map((line) => {
+    const values = parseCsvLine(line);
+    const row = {};
+    headers.forEach((header, index) => {
+      row[header] = values[index] || '';
+    });
+    return row;
+  });
+}
+
+async function loadProblemStatusMap() {
+  try {
+    const response = await fetch(statusCsvUrl);
+    if (!response.ok) throw new Error('문제 상태 CSV를 불러오지 못했습니다.');
+    const csvText = await response.text();
+    const rows = parseCsvRows(csvText);
+
+    problemStatusMap.clear();
+    rows.forEach((row) => {
+      const normalizedPath = normalizeProblemPath(row.path);
+      if (!normalizedPath) return;
+      problemStatusMap.set(normalizedPath, row);
+    });
+  } catch (error) {
+    console.warn(error.message);
+  }
+}
+
+function getStatusForPath(filePath) {
+  const normalizedPath = normalizeProblemPath(filePath);
+  return problemStatusMap.get(normalizedPath) || null;
+}
+
+function updateFileButtonStatus(path, button) {
+  if (!button) return;
+  const status = getStatusForPath(path);
+  const statusEl = button.querySelector('.status-chip');
+
+  if (statusEl) {
+    statusEl.remove();
+  }
+
+  if (!status || !status.status) return;
+
+  const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+  const chip = document.createElement('span');
+  chip.className = meta.className;
+  chip.textContent = meta.label;
+  button.appendChild(chip);
 }
 
 function resolveAssetUrl(filePath, assetPath) {
@@ -155,7 +254,29 @@ function renderMarkdown(markdown, title, filePath = '') {
     img.setAttribute('src', resolveAssetUrl(filePath, src));
   });
 
+  const status = getStatusForPath(filePath);
   contentEl.innerHTML = '';
+
+  if (status && status.status) {
+    const statusWrap = document.createElement('div');
+    statusWrap.className = 'status-panel';
+
+    const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+    const badge = document.createElement('span');
+    badge.className = meta.className;
+    badge.textContent = meta.label;
+    statusWrap.appendChild(badge);
+
+    if (status.comment) {
+      const comment = document.createElement('div');
+      comment.className = 'status-comment';
+      comment.textContent = status.comment;
+      statusWrap.appendChild(comment);
+    }
+
+    contentEl.appendChild(statusWrap);
+  }
+
   const nav = buildNavigation(filePath);
   if (nav.children.length) {
     contentEl.appendChild(nav);
@@ -184,6 +305,8 @@ async function loadFile(path) {
 
 async function init() {
   try {
+    await loadProblemStatusMap();
+
     const response = await fetch(`https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`);
     if (!response.ok) throw new Error('GitHub 저장소 목록을 불러오지 못했습니다.');
 
@@ -255,7 +378,20 @@ async function init() {
         button.type = 'button';
         button.className = 'file-link';
         button.dataset.path = path;
-        button.textContent = formatLabel(path);
+
+        const label = document.createElement('span');
+        label.textContent = formatLabel(path);
+        button.appendChild(label);
+
+        const status = getStatusForPath(path);
+        if (status && status.status) {
+          const chip = document.createElement('span');
+          const meta = statusMeta[status.status] || { className: 'status-badge status-default', label: status.status };
+          chip.className = meta.className + ' status-chip';
+          chip.textContent = meta.label;
+          button.appendChild(chip);
+        }
+
         button.addEventListener('click', () => loadFile(path));
         itemList.appendChild(button);
       });
