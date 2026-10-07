@@ -12,9 +12,10 @@ const statusMeta = {
   '개념 정리 필요': { className: 'status-badge status-review', label: '개념 정리 필요' },
   '다시 풀기': { className: 'status-badge status-repeat', label: '다시 풀기' },
   '복습 완료': { className: 'status-badge status-done', label: '복습 완료' },
+  '안 품': { className: 'status-badge status-unattempted', label: '안 품' },
 };
 const problemStatusMap = new Map();
-const statusFilterOrder = ['전체', '틀림', '맞음', '개념 정리 필요', '다시 풀기', '복습 완료'];
+const statusFilterOrder = ['전체', '틀림', '맞음', '개념 정리 필요', '다시 풀기', '복습 완료', '안 품'];
 let activeStatusFilter = '전체';
 
 function formatGroupLabel(folderPath) {
