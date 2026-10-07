@@ -141,7 +141,14 @@ async function loadProblemStatusMap() {
 
 function getStatusForPath(filePath) {
   const normalizedPath = normalizeProblemPath(filePath);
-  return problemStatusMap.get(normalizedPath) || null;
+  const row = problemStatusMap.get(normalizedPath);
+  if (!row) return null;
+
+  if (row.status === '틀림' && !normalizedPath.startsWith('2026년')) {
+    return null;
+  }
+
+  return row;
 }
 
 function getVisibleFilesForFilter(files) {
@@ -150,6 +157,19 @@ function getVisibleFilesForFilter(files) {
   }
 
   return files.filter((path) => {
+    const status = getStatusForPath(path);
+    return status && status.status === activeStatusFilter;
+  });
+}
+
+function getFilteredVisiblePaths() {
+  const mdFiles = Array.isArray(window.allMarkdownFiles) ? window.allMarkdownFiles : [];
+  if (activeStatusFilter === '전체') {
+    return mdFiles.filter((path) => !path.endsWith('README.md'));
+  }
+
+  return mdFiles.filter((path) => {
+    if (path.endsWith('README.md')) return false;
     const status = getStatusForPath(path);
     return status && status.status === activeStatusFilter;
   });
@@ -189,6 +209,19 @@ function resolveAssetUrl(filePath, assetPath) {
 }
 
 function getAdjacentPath(currentPath, direction) {
+  const visibleFiles = getFilteredVisiblePaths();
+  if (activeStatusFilter !== '전체') {
+    const currentIndex = visibleFiles.indexOf(currentPath);
+    if (currentIndex === -1) return null;
+    if (direction === 'prev') {
+      return currentIndex > 0 ? visibleFiles[currentIndex - 1] : null;
+    }
+    if (direction === 'next') {
+      return currentIndex < visibleFiles.length - 1 ? visibleFiles[currentIndex + 1] : null;
+    }
+    return null;
+  }
+
   const folderPath = currentPath.split('/').slice(0, -1).join('/');
   const files = groupLookup.get(folderPath) || [];
   const currentIndex = files.indexOf(currentPath);
@@ -332,6 +365,18 @@ function renderStatusFilters() {
       activeStatusFilter = status;
       renderStatusFilters();
       renderFileList();
+
+      const visibleFiles = getFilteredVisiblePaths();
+      if (!visibleFiles.length) {
+        contentEl.innerHTML = '<p>해당 상태의 문제가 없습니다.</p>';
+        return;
+      }
+
+      const currentPath = sessionStorage.getItem('active-file');
+      const nextPath = visibleFiles.includes(currentPath) ? currentPath : visibleFiles[0];
+      if (nextPath) {
+        loadFile(nextPath);
+      }
     });
     container.appendChild(button);
   });
