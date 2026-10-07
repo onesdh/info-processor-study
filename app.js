@@ -1,6 +1,7 @@
 const repo = 'onesdh/info-processor-study';
 const branch = 'main';
 const statusCsvUrl = `https://raw.githubusercontent.com/${repo}/${branch}/data/problem-status.csv`;
+const statusCsvDirUrl = `https://api.github.com/repos/${repo}/contents/data/problem_status?ref=${branch}`;
 const statusLabelsUrl = `https://raw.githubusercontent.com/${repo}/${branch}/data/status-labels.json`;
 const fileListEl = document.getElementById('file-list');
 const contentEl = document.getElementById('content');
@@ -188,27 +189,58 @@ async function loadProblemStatusMap() {
   try {
     await loadStatusLabels();
 
-    const response = await fetch(statusCsvUrl);
-    if (!response.ok) throw new Error('문제 상태 CSV를 불러오지 못했습니다.');
-    const csvText = await response.text();
-    const rows = parseCsvRows(csvText);
+    const dirResponse = await fetch(statusCsvDirUrl, {
+      headers: { Accept: 'application/vnd.github+json' },
+    });
+
+    const csvFiles = [];
+    if (dirResponse.ok) {
+      const dirData = await dirResponse.json();
+      if (Array.isArray(dirData)) {
+        dirData.forEach((item) => {
+          if (item && item.type === 'file' && /\.csv$/i.test(item.name)) {
+            csvFiles.push(item);
+          }
+        });
+      }
+    }
+
+    if (!csvFiles.length) {
+      const response = await fetch(statusCsvUrl);
+      if (!response.ok) throw new Error('문제 상태 CSV를 불러오지 못했습니다.');
+      const csvText = await response.text();
+      const rows = parseCsvRows(csvText);
+      applyStatusRows(rows);
+      return;
+    }
 
     problemStatusMap.clear();
-    rows.forEach((row) => {
-      const normalizedPath = normalizeProblemPath(row.path);
-      if (!normalizedPath) return;
 
-      const normalizedCode = normalizeStatusCode(row.status);
-      if (normalizedCode !== null) {
-        row.status = normalizedCode;
-        row.status_label = STATUS_CODE_TO_LABEL[normalizedCode] || String(row.status);
-      }
-
-      problemStatusMap.set(normalizedPath, row);
-    });
+    for (const file of csvFiles) {
+      const response = await fetch(file.download_url || file.url);
+      if (!response.ok) continue;
+      const csvText = await response.text();
+      const rows = parseCsvRows(csvText);
+      applyStatusRows(rows);
+    }
   } catch (error) {
     console.warn(error.message);
   }
+}
+
+function applyStatusRows(rows) {
+  rows.forEach((row) => {
+    const normalizedPath = normalizeProblemPath(row.path);
+    if (!normalizedPath) return;
+
+    const normalizedCode = normalizeStatusCode(row.status);
+    if (normalizedCode !== null) {
+      row.status = normalizedCode;
+      row.status_label = STATUS_CODE_TO_LABEL[normalizedCode] || String(row.status);
+    }
+
+    problemStatusMap.set(normalizedPath, row);
+  });
 }
 
 function getStatusForPath(filePath) {
