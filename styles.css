@@ -376,18 +376,27 @@ body {
 }
 
 
-/* 메인 탭 */
-.tabs { display: flex; gap: 8px; }
-.tab-button {
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: transparent;
-  color: #fff;
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  cursor: pointer;
+/* 메인 탭 (헤더 아래 탭 바) */
+.tabs {
+  display: flex;
+  gap: 4px;
+  max-width: 1500px;
+  margin: 14px auto 0;
+  padding: 0 18px;
+  border-bottom: 2px solid var(--border);
 }
-.tab-button.active { background: #fff; color: #1d4ed8; font-weight: 700; }
+.tab-button {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.tab-button:hover { color: var(--primary); }
+.tab-button.active { color: var(--primary); font-weight: 700; border-bottom-color: var(--primary); }
 #concept-pane[hidden], #problem-pane[hidden] { display: none; }
 .concept-link {
   display: block;
@@ -406,4 +415,3 @@ body {
 .jump-bar { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; position: sticky; top: 0; background: var(--panel); padding: 8px 0; z-index: 2; }
 .jump-bar button { border: 1px solid var(--border); background: var(--panel-alt); border-radius: 999px; padding: 5px 12px; cursor: pointer; font-size: 0.85rem; }
 .content-body table { display: block; overflow-x: auto; max-width: 100%; }
-@media (max-width: 900px) { .topbar { flex-direction: column; gap: 10px; align-items: flex-start; } }
