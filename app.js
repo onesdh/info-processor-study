@@ -593,10 +593,17 @@ async function init() {
     if (!response.ok) throw new Error('GitHub 저장소 목록을 불러오지 못했습니다.');
 
     const data = await response.json();
+    conceptFiles = (data.tree || [])
+      .filter((item) => item.type === 'blob' && /^data_category\/.+\.md$/i.test(item.path))
+      .map((item) => item.path)
+      .sort();
+    renderConceptList();
+
     const mdFiles = (data.tree || [])
       .filter((item) => item.type === 'blob' && /\.md$/i.test(item.path))
       .map((item) => item.path)
       .filter((path) => !path.endsWith('README.md'))
+      .filter((path) => !/^data(_category|_solved)?\//.test(path))
       .sort();
 
     window.allMarkdownFiles = mdFiles;
@@ -656,4 +663,113 @@ async function init() {
   }
 }
 
-init();
+
+/* ---------- 개념정리 탭 ---------- */
+let conceptFiles = [];
+
+function conceptLabel(path) {
+  const name = path.split('/').pop().replace(/\.md$/i, '');
+  if (name === 'README') return '개요 · 공부 순서';
+  return name.replace(/^(\d+)_/, '$1. ').replace(/_/g, ' ');
+}
+
+function renderConceptList() {
+  const list = document.getElementById('concept-list');
+  if (!list) return;
+  list.innerHTML = '';
+  const readme = 'data_category/README.md';
+  const ordered = (conceptFiles.includes(readme) ? [readme] : []).concat(conceptFiles.filter((p) => p !== readme));
+  if (!ordered.length) {
+    list.innerHTML = '<div class="empty-state">개념정리 파일이 아직 저장소에 없습니다.</div>';
+    return;
+  }
+  ordered.forEach((path) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'concept-link';
+    button.dataset.concept = path;
+    button.textContent = conceptLabel(path);
+    button.addEventListener('click', () => loadConcept(path));
+    list.appendChild(button);
+  });
+}
+
+function addJumpBar(wrapper) {
+  const heads = [...wrapper.querySelectorAll('h1, h2')].filter((h) => /^[A-D]\.\s/.test(h.textContent.trim()));
+  if (!heads.length) return null;
+  const bar = document.createElement('div');
+  bar.className = 'jump-bar';
+  heads.forEach((h) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = h.textContent.trim().replace(/\(.*\)\s*$/, '');
+    b.addEventListener('click', () => h.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    bar.appendChild(b);
+  });
+  return bar;
+}
+
+async function loadConcept(path) {
+  document.querySelectorAll('.concept-link').forEach((el) => el.classList.toggle('active', el.dataset.concept === path));
+  sessionStorage.setItem('active-concept', path);
+  currentRoundEl.textContent = '개념정리 / ' + conceptLabel(path);
+  contentEl.innerHTML = '<p>불러오는 중…</p>';
+  try {
+    const response = await fetch(buildFileUrl(path));
+    if (!response.ok) throw new Error('문서를 불러오지 못했습니다.');
+    const html = marked.parse(await response.text());
+    const wrapper = document.createElement('div');
+    wrapper.className = 'content-body';
+    wrapper.innerHTML = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+    wrapper.querySelectorAll('img').forEach((img) => {
+      const src = img.getAttribute('src');
+      if (src) img.setAttribute('src', resolveAssetUrl(path, src));
+    });
+    wrapper.querySelectorAll('a[href]').forEach((anchor) => {
+      const href = anchor.getAttribute('href');
+      if (!/\.md(#.*)?$/i.test(href) || /^https?:/i.test(href)) return;
+      const target = decodeURIComponent(new URL(href, 'https://x/' + path).pathname).replace(/^\//, '');
+      anchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (target.startsWith('data_category/')) {
+          loadConcept(target);
+        } else {
+          switchTab('problems');
+          loadFile(target);
+        }
+      });
+    });
+    contentEl.innerHTML = '';
+    const bar = addJumpBar(wrapper);
+    if (bar) contentEl.appendChild(bar);
+    contentEl.appendChild(wrapper);
+    window.scrollTo({ top: 0 });
+    document.title = `${conceptLabel(path)} | 개념정리`;
+  } catch (error) {
+    contentEl.innerHTML = `<p>오류가 발생했습니다: ${error.message}</p>`;
+  }
+}
+
+function switchTab(tab) {
+  try { localStorage.setItem('main-tab', tab); } catch (e) { /* ignore */ }
+  document.querySelectorAll('.tab-button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
+  document.getElementById('problem-pane').hidden = tab !== 'problems';
+  document.getElementById('concept-pane').hidden = tab !== 'concepts';
+  if (tab === 'concepts') {
+    const saved = sessionStorage.getItem('active-concept');
+    const target = conceptFiles.includes(saved) ? saved : (conceptFiles[0] || null);
+    if (target) loadConcept(target);
+    else contentEl.innerHTML = '<p>개념정리 파일이 아직 저장소에 없습니다.</p>';
+  } else {
+    const path = sessionStorage.getItem('active-file');
+    if (path && (window.allMarkdownFiles || []).includes(path)) loadFile(path);
+  }
+}
+
+document.querySelectorAll('.tab-button').forEach((b) => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+init().then(() => {
+  let saved = null;
+  try { saved = localStorage.getItem('main-tab'); } catch (e) { /* ignore */ }
+  if (saved === 'concepts') switchTab('concepts');
+});

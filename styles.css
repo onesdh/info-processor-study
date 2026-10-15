@@ -375,3 +375,35 @@ body {
   }
 }
 
+
+/* 메인 탭 */
+.tabs { display: flex; gap: 8px; }
+.tab-button {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.tab-button.active { background: #fff; color: #1d4ed8; font-weight: 700; }
+#concept-pane[hidden], #problem-pane[hidden] { display: none; }
+.concept-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.concept-link:hover { background: var(--panel-alt); }
+.concept-link.active { background: var(--primary-soft); border-color: var(--primary); font-weight: 700; }
+.jump-bar { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; position: sticky; top: 0; background: var(--panel); padding: 8px 0; z-index: 2; }
+.jump-bar button { border: 1px solid var(--border); background: var(--panel-alt); border-radius: 999px; padding: 5px 12px; cursor: pointer; font-size: 0.85rem; }
+.content-body table { display: block; overflow-x: auto; max-width: 100%; }
+@media (max-width: 900px) { .topbar { flex-direction: column; gap: 10px; align-items: flex-start; } }
