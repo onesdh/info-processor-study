@@ -1,6 +1,6 @@
 # SQL — 기출 기반 요약정리
 
-> 범위: **2020년 1회 ~ 2026년 2회 (21개 회차) 중 이 영역 36문제**. 출제 빈도 → 개념 요약 → 기출 키워드 → 기출 원문 순서. 해설은 각 문제 파일에서 확인.
+> 범위: **2020년 1회 ~ 2026년 2회 중 이 영역 36문제**. 구성: A 출제 빈도 → B 개념 요약(🔥기출 위치 표시 + ⬜미출제 보충) → C 기출 키워드 → D 기출 원문.
 
 ## A. 출제 빈도 (많이 나온 순)
 
@@ -12,74 +12,77 @@
 ---
 
 # B. 개념 요약
+> 표기: 🔥 = 기출(최신 위치 + 추가 횟수), ⬜ = 아직 안 나온 보충 개념. SQL은 **실행 순서대로 손으로 추적**하는 것이 핵심입니다.
+
 ## 1. SQL 분류
-| 분류 | 명령 | 기능 |
+| 분류 | 명령 | 기출 |
 |---|---|---|
-| **DDL** | CREATE, **ALTER**, DROP, TRUNCATE | 구조 정의·변경 |
-| **DML** | **SELECT**, **INSERT**, **UPDATE**, **DELETE** | 데이터 조작 |
-| **DCL** | **GRANT**(권한 부여), **REVOKE**(회수) | 접근 권한 |
-| **TCL** | COMMIT, ROLLBACK, SAVEPOINT | 트랜잭션 제어 |
+| **DDL** | CREATE, **ALTER**, DROP, TRUNCATE | [🔥 20년 3회 20번](../2020년 3회/20.md) 외 1회 |
+| **DML** | **SELECT, INSERT, UPDATE, DELETE** | [🔥 23년 2회 4번](../2023년 2회/04.md) 외 3회 |
+| **DCL** | **GRANT / REVOKE**, (COMMIT, ROLLBACK) | [🔥 21년 3회 3번](../2021년 3회/03.md) |
+| TCL | COMMIT, ROLLBACK, SAVEPOINT | ⬜ |
 
-## 2. SELECT 기본 구조와 실행 순서
+### DDL
+- **CREATE**: 스키마·도메인·테이블·뷰·인덱스. `CREATE TABLE`: 속성·자료형·`NOT NULL`·**기본키·외래키(ON DELETE/UPDATE 옵션)**·`CHECK`.
+  - `CREATE DOMAIN 이름 AS VARCHAR(6) CHECK (VALUE IN (...))` ⬜
+  - `CREATE [UNIQUE] INDEX 이름 ON 테이블(열 [ASC|DESC])` [🔥 20년 2회 12번](../2020년 2회/12.md)
+  - `CREATE VIEW 이름 AS SELECT ...`
+- **ALTER**: `ALTER TABLE 테이블 ADD 열 자료형;` / 속성 변경 / `DROP COLUMN` [🔥 20년 3회 20번](../2020년 3회/20.md)
+- **DROP**: **CASCADE**(연관 객체까지 제거) / **RESTRICT**(연관 객체 있으면 거부) [🔥 23년 2회 17번](../2023년 2회/17.md)
+- **외래키** `CONSTRAINT 이름 FOREIGN KEY(열) REFERENCES 대상(열) [ON DELETE CASCADE]` [🔥 26년 1회 10번](../2026년 1회/10.md) 외 1회
+
+### DCL
+- **GRANT 권한 ON 객체 TO 사용자 [WITH GRANT OPTION]** (받은 권한을 다시 부여 가능) / **REVOKE** (권한 회수, **CASCADE**: 연쇄 회수) [🔥 21년 3회 3번](../2021년 3회/03.md)
+
+### DML
+| 명령 | 문법 | 기출 |
+|---|---|---|
+| **INSERT** | `INSERT INTO 테이블(열…) VALUES (값…);` / `INSERT INTO … SELECT …;` (**문자열은 작은따옴표**) | [🔥 24년 2회 3번](../2024년 2회/03.md) |
+| **UPDATE** | `UPDATE 테이블 SET 열=값 WHERE 조건;` | [🔥 21년 2회 5번](../2021년 2회/05.md) |
+| **DELETE** | `DELETE FROM 테이블 WHERE 조건;` (**WHERE 없으면 전체**, 구조는 남음 ≠ DROP) | [🔥 23년 1회 13번](../2023년 1회/13.md) 외 1회 |
+| **SELECT** | 아래 | |
+
+## 2. SELECT 구조·실행 순서
 ```sql
-SELECT 열 FROM 테이블 WHERE 행조건 GROUP BY 그룹열 HAVING 그룹조건 ORDER BY 열 [ASC|DESC];
+SELECT [DISTINCT] 열 FROM 테이블 WHERE 행조건 GROUP BY 그룹열 HAVING 그룹조건 ORDER BY 열 [ASC|DESC];
 ```
-**실행 순서: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY**
-- **WHERE = 행 조건(집계 함수 ✕)**, **HAVING = 그룹 조건(집계 함수 ○)**
-- ORDER BY 기본 **ASC(오름차순)**, **DESC = 내림차순**.
+**FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY**. WHERE=행(집계 ✕), **HAVING=그룹(집계 ○)**. ORDER BY 기본 ASC, **DESC=내림차순** [🔥 26년 2회 12번](../2026년 2회/12.md) 외 3회.
 
-## 3. 조건 연산 (기출 단골)
-| 문법 | 설명 |
-|---|---|
-| **LIKE** | `%` = **0개 이상 문자**, `_` = **1개 문자**. `'이%'`=이로 시작, `'%t%'`=t 포함, `'s%'`=s로 시작 |
-| **IN (a,b)** | `= a OR = b` |
-| BETWEEN a AND b | a 이상 b 이하(양 끝 포함) |
-| **AND가 OR보다 우선** | `A AND B OR C` ⇒ `(A AND B) OR C` — 기출 2회 |
-| **NULL** | `= NULL` ✕ → `IS NULL`. **NULL 비교는 UNKNOWN → WHERE에서 탈락** |
-| **>ALL / >ANY** | **>ALL = 최댓값보다 큼**, >ANY = 최솟값보다 큼, `=ANY` = IN |
+## 3. 조건·연산
+| 문법 | 설명 | 기출 |
+|---|---|---|
+| **LIKE** | `%` 0개 이상, `_` 1개, (`#` 숫자 1개: 일부 DBMS). `'이%'`=이로 시작, `'%t%'`=t 포함 | [🔥 26년 2회 12번](../2026년 2회/12.md) 외 3회 |
+| **IN (a,b)** | `= a OR = b` | [🔥 20년 2회 6번](../2020년 2회/06.md) |
+| BETWEEN a AND b | a 이상 b 이하 | ⬜ |
+| `<>` | 같지 않음 | ⬜ |
+| **AND > OR** 우선순위 | `A AND B OR C` ⇒ `(A AND B) OR C` | [🔥 24년 1회 18번](../2024년 1회/18.md) 외 1회 |
+| **NULL** | `IS NULL`/`IS NOT NULL`. NULL 비교는 UNKNOWN → WHERE에서 탈락 | [🔥 25년 3회 20번](../2025년 3회/20.md) 외 1회 |
+| **>ALL / >ANY** | **>ALL = 최댓값보다 큼**, >ANY = 최솟값보다 큼 | [🔥 22년 2회 3번](../2022년 2회/03.md) |
 
-## 4. 집계 함수
-`COUNT(*)`(전체 행, NULL 포함) / **`COUNT(열)`(NULL 제외)** / `COUNT(DISTINCT 열)`(중복 제외 개수) / SUM·AVG·MAX·MIN(NULL 무시).
-- **집계 함수만 쓰고 GROUP BY가 없으면 결과는 1행.**
-- 기출 패턴: STUDENT(컴퓨터과 50, 인터넷과 100, 사무자동화과 50) → `SELECT DEPT`=200행, `DISTINCT`=3행, `COUNT(DISTINCT) WHERE 한 과`=1행 (2020·2022·2024).
+## 4. 집계·그룹 [🔥 26년 1회 9번](../2026년 1회/09.md) 외 5회
+- **그룹 함수**: COUNT, SUM, AVG, MAX, MIN, **STDDEV(표준편차), VARIANCE(분산)**. **COUNT(\*)** 전체 행 / **COUNT(열)** NULL 제외 / **COUNT(DISTINCT 열)** 중복 제외.
+- **집계 함수만 쓰고 GROUP BY 없으면 결과 1행**. `DISTINCT` 중복 제거.
+- `GROUP BY 과목이름 HAVING AVG(점수) >= 90` (SELECT에는 그룹 열+집계만, 별칭 `AS`).
 
-## 5. GROUP BY / HAVING (기출: 과목별 평균 90 이상)
-```sql
-SELECT 과목이름, MIN(점수) AS 최소점수, MAX(점수) AS 최대점수
-FROM 성적 GROUP BY 과목이름 HAVING AVG(점수) >= 90;
-```
-SELECT에는 **GROUP BY 열 + 집계 함수**만. 별칭은 `AS`.
-
-## 6. JOIN
+## 5. JOIN [🔥 26년 2회 14번](../2026년 2회/14.md) 외 6회
 | 종류 | 결과 |
 |---|---|
-| **INNER JOIN** | 양쪽 일치 행만 |
+| **INNER** | 양쪽 일치 행만 |
 | **LEFT OUTER** | 왼쪽 전체 + 오른쪽 일치(없으면 NULL) |
 | **RIGHT OUTER** | **오른쪽 전체** + 왼쪽 일치(없으면 NULL) |
 | FULL OUTER | 양쪽 전체 |
-| **CROSS JOIN** | **카티션 곱**(행 수 곱) |
-- `FROM A JOIN B ON a.열 = b.열` (또는 `FROM A, B WHERE a.열=b.열`).
-- **`OUTER JOIN ... WHERE 반대쪽.키 IS NULL` = 한쪽에만 있는 데이터(차집합)**. (기출 2026-2: RIGHT JOIN, A.id IS NULL → 2)
-- 일치 행이 여러 개이면 **행이 늘어난다**.
-- CROSS JOIN + LIKE: 각 조합을 개별 판정 (기출 smith/allen/scott → **4**).
+| **CROSS** | **카티션 곱**(행 수 곱) |
+- `ON a.열=b.열` / `FROM A, B WHERE …` / `OUTER JOIN … WHERE 반대쪽.키 IS NULL` = **한쪽에만 있는 데이터**. 일치 행이 여러 개이면 **행이 늘어남**. 자연 조인(NATURAL JOIN)은 동일 이름 열 자동 결합.
 
-## 7. 서브쿼리 풀이 요령
-1. **가장 안쪽부터** 계산 → 바깥으로. 2. 상관 서브쿼리(바깥 행 값 사용)는 **바깥 행을 하나씩 대입**. 3. `AVG()`는 NULL 무시, 대상이 없으면 NULL. 4. `IN (서브쿼리)`는 결과 목록과 비교. 5. 집합 연산: **UNION(중복 제거)**, UNION ALL(중복 포함), INTERSECT, MINUS.
+## 6. 서브쿼리·집합 ⬜
+- **안쪽부터** 계산, **상관 서브쿼리**는 바깥 행을 하나씩 대입. 단일 행/다중 행(IN·ANY·ALL·EXISTS) 서브쿼리. SELECT·FROM(인라인 뷰)·WHERE 절에서 사용 [🔥 26년 2회 13번](../2026년 2회/13.md) 외 3회.
+- **집합 연산**: **UNION**(중복 제거) / UNION ALL / INTERSECT / MINUS(EXCEPT) [🔥 23년 3회 6번](../2023년 3회/06.md).
+- 윈도우 함수(RANK, ROW_NUMBER, 누적 합 등) ⬜ (교재 확인 권장).
 
-## 8. 데이터 조작·정의 문법 (기출 빈칸)
-| 작업 | 문법 |
-|---|---|
-| 삽입 | `INSERT INTO 테이블(열…) VALUES (값…);` / `INSERT INTO … SELECT …;` (문자열은 **작은따옴표**) |
-| 수정 | `UPDATE 테이블 SET 열=값 WHERE 조건;` |
-| 삭제 | `DELETE FROM 테이블 WHERE 조건;` (**WHERE 없으면 전체**) |
-| 열 추가 | `ALTER TABLE 테이블 ADD 열 자료형;` |
-| 인덱스 | `CREATE [UNIQUE] INDEX 이름 ON 테이블(열);` |
-| 뷰 삭제 | `DROP VIEW 이름 CASCADE;` (**CASCADE** = 참조 객체까지 연쇄 삭제, RESTRICT = 거부) |
-| 도메인 | `CREATE DOMAIN 이름 AS VARCHAR(6) CHECK (VALUE IN (...));` |
-| 외래키 | `CONSTRAINT 이름 FOREIGN KEY(열) REFERENCES 대상테이블(열) [ON DELETE CASCADE]` |
-| 권한 | `GRANT 권한 ON 객체 TO 사용자;` / `REVOKE …` |
-| 정렬·패턴 | `WHERE 성명 LIKE '이%' ORDER BY 학번 DESC` |
-- **외래키 `ON DELETE CASCADE`**: 부모 행을 지우면 **자식 행도 자동 삭제** (기출: 부서 20 삭제 → 직원 3명 삭제 → 4명 남음).
+## 7. 뷰·인덱스·트리거 ⬜
+- 뷰=SELECT로 정의한 **가상 테이블**, 인덱스=검색 속도↑(쓰기 비용↑). 트리거=이벤트 시 자동 실행, 프로시저/함수=절차형 SQL(교재 확인).
+
+> 참고 출처: velog choonbok22 #210 (SQL 응용). 조인·서브쿼리·윈도우 함수는 해당 글에 없어 제 지식으로 보충.
 
 ---
 
@@ -92,37 +95,37 @@ SELECT에는 **GROUP BY 열 + 집계 함수**만. 별칭은 `AS`.
 | [26-2-14](../2026년 2회/14.md) | SQL | 2 |
 | [26-1-09](../2026년 1회/09.md) | SQL | 1. 200 / 2. 3 / 3. 1 |
 | [26-1-10](../2026년 1회/10.md) | SQL | ① CONSTRAINT ② FOREIGN ③ TEAM_ID ④ REFERENCES ⑤ TEAM_ID2 |
-| [26-1-18](../2026년 1회/18.md) | SQL | `2` |
-| [25-3-10](../2025년 3회/10.md) | SQL | `4` |
-| [25-3-20](../2025년 3회/20.md) | SQL | `4` |
+| [26-1-18](../2026년 1회/18.md) | SQL | 2 |
+| [25-3-10](../2025년 3회/10.md) | SQL | 4 |
+| [25-3-20](../2025년 3회/20.md) | SQL | 4 |
 | [25-1-07](../2025년 1회/07.md) | SQL | 이순신 \| 1000 |
-| [24-3-03](../2024년 3회/03.md) | SQL | `1` |
+| [24-3-03](../2024년 3회/03.md) | SQL | 1 |
 | [24-2-03](../2024년 2회/03.md) | SQL | ① VALUES ② SELECT ③ FROM ④ SET |
 | [24-1-13](../2024년 1회/13.md) | SQL | 위 표 (B = a, b) |
-| [24-1-18](../2024년 1회/18.md) | SQL | `1` |
+| [24-1-18](../2024년 1회/18.md) | SQL | 1 |
 | [23-3-06](../2023년 3회/06.md) | SQL | 4, 3, 2, 1 (위에서부터) |
-| [23-2-04](../2023년 2회/04.md) | SQL | 위 SQL문 (원문 정답 표기의 `INSTER`는 `INSERT` 의 오타) |
+| [23-2-04](../2023년 2회/04.md) | SQL | 위 SQL문 (원문 정답 표기의 INSTER는 INSERT 의 오타) |
 | [23-2-17](../2023년 2회/17.md) | SQL | CASCADE (대소문자 무관) |
-| [23-1-13](../2023년 1회/13.md) | SQL | `DELETE FROM 학생 WHERE 이름 = '민수';` |
+| [23-1-13](../2023년 1회/13.md) | SQL | DELETE FROM 학생 WHERE 이름 = '민수'; |
 | [23-1-16](../2023년 1회/16.md) | SQL | 위 SQL문 |
 | [22-3-07](../2022년 3회/07.md) | SQL | (1) 3 (2) 4 |
 | [22-3-12](../2022년 3회/12.md) | SQL | 1) 200 2) 3 3) 1 |
 | [22-2-03](../2022년 2회/03.md) | SQL | ALL |
-| [22-2-04](../2022년 2회/04.md) | SQL | `4` |
+| [22-2-04](../2022년 2회/04.md) | SQL | 4 |
 | [22-1-04](../2022년 1회/04.md) | SQL | 1. ORDER 2. score 3. DESC |
-| [21-3-13](../2021년 3회/13.md) | SQL | `4` |
+| [21-3-13](../2021년 3회/13.md) | SQL | 4 |
 | [21-2-05](../2021년 2회/05.md) | SQL | 1. UPDATE 2. SET |
 | [21-2-06](../2021년 2회/06.md) | SQL | 1. ON 2. 학과 |
-| [21-2-10](../2021년 2회/10.md) | SQL | 1. `이%` 2. `DESC` (패턴은 문자열이므로 SQL에서는 작은따옴표로 감싼 `'이%'`로 쓴다.) |
-| [21-1-06](../2021년 1회/06.md) | SQL | `1` |
-| [20-4-16](../2020년 4회/16.md) | SQL | `SELECT 학과, COUNT(학과) AS '학과별튜플수' FROM 학생 GROUP BY 학과;` |
+| [21-2-10](../2021년 2회/10.md) | SQL | 1. 이% 2. DESC (패턴은 문자열이므로 SQL에서는 작은따옴표로 감싼 '이%'로 쓴다.) |
+| [21-1-06](../2021년 1회/06.md) | SQL | 1 |
+| [20-4-16](../2020년 4회/16.md) | SQL | SELECT 학과, COUNT(학과) AS '학과별튜플수' FROM 학생 GROUP BY 학과; |
 | [20-3-08](../2020년 3회/08.md) | SQL | 위 SQL문 |
-| [20-3-09](../2020년 3회/09.md) | SQL | `DELETE FROM 학생 WHERE 이름 = '민수';` |
+| [20-3-09](../2020년 3회/09.md) | SQL | DELETE FROM 학생 WHERE 이름 = '민수'; |
 | [20-3-20](../2020년 3회/20.md) | SQL | 1. ALTER 2. ADD |
-| [20-2-06](../2020년 2회/06.md) | SQL | `SELECT 학번, 이름 FROM 학생 WHERE 학년 IN (3,4);` |
-| [20-2-12](../2020년 2회/12.md) | SQL | `CREATE INDEX IDX_NAME ON 학생(NAME);` |
+| [20-2-06](../2020년 2회/06.md) | SQL | SELECT 학번, 이름 FROM 학생 WHERE 학년 IN (3,4); |
+| [20-2-12](../2020년 2회/12.md) | SQL | CREATE INDEX IDX_NAME ON 학생(NAME); |
 | [20-1-06](../2020년 1회/06.md) | SQL | 1) 200 2) 3 3) 1 |
-| [21-3-03](../2021년 3회/03.md) | DCL |  |
+| [21-3-03](../2021년 3회/03.md) | DCL | GRANT는 데이터베이스 사용자(User)에게 접속 권한, 객체(테이블 등) 생성·조회·수정 권한, DBA 권한 등을 부여하는 DCL 명령어이다. (회수는 REV… |
 
 ---
 
@@ -222,7 +225,7 @@ WHERE d.budget &gt; (
 &nbsp;&nbsp;&nbsp;&nbsp;SELECT AVG(budget) FROM dept  
 );
 
-**정답:** `2`
+**정답:** 2
 
 ### 2025년 3회 10번
 
@@ -232,7 +235,7 @@ WHERE d.budget &gt; (
 
 ![원문 문제 그림 1](../2025년 3회/source/정보처리기사_2025_3_Q10_01.png)
 
-**정답:** `4`
+**정답:** 4
 
 ### 2025년 3회 20번
 
@@ -246,7 +249,7 @@ WHERE d.budget &gt; (
 
 SELECT count(col2) FROM A WHERE col1 IN (2, 3) OR col2 IN (3, 5)
 
-**정답:** `4`
+**정답:** 4
 
 ### 2025년 1회 07번
 
@@ -283,7 +286,7 @@ WHERE p.name IN (
 );
 ```
 
-**정답:** `1`
+**정답:** 1
 
 ### 2024년 2회 03번
 
@@ -357,7 +360,7 @@ AND
     SAL >= 3000 OR EMPNO = 200
 ```
 
-**정답:** `1`
+**정답:** 1
 
 ### 2023년 3회 06번
 
@@ -430,7 +433,7 @@ CREATE TABLE 학생 (
 문자열일 경우 작은따음표  
 (작은따음표가 아니라 다른 단어로 명시되었습니다.)
 
-**정답:** 위 SQL문 (원문 정답 표기의 `INSTER`는 `INSERT` 의 오타)
+**정답:** 위 SQL문 (원문 정답 표기의 INSTER는 INSERT 의 오타)
 
 ### 2023년 2회 17번
 
@@ -458,7 +461,7 @@ DROP VIEW 학생 (         )
 - 컬럼의 값이 문자열일 경우 작은 따움표 ('  ')를 표시하시오.  
 - SQL 마지막에 세미콜론(;)은 표기하지 않아도 관계 없습니다.
 
-**정답:** `DELETE FROM 학생 WHERE 이름 = '민수';`
+**정답:** DELETE FROM 학생 WHERE 이름 = '민수';
 
 ### 2023년 1회 16번
 
@@ -531,7 +534,7 @@ SELECT count(col2)
 FROM TABLE  
 WHERE col1 in(2,3) or col2 in(3,5);
 
-**정답:** `4`
+**정답:** 4
 
 ### 2022년 1회 04번
 
@@ -553,7 +556,7 @@ SELECT name, score FROM 성적 ( 1 ) BY ( 2 ) ( 3 )
 
 ![원문 문제 그림 1](../2021년 3회/source/정보처리기사_2021_3_Q13_01.png)
 
-**정답:** `4`
+**정답:** 4
 
 ### 2021년 2회 05번
 
@@ -585,7 +588,7 @@ SQL문에서 괄호안에 알맞은 답안을 작성하시오. (실제 시험에
 
 SELECT .... FROM ... WHERE '이름' LIKE (   1   )  ORDER BY  '컬럼명'  (    2    )
 
-**정답:** 1. `이%` 2. `DESC` (패턴은 문자열이므로 SQL에서는 작은따옴표로 감싼 `'이%'`로 쓴다.)
+**정답:** 1. 이% 2. DESC (패턴은 문자열이므로 SQL에서는 작은따옴표로 감싼 '이%'로 쓴다.)
 
 ### 2021년 1회 06번
 
@@ -603,7 +606,7 @@ SELECT COUNT(\*) FROM 급여
 
 WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 
-**정답:** `1`
+**정답:** 1
 
 ### 2020년 4회 16번
 
@@ -641,7 +644,7 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 컴퓨터 | 2 |
 | 전자 | 2 |
 
-**정답:** `SELECT 학과, COUNT(학과) AS '학과별튜플수' FROM 학생 GROUP BY 학과;`
+**정답:** SELECT 학과, COUNT(학과) AS '학과별튜플수' FROM 학생 GROUP BY 학과;
 
 ### 2020년 3회 08번
 
@@ -691,7 +694,7 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 홍길동 | 90 | 전산수학 |
 | 4000 | 민수 | 95 | 운영체제 |
 
-**정답:** `DELETE FROM 학생 WHERE 이름 = '민수';`
+**정답:** DELETE FROM 학생 WHERE 이름 = '민수';
 
 ### 2020년 3회 20번
 
@@ -722,7 +725,7 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 허이름 | 3 | 미술 | 90 | 010-3333-3333 |
 | 4000 | 조이름 | 4 | 음악 | 95 | 010-4444-4444 |
 
-**정답:** `SELECT 학번, 이름 FROM 학생 WHERE 학년 IN (3,4);`
+**정답:** SELECT 학번, 이름 FROM 학생 WHERE 학년 IN (3,4);
 
 ### 2020년 2회 12번
 
@@ -737,7 +740,7 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 조이름 | 90 | 3 |
 | 4000 | 장이름 | 95 | 4 |
 
-**정답:** `CREATE INDEX IDX_NAME ON 학생(NAME);`
+**정답:** CREATE INDEX IDX_NAME ON 학생(NAME);
 
 ### 2020년 1회 06번
 
@@ -761,4 +764,4 @@ STUDENT 테이블에서 컴퓨터과 학생 50명, 인터넷과 학생 100명, �
 
 Grant의 기능에 대해 간략하게 약술하시오.
 
-**정답:** 
+**정답:** GRANT는 데이터베이스 사용자(User)에게 접속 권한, 객체(테이블 등) 생성·조회·수정 권한, DBA 권한 등을 부여하는 DCL 명령어이다. (회수는 REV…
