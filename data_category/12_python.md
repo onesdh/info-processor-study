@@ -62,6 +62,43 @@ a[:4]  = "_THI"    a[6:8] = "IS"    a[18:] = "ING"
 - `type()` 비교: `'100.0'`=str(길이 5), `100.0`=**float**, `(100,200)`=tuple. **불리언은 `True/False`(대문자)**.
 - 비트 시프트 `a >> i` = a ÷ 2ⁱ (매 반복 **a에서 새로 계산**). `input().split()` → 문자열 리스트(계산하려면 `int()`).
 
+## 5. 기초 개념 보강 (추적에 필요한 전제) ⬜
+> Python은 문법이 단순한 대신 **내장 자료형의 연산 규칙**이 문제의 핵심. 외부 정리 글의 공통 목차(자료형·연산자·시퀀스·내장 함수·함수·클래스) 기준으로 보충.
+
+### 연산자·자료형
+| 항목 | 규칙 |
+|---|---|
+| 나눗셈 | `/` 항상 실수(`7/2`=3.5), **`//` 몫**(`7//2`=3, `-7//2`=**-4** 내림), `%` 나머지(부호는 **오른쪽**: `-7%3`=2), `**` 거듭제곱 |
+| 자료형 | `int`(무한 정밀도), `float`, `str`, `bool`(`True`/`False`), `list`[] 가변, `tuple`() 불변, `dict`{k:v}, `set`{} |
+| 형 변환 | `int("12")`, `str(3)`, `float`, `list("ab")`=['a','b'], `int(3.9)`=3. `int("3.5")` 오류 |
+| 논리 | `and`/`or`는 **마지막으로 평가한 값을 반환**(`0 or 5`=5, `3 and 4`=4). **거짓: 0, 빈 문자열/리스트, None, False** |
+| 비교 | 연쇄 가능 `1 < x < 5`. `==`(값) / `is`(같은 객체). `in`, `not in` |
+| 문자열 연산 | `"ab"*3`=`ababab`, `"a"+"b"`, 숫자+문자열은 **TypeError** |
+
+### 시퀀스·내장 함수·메서드
+| 항목 | 규칙 |
+|---|---|
+| 슬라이싱 | `a[start:stop:step]`, 음수 인덱스 뒤에서부터, 범위 초과해도 오류 없음 |
+| `range` | `range(5)`=0~4, `range(2,10,3)`=2,5,8, `range(5,0,-1)`=5,4,3,2,1 |
+| 내장 함수 | `len`, `sum`, `max`, `min`, `sorted`(새 리스트) vs `list.sort()`(제자리, 반환 None), `abs`, `round`(**은행가 반올림**: `round(2.5)`=2), `zip`, `enumerate`, `map`, `filter`, `reversed`, `ord`/`chr` |
+| 문자열 메서드 | `upper`, `lower`, `strip`, `split(구분자)`, `join`, `replace`, `find`(없으면 -1), `index`(없으면 오류), `count`, `startswith`, `format`/f-string |
+| 리스트 메서드 | `append`, `extend`, `insert(i,x)`, `pop([i])`, `remove(값)`, `index`, `count`, `sort`, `reverse`, `copy` |
+| 컴프리헨션 | `[x*x for x in range(5) if x%2==0]` = [0,4,16]. dict/set도 동일 문법 |
+| dict 메서드 | `keys()`, `values()`, `items()`, `get(k, 기본값)`, `pop`, `update`, `del d[k]`. 키가 없을 때 `d[k]`는 **KeyError** |
+| set 연산 | `\|` 합집합, `&` 교집합, `-` 차집합, `^` 대칭차집합 |
+| 언패킹 | `a, b = b, a`, `first, *rest = [1,2,3]` → rest=[2,3] |
+
+### 함수·클래스·예외
+| 항목 | 규칙 |
+|---|---|
+| 함수 | 반환 없으면 `None`. 기본 매개변수는 **정의 시 1회 평가**(`def f(a=[])` 공유 주의). 키워드 인자 `f(b=2)`, `*args`(튜플), `**kwargs`(dict) |
+| 스코프 | 함수 안에서 대입하면 지역 변수, 전역 수정은 `global`. 가변 객체(list)는 함수에서 변경하면 **호출자에도 반영** |
+| `lambda` | `lambda x: x+1` 이름 없는 한 줄 함수. `map/filter/sorted(key=…)`와 함께 |
+| 클래스 | `__init__`(생성자), 첫 인자 `self`, **클래스 변수**(공유) vs 인스턴스 변수(`self.x`). 상속 `class B(A)`, `super().__init__()`, 메서드 오버라이딩, `__str__`(print 시 호출) |
+| 예외 | `try / except 예외 / else / finally`. `ZeroDivisionError`, `ValueError`, `IndexError`, `KeyError`, `TypeError`. `raise` |
+| `import` | `import math` → `math.sqrt(16)`=4.0, `math.pow`, `math.floor/ceil` |
+| 출력 | `print(a, b, sep='-', end='')` (기본 sep 공백, end 줄바꿈) |
+
 ---
 
 # C. 기출 키워드 → 정답 (한눈에)

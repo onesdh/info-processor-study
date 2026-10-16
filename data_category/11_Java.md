@@ -96,6 +96,45 @@
 | 논리 연산 | `(a==2 \| a==c) & !(c>d) & (1==b ^ c!=d)` — `==`가 먼저, **XOR은 다르면 참**, `&`·`\|`는 **단락 없이** 양쪽 평가 |
 | 재귀 | 이진 분할 합 `a[mid]+max(L,R)`, 호출 트리로 |
 
+## 5. 기초 개념 보강 (추적에 필요한 전제) ⬜
+> 객체지향 외에 Java 코드 문제를 풀 때 쓰이는 기본 문법·API. 외부 정리 글의 공통 목차(자료형·연산자·String·컬렉션·예외·제네릭) 기준 보충.
+
+### 자료형·연산
+| 항목 | 규칙 |
+|---|---|
+| 기본형 8개 | `byte`1 `short`2 `int`4 `long`8 `float`4 `double`8 `char`2(유니코드) `boolean`. 참조형은 클래스·배열·String |
+| **정수 나눗셈** | `7/2`=3, `-7%3`=-1(부호는 왼쪽), `7/2.0`=3.5. `int/int`는 항상 정수 |
+| 형 변환 | 작은 → 큰 **자동**, 큰 → 작은 **강제 `(int)3.9`=3**. `char c='A'; c+1`은 `int` 66, `(char)(c+1)`='B' |
+| 초기값 | 필드 기본값: 정수 0, 실수 0.0, boolean false, 참조 null. **지역 변수는 초기화 필수** |
+| 증감·논리 | `i++`/`++i` C와 동일. `&&`/`\|\|` 단락 평가, `&`/`\|`는 양쪽 모두 평가. 삼항 `조건 ? a : b` |
+| `==` vs `equals` | 기본형 `==`는 값, **참조형 `==`는 주소**. 문자열 내용 비교는 `equals` |
+| 비트·시프트 | `>>` 부호 유지, `>>>` 0 채움, `<<` ×2ⁿ |
+| 래퍼 클래스 | `Integer`, `Double`… **오토박싱/언박싱**. `Integer.parseInt("12")`=12, `Integer.valueOf`, `-128~127` 범위는 `Integer` 캐시라 `==` true |
+
+### String · StringBuilder · 배열
+| 항목 | 규칙 |
+|---|---|
+| **String 불변** | 메서드는 **새 문자열 반환**(원본 불변): `s.toUpperCase()`만 호출하고 대입 안 하면 변화 없음 |
+| 주요 메서드 | `length()`, `charAt(i)`, `substring(a,b)`(b 직전까지), `indexOf`(없으면 -1), `replace`, `split`, `trim`, `equals`, `compareTo`, `contains`, `concat` |
+| `StringBuilder` | 가변: `append`, `insert`, `reverse`, `toString` |
+| 배열 | `int[] a = new int[3]` → 0으로 초기화, `a.length`(필드, 괄호 없음), 범위 밖 → `ArrayIndexOutOfBoundsException`. `Arrays.sort`, `Arrays.toString` |
+| 향상된 for | `for (int x : arr)` — 값 복사본(기본형은 원본 수정 ✕) |
+
+### 컬렉션·제네릭·기타
+| 항목 | 규칙 |
+|---|---|
+| `List` | `ArrayList` 순서 유지·중복 허용. `add`, `get(i)`, `remove(i/객체)`, `size()` |
+| `Set` | 중복 ✕. `HashSet` 순서 없음, `LinkedHashSet` 입력 순서, `TreeSet` 정렬 |
+| `Map` | 키→값. `put`, `get`, `containsKey`, `entrySet()`. `HashMap` 순서 불정, `TreeMap` 키 정렬 |
+| `Stack`/`Queue` | `push/pop`(LIFO) / `offer(add)/poll`(FIFO) |
+| 제네릭 | `List<String>` 컴파일 시 타입 검사. `<T>`는 타입 매개변수 |
+| 예외 계층 | `Throwable` → `Exception`(checked) / `RuntimeException`(unchecked: NPE, ArithmeticException, ArrayIndexOutOfBounds, ClassCastException, NumberFormatException). `throw`(던지기) / `throws`(선언) |
+| `final` | 변수 재대입 ✕ / 메서드 오버라이딩 ✕ / 클래스 상속 ✕ |
+| 초기화 순서 | `static` 블록(클래스 로드 시 1회) → 인스턴스 블록 → 생성자 |
+| `Object` 메서드 | `toString()`(기본 `클래스@해시`), `equals`, `hashCode`. `println(객체)`는 `toString()` 호출 |
+| `interface` / `abstract` | 인터페이스: 구현 강제, 다중 구현 / 추상 클래스: 일부 구현 가능, 단일 상속. 둘 다 `new` 불가 |
+| 출력 | `System.out.println`(줄바꿈 O), `print`(X), `printf("%d %s %.2f%n")` |
+
 ---
 
 # C. 기출 키워드 → 정답 (한눈에)
