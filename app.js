@@ -734,7 +734,7 @@ async function loadConcept(path) {
         if (target.startsWith('data_category/')) {
           loadConcept(target);
         } else {
-          switchTab('problems');
+          switchTab('problems', true);
           loadFile(target);
         }
       });
@@ -750,11 +750,12 @@ async function loadConcept(path) {
   }
 }
 
-function switchTab(tab) {
+function switchTab(tab, noLoad) {
   try { localStorage.setItem('main-tab', tab); } catch (e) { /* ignore */ }
   document.querySelectorAll('.tab-button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
   document.getElementById('problem-pane').hidden = tab !== 'problems';
   document.getElementById('concept-pane').hidden = tab !== 'concepts';
+  if (noLoad) return;
   if (tab === 'concepts') {
     const saved = sessionStorage.getItem('active-concept');
     const target = conceptFiles.includes(saved) ? saved : (conceptFiles[0] || null);
