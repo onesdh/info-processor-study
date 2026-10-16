@@ -734,8 +734,9 @@ async function loadConcept(path) {
         if (target.startsWith('data_category/')) {
           loadConcept(target);
         } else {
+          const back = { path, y: window.scrollY };
           switchTab('problems', true);
-          loadFile(target);
+          loadFile(target).then(() => addBackBar(back));
         }
       });
     });
@@ -748,6 +749,21 @@ async function loadConcept(path) {
   } catch (error) {
     contentEl.innerHTML = `<p>오류가 발생했습니다: ${error.message}</p>`;
   }
+}
+
+function addBackBar(back) {
+  const bar = document.createElement('div');
+  bar.className = 'back-bar';
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = `← ${conceptLabel(back.path)} 개념정리로 돌아가기`;
+  btn.addEventListener('click', async () => {
+    switchTab('concepts', true);
+    await loadConcept(back.path);
+    window.scrollTo({ top: back.y });
+  });
+  bar.appendChild(btn);
+  contentEl.insertBefore(bar, contentEl.firstChild);
 }
 
 function switchTab(tab, noLoad) {

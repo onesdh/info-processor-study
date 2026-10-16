@@ -417,3 +417,7 @@ body {
 .jump-bar { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; position: sticky; top: 0; background: var(--panel); padding: 8px 0; z-index: 2; }
 .jump-bar button { border: 1px solid var(--border); background: var(--panel-alt); border-radius: 999px; padding: 5px 12px; cursor: pointer; font-size: 0.85rem; }
 .content-body table { display: block; overflow-x: auto; max-width: 100%; }
+
+.back-bar { position: sticky; top: 0; z-index: 5; padding: 8px 0; background: var(--bg, #fff); }
+.back-bar button { cursor: pointer; padding: 8px 14px; border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa; font: inherit; }
+.back-bar button:hover { background: #eaeef2; }
