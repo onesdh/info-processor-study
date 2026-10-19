@@ -30,7 +30,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 28px;
+  padding: clamp(10px, 2vw, 18px) clamp(14px, 3vw, 28px);
   background: linear-gradient(135deg, #0f172a, #1d4ed8);
   color: #fff;
   box-shadow: var(--shadow);
@@ -48,11 +48,12 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(240px, 320px) 1fr;
-  gap: 20px;
-  max-width: 1500px;
-  margin: 22px auto;
-  padding: 0 18px 30px;
+  grid-template-columns: clamp(240px, 24vw, 340px) minmax(0, 1fr);
+  gap: clamp(12px, 1.6vw, 24px);
+  max-width: 1900px;
+  margin: clamp(10px, 2vw, 22px) auto;
+  padding: 0 clamp(10px, 1.6vw, 24px) 30px;
+  align-items: start;
 }
 
 .sidebar,
@@ -64,7 +65,11 @@ body {
 }
 
 .sidebar {
-  overflow: hidden;
+  overflow-y: auto;
+  position: sticky;
+  top: 12px;
+  max-height: calc(100vh - 24px);
+  padding-bottom: 6px;
 }
 
 .sidebar-header {
@@ -339,9 +344,12 @@ body {
 .content th,
 .content td {
   border: 1px solid var(--border);
-  padding: 10px 12px;
+  padding: 8px 10px;
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+  vertical-align: top;
 }
 
 @media (max-width: 900px) {
@@ -421,3 +429,27 @@ body {
 .back-bar { position: sticky; top: 0; z-index: 5; padding: 8px 0; background: var(--bg, #fff); }
 .back-bar button { cursor: pointer; padding: 8px 14px; border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa; font: inherit; }
 .back-bar button:hover { background: #eaeef2; }
+
+/* ---- 반응형 ---- */
+.content { font-size: clamp(0.92rem, 0.85rem + 0.25vw, 1.05rem); }
+.content, .content-body { overflow-wrap: break-word; }
+.content pre { max-width: 100%; }
+
+@media (max-width: 900px) {
+  .sidebar { position: static; max-height: none; overflow: visible; }
+  #file-list, #concept-list { max-height: 38vh; overflow-y: auto; }
+  .content th, .content td { padding: 6px 8px; font-size: 0.88rem; }
+  .jump-bar { flex-wrap: nowrap; overflow-x: auto; }
+  .jump-bar button { flex: 0 0 auto; }
+  .content pre { padding: 10px 12px; font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  .topbar h1 { font-size: 1.1rem; }
+  .tab-button { font-size: 0.85rem; padding: 8px 4px; }
+  .tab-button small { display: none; }
+  .nav-button { padding: 8px 10px; font-size: 0.85rem; }
+  .content h1 { font-size: 1.35rem; }
+  .content h2 { font-size: 1.15rem; }
+  .content h3 { font-size: 1.05rem; }
+}
