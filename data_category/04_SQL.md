@@ -141,7 +141,11 @@ SELECT [DISTINCT] 열 FROM 테이블 WHERE 행조건 GROUP BY 그룹열 HAVING �
 
 ![원문 문제 그림 1](../2026년%202회/source/정보처리기사_2026_2_Q12_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. 이%  2. DESC
+
+</details>
 
 ### 2026년 2회 13번
 
@@ -151,7 +155,11 @@ SELECT [DISTINCT] 열 FROM 테이블 WHERE 행조건 GROUP BY 그룹열 HAVING �
 
 ![원문 문제 그림 1](../2026년%202회/source/정보처리기사_2026_2_Q13_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 3
+
+</details>
 
 ### 2026년 2회 14번
 
@@ -161,7 +169,11 @@ SELECT [DISTINCT] 열 FROM 테이블 WHERE 행조건 GROUP BY 그룹열 HAVING �
 
 ![원문 문제 그림 1](../2026년%202회/source/정보처리기사_2026_2_Q14_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2
+
+</details>
 
 ### 2026년 1회 09번
 
@@ -182,7 +194,11 @@ SQL 구문
 3. SELECT COUNT(DISTINCT DEPT) FROM STUDENT  
 &nbsp;&nbsp;&nbsp;&nbsp;WHERE DEPT = '컴퓨터과';
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. 200 / 2. 3 / 3. 1
+
+</details>
 
 ### 2026년 1회 10번
 
@@ -208,7 +224,11 @@ CREATE TABLE PLAYER (
 &nbsp;&nbsp;( 4 ) TEAM ( 5 )  
 );
 
+<details><summary>정답 보기</summary>
+
 **정답:** ① CONSTRAINT ② FOREIGN ③ TEAM_ID ④ REFERENCES ⑤ TEAM_ID2
+
+</details>
 
 ### 2026년 1회 18번
 
@@ -225,7 +245,11 @@ WHERE d.budget &gt; (
 &nbsp;&nbsp;&nbsp;&nbsp;SELECT AVG(budget) FROM dept  
 );
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2
+
+</details>
 
 ### 2025년 3회 10번
 
@@ -235,7 +259,11 @@ WHERE d.budget &gt; (
 
 ![원문 문제 그림 1](../2025년%203회/source/정보처리기사_2025_3_Q10_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ### 2025년 3회 20번
 
@@ -249,7 +277,11 @@ WHERE d.budget &gt; (
 
 SELECT count(col2) FROM A WHERE col1 IN (2, 3) OR col2 IN (3, 5)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ### 2025년 1회 07번
 
@@ -263,7 +295,11 @@ SELECT count(col2) FROM A WHERE col1 IN (2, 3) OR col2 IN (3, 5)
 
 SELECT name, incentive FROM emp, sal WHERE emp.id = sal.id and incentives &gt;= 500
 
+<details><summary>정답 보기</summary>
+
 **정답:** 이순신 \| 1000
+
+</details>
 
 ### 2024년 3회 03번
 
@@ -286,7 +322,11 @@ WHERE p.name IN (
 );
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1
+
+</details>
 
 ### 2024년 2회 03번
 
@@ -318,7 +358,11 @@ SELECT  \*   [    ③   ]   사원;
 
 UPDATE 사원   [      ④     ]   부서  =  '퇴사'  WHERE 사원번호  = 32431;
 
+<details><summary>정답 보기</summary>
+
 **정답:** ① VALUES ② SELECT ③ FROM ④ SET
+
+</details>
 
 ### 2024년 1회 13번
 
@@ -339,7 +383,11 @@ WHERE
 
 ![원문 문제 그림 1](../2024년%201회/source/정보처리기사_2024_1_Q13_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 위 표 (B = a, b)
+
+</details>
 
 ### 2024년 1회 18번
 
@@ -360,7 +408,11 @@ AND
     SAL >= 3000 OR EMPNO = 200
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1
+
+</details>
 
 ### 2023년 3회 06번
 
@@ -402,7 +454,11 @@ ORDER BY A DESC;
 |  |
 |  |
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4, 3, 2, 1 (위에서부터)
+
+</details>
 
 ### 2023년 2회 04번
 
@@ -433,7 +489,11 @@ CREATE TABLE 학생 (
 문자열일 경우 작은따음표  
 (작은따음표가 아니라 다른 단어로 명시되었습니다.)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 위 SQL문 (원문 정답 표기의 INSTER는 INSERT 의 오타)
+
+</details>
 
 ### 2023년 2회 17번
 
@@ -447,7 +507,11 @@ DROP VIEW 학생 (         )
 
 - 학생 테이블을 참조하는 다른 VIEW나 제약 조건까지 모두 삭제되어야 한다.
 
+<details><summary>정답 보기</summary>
+
 **정답:** CASCADE (대소문자 무관)
+
+</details>
 
 ### 2023년 1회 13번
 
@@ -461,7 +525,11 @@ DROP VIEW 학생 (         )
 - 컬럼의 값이 문자열일 경우 작은 따움표 ('  ')를 표시하시오.  
 - SQL 마지막에 세미콜론(;)은 표기하지 않아도 관계 없습니다.
 
+<details><summary>정답 보기</summary>
+
 **정답:** DELETE FROM 학생 WHERE 이름 = '민수';
+
+</details>
 
 ### 2023년 1회 16번
 
@@ -478,7 +546,11 @@ DROP VIEW 학생 (         )
 - 반드시 GROUP BY와 having을 사용해야 한다.  
 - 집계함수를 사용해야 한다.
 
+<details><summary>정답 보기</summary>
+
 **정답:** 위 SQL문
+
+</details>
 
 ### 2022년 3회 07번
 
@@ -488,7 +560,11 @@ DROP VIEW 학생 (         )
 
 ![원문 문제 그림 1](../2022년%203회/source/정보처리기사_2022_3_Q07_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** (1) 3 (2) 4
+
+</details>
 
 ### 2022년 3회 12번
 
@@ -502,7 +578,11 @@ STUDENT 테이블에서 컴퓨터과 학생 50명, 전기과 학생 100명, 인�
 
 3) SELECT COUNT(DISTINCT DEPT) FROM STUDENT WHERE DEPT = '인터넷과';
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1) 200 2) 3 3) 1
+
+</details>
 
 ### 2022년 2회 03번
 
@@ -518,7 +598,11 @@ SELECT 제조사, 제품명, 단가
 FROM 제품  
 WHERE 단가 &gt; ( ) (SELECT 단가 FROM 제품 WHERE 제조사='H')
 
+<details><summary>정답 보기</summary>
+
 **정답:** ALL
+
+</details>
 
 ### 2022년 2회 04번
 
@@ -534,7 +618,11 @@ SELECT count(col2)
 FROM TABLE  
 WHERE col1 in(2,3) or col2 in(3,5);
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ### 2022년 1회 04번
 
@@ -546,7 +634,11 @@ WHERE col1 in(2,3) or col2 in(3,5);
 
 SELECT name, score FROM 성적 ( 1 ) BY ( 2 ) ( 3 )
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. ORDER 2. score 3. DESC
+
+</details>
 
 ### 2021년 3회 13번
 
@@ -556,7 +648,11 @@ SELECT name, score FROM 성적 ( 1 ) BY ( 2 ) ( 3 )
 
 ![원문 문제 그림 1](../2021년%203회/source/정보처리기사_2021_3_Q13_01.png)
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ### 2021년 2회 05번
 
@@ -566,7 +662,11 @@ SELECT name, score FROM 성적 ( 1 ) BY ( 2 ) ( 3 )
 
 (    1   ) 테이블명  (     2    )  컬럼 = 값 WHERE 점수 &gt;= 90;
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. UPDATE 2. SET
+
+</details>
 
 ### 2021년 2회 06번
 
@@ -576,7 +676,11 @@ SELECT name, score FROM 성적 ( 1 ) BY ( 2 ) ( 3 )
 
 SELECT .... FROM 학생정보 a JOIN 학과정보 b (   1   ) a.학과 = b.(   2   )
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. ON 2. 학과
+
+</details>
 
 ### 2021년 2회 10번
 
@@ -588,7 +692,11 @@ SQL문에서 괄호안에 알맞은 답안을 작성하시오. (실제 시험에
 
 SELECT .... FROM ... WHERE '이름' LIKE (   1   )  ORDER BY  '컬럼명'  (    2    )
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. 이% 2. DESC (패턴은 문자열이므로 SQL에서는 작은따옴표로 감싼 '이%'로 쓴다.)
+
+</details>
 
 ### 2021년 1회 06번
 
@@ -606,7 +714,11 @@ SELECT COUNT(\*) FROM 급여
 
 WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1
+
+</details>
 
 ### 2020년 4회 16번
 
@@ -644,7 +756,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 컴퓨터 | 2 |
 | 전자 | 2 |
 
+<details><summary>정답 보기</summary>
+
 **정답:** SELECT 학과, COUNT(학과) AS '학과별튜플수' FROM 학생 GROUP BY 학과;
+
+</details>
 
 ### 2020년 3회 08번
 
@@ -677,7 +793,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 |---|---|---|
 | 컴퓨터과학 | 85 | 95 |
 
+<details><summary>정답 보기</summary>
+
 **정답:** 위 SQL문
+
+</details>
 
 ### 2020년 3회 09번
 
@@ -694,7 +814,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 홍길동 | 90 | 전산수학 |
 | 4000 | 민수 | 95 | 운영체제 |
 
+<details><summary>정답 보기</summary>
+
 **정답:** DELETE FROM 학생 WHERE 이름 = '민수';
+
+</details>
 
 ### 2020년 3회 20번
 
@@ -704,7 +828,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 
 (    1.   ) TABLE 학생   (   2.  ) 주소 VARCHAR(20);
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. ALTER 2. ADD
+
+</details>
 
 ### 2020년 2회 06번
 
@@ -725,7 +853,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 허이름 | 3 | 미술 | 90 | 010-3333-3333 |
 | 4000 | 조이름 | 4 | 음악 | 95 | 010-4444-4444 |
 
+<details><summary>정답 보기</summary>
+
 **정답:** SELECT 학번, 이름 FROM 학생 WHERE 학년 IN (3,4);
+
+</details>
 
 ### 2020년 2회 12번
 
@@ -740,7 +872,11 @@ WHERE EMPNO &gt; 100 AND SAL &gt;= 3000 OR EMPNO = 200;
 | 3000 | 조이름 | 90 | 3 |
 | 4000 | 장이름 | 95 | 4 |
 
+<details><summary>정답 보기</summary>
+
 **정답:** CREATE INDEX IDX_NAME ON 학생(NAME);
+
+</details>
 
 ### 2020년 1회 06번
 
@@ -754,7 +890,11 @@ STUDENT 테이블에서 컴퓨터과 학생 50명, 인터넷과 학생 100명, �
 
 3) SELECT COUNT(DISTINCT DEPT) FROM STUDENT WHERE DEPT = '컴퓨터과';
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1) 200 2) 3 3) 1
+
+</details>
 
 ## DCL (1회)
 
@@ -764,4 +904,8 @@ STUDENT 테이블에서 컴퓨터과 학생 50명, 인터넷과 학생 100명, �
 
 Grant의 기능에 대해 간략하게 약술하시오.
 
+<details><summary>정답 보기</summary>
+
 **정답:** GRANT는 데이터베이스 사용자(User)에게 접속 권한, 객체(테이블 등) 생성·조회·수정 권한, DBA 권한 등을 부여하는 DCL 명령어이다. (회수는 REV…
+
+</details>

@@ -151,7 +151,11 @@ e = b + c + d
 print(e)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** _THIISING (맨 앞의 밑줄 _을 빠뜨리지 말 것. 문서에서는 마크다운 때문에 \_THIISING로 표기됨)
+
+</details>
 
 ### 2024년 2회 06번
 
@@ -176,7 +180,11 @@ out = f"ab{fnCalculation(a,p1)}ca{fnCalculation(a,p2)}"
 print(out)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** ab3ca3
+
+</details>
 
 ### 2023년 2회 19번
 
@@ -214,7 +222,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** engneing
+
+</details>
 
 ### 2022년 2회 13번
 
@@ -248,7 +260,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** REMEMBER AND STR
+
+</details>
 
 ## python(집합) (2회)
 
@@ -267,7 +283,11 @@ a.update({'홍콩', '한국', '태국'})
 print(a)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** {'한국', '중국', '베트남', '홍콩', '태국'} (순서 무관)
+
+</details>
 
 ### 2020년 2회 02번
 
@@ -284,7 +304,11 @@ a.update(['홍콩','한국','태국'])
 print(a)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** {'중국','한국','베트남','홍콩','태국'} (순서 무관)
+
+</details>
 
 ## python(list) (2회)
 
@@ -307,7 +331,11 @@ z = ''.join(c for c in y[::-1] if c not in 'ong')
 print(z)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** veDamuH
+
+</details>
 
 ### 2026년 1회 13번
 
@@ -322,7 +350,11 @@ for c in lst[::-2]:
 print()
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 9A7A5A3A1A
+
+</details>
 
 ## python(2차원 리스트) (1회)
 
@@ -342,7 +374,11 @@ print(lol[2][1])
       	print()
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** [1, 2, 3] 7 123 45 6789
+
+</details>
 
 ## python(클래스 변수) (1회)
 
@@ -364,7 +400,11 @@ for i in g.li:
 print(str01)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** skiddp
+
+</details>
 
 ## python(비트 시프트) (1회)
 
@@ -383,7 +423,11 @@ for i in range(1,3);
 pirnt(result)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 26
+
+</details>
 
 ## python(비교 연산) (1회)
 
@@ -398,7 +442,11 @@ a,b = 100, 200
 print(a==b)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** False (첫 글자 대문자!)
+
+</details>
 
 ## python(기본 매개변수) (1회)
 
@@ -414,7 +462,11 @@ def exam(num1, num2=2):
 exam(20)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** a= 20 b= 2
+
+</details>
 
 ## python(리스트 메서드) (1회)
 
@@ -429,7 +481,11 @@ exam(20)
 2. 리스트 내부 요소를 꺼내주는 함수로써, 그 요소는 리스트 안에서 삭제하고 그 값을 반환  
 3. 리스트 내부의 요소의 순서는 뒤집는 역할
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1. extend 2. pop 3. reverse
+
+</details>
 
 ## python(map lambda) (1회)
 
@@ -466,7 +522,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** [101, 102, 103, 104, 105]
+
+</details>
 
 ## python(입출력) (1회)
 
@@ -498,7 +558,11 @@ print(num1 + " + "  + num2 + " = " + num3)
 2 3  
 2 + 3 = 5
 
+<details><summary>정답 보기</summary>
+
 **정답:** split
+
+</details>
 
 ## python(문자열 인덱싱) (1회)
 
@@ -518,7 +582,11 @@ for i in a:
 print(str)
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** Seynaau
+
+</details>
 
 ## python(리스트 슬라이싱) (1회)
 
@@ -538,7 +606,11 @@ func(lst)
 print(sum(lst[::2]) - sum(lst[1::2]))
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 3
+
+</details>
 
 ## python(자료형) (1회)
 
@@ -566,7 +638,11 @@ print(func(a) + func(b) + func(c))
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 45
+
+</details>
 
 ## python(트리 클래스) (1회)
 
@@ -600,7 +676,11 @@ root = tree(li)
 print(calc(root))
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 13
+
+</details>
 
 ## python(dict/set) (1회)
 
@@ -620,7 +700,11 @@ s.add(99)
 print(len(s & set(dst.values())))
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2
+
+</details>
 
 ## python(enumerate 리스트) (1회)
 
@@ -654,7 +738,11 @@ print(result)
 
 {0: (①, ②), 1: (③, ④), 2: (⑤, ⑥), 3: (⑦, ⑧)}
 
+<details><summary>정답 보기</summary>
+
 **정답:** ① 15, ② 5, ③ 10, ④ 3, ⑤ 18, ⑥ 5, ⑦ 9, ⑧ 2
+
+</details>
 
 ## python(list 얕은 복사) (1회)
 
@@ -675,7 +763,11 @@ def f(a):
 print(f([1, 2, 3, 4]))
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 10
+
+</details>
 
 ## python(딕셔너리) (1회)
 
@@ -704,4 +796,8 @@ for key, location in tmpdict.locations.items():
 print(str01, end="")
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** CNNLRPYT
+
+</details>

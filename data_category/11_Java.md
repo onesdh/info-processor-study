@@ -239,7 +239,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2
+
+</details>
 
 ### 2025년 2회 10번
 
@@ -275,7 +279,11 @@ public class Main{
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 5P
+
+</details>
 
 ### 2024년 1회 16번
 
@@ -317,7 +325,11 @@ public class main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 9
+
+</details>
 
 ### 2023년 3회 01번
 
@@ -358,7 +370,11 @@ class B extends A {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** BDCDD
+
+</details>
 
 ### 2021년 2회 19번
 
@@ -388,7 +404,11 @@ class ovr2 extends ovr1 {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 11
+
+</details>
 
 ## Java(static) (3회)
 
@@ -419,7 +439,11 @@ public class main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 7 (번 줄)
+
+</details>
 
 ### 2023년 1회 01번
 
@@ -453,7 +477,11 @@ public class Main{
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 10 11 10 20
+
+</details>
 
 ### 2021년 2회 17번
 
@@ -476,7 +504,11 @@ public class Test {
 positive
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** static
+
+</details>
 
 ## Java(배열) (2회)
 
@@ -549,7 +581,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 0123
+
+</details>
 
 ### 2020년 1회 13번
 
@@ -569,7 +605,11 @@ public class good {
  }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 0 1 2 3 (마지막에 공백 하나가 더 붙는다)
+
+</details>
 
 ## Java(switch) (2회)
 
@@ -628,7 +668,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** -8
+
+</details>
 
 ### 2020년 1회 14번
 
@@ -656,7 +700,11 @@ public class good {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** -8
+
+</details>
 
 ## Java(추상 클래스) (2회)
 
@@ -706,7 +754,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** Vehicle name: Spark
+
+</details>
 
 ### 2020년 3회 15번
 
@@ -747,7 +799,11 @@ public class good {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** vehicle name:Spark (원문 정답은 대소문자·공백이 다르게 표기되어 있으나, 코드 기준 출력은 vehicle name: 뒤에 Spark가 이어지는 형…
+
+</details>
 
 ## Java(2차원 배열) (2회)
 
@@ -768,7 +824,11 @@ public class good{
         System.out.println(arr[1][0]);
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 3 1 45 50 89 (println이므로 각각 줄바꿈되어 출력)
+
+</details>
 
 ### 2020년 4회 06번
 
@@ -799,7 +859,11 @@ public class good {
    }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** (1) 3 (2) 5 → new int[3][5]
+
+</details>
 
 ## Java(재귀 오버라이딩) (2회)
 
@@ -834,7 +898,11 @@ public class main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2
+
+</details>
 
 ### 2020년 4회 19번
 
@@ -867,7 +935,11 @@ class parent{
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1
+
+</details>
 
 ## Java(반복문) (2회)
 
@@ -918,7 +990,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 993
+
+</details>
 
 ### 2021년 1회 17번
 
@@ -945,7 +1021,11 @@ public class good {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 0+1+2+3+4+5=15 (공백 없이 출력됨)
+
+</details>
 
 ## Java(싱글톤) (2회)
 
@@ -999,7 +1079,11 @@ public class main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ### 2021년 3회 01번
 
@@ -1037,7 +1121,11 @@ public class testcon {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 3
+
+</details>
 
 ## Java(참조 전달) (2회)
 
@@ -1064,7 +1152,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** BB
+
+</details>
 
 ### 2022년 1회 03번
 
@@ -1104,7 +1196,11 @@ class A {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 2000
+
+</details>
 
 ## Java(문자열 비교) (2회)
 
@@ -1142,7 +1238,11 @@ public class Main{
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** OOAAA
+
+</details>
 
 ### 2023년 2회 14번
 
@@ -1197,7 +1297,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** true false true true (원문 코드는 '로 작성된 오타 등이 있으나 "Programming" 문자열 기준)
+
+</details>
 
 ## Java(재귀) (2회)
 
@@ -1224,7 +1328,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 20
+
+</details>
 
 ### 2024년 2회 17번
 
@@ -1253,7 +1361,11 @@ class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** dcba
+
+</details>
 
 ## Java(상속 super 생성자) (2회)
 
@@ -1298,7 +1410,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 10a20b
+
+</details>
 
 ### 2025년 3회 12번
 
@@ -1337,7 +1453,11 @@ public class Main {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** super (출력 결과는 100)
+
+</details>
 
 ## Java(업캐스팅) (1회)
 
@@ -1368,7 +1488,11 @@ public class good{
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** new
+
+</details>
 
 ## Java(생성자 super) (1회)
 
@@ -1405,7 +1529,11 @@ public class good {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** a=10 (원문 정답은 a = 10으로 공백이 있으나, 코드 "a=" + a 기준 출력은 a=10)
+
+</details>
 
 ## Java(continue) (1회)
 
@@ -1431,7 +1559,11 @@ public class good {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 30
+
+</details>
 
 ## Java(진수 변환) (1회)
 
@@ -1459,7 +1591,11 @@ class good {
   }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** (1) n > 0 (2) n % 2
+
+</details>
 
 ## Java(논리 연산) (1회)
 
@@ -1493,7 +1629,11 @@ public class testco {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 7
+
+</details>
 
 ## Java(스레드) (1회)
 
@@ -1522,7 +1662,11 @@ public class Main{
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** Car
+
+</details>
 
 ## Java(필드) (1회)
 
@@ -1593,7 +1737,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 61
+
+</details>
 
 ## Java(버블 정렬) (1회)
 
@@ -1639,7 +1787,11 @@ public class Sort {
 
 출력 값 : 1 2 3 5 7 8
 
+<details><summary>정답 보기</summary>
+
 **정답:** (1) idx2 (2) nx
+
+</details>
 
 ## Java(생성자 필드 은닉) (1회)
 
@@ -1686,7 +1838,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 500
+
+</details>
 
 ## Java(몫과 나머지) (1회)
 
@@ -1756,7 +1912,11 @@ cs
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** a: m / 1000 b: (m % 1000) / 500 c: (m % 500) / 100 d: (m % 100) / 10
+
+</details>
 
 ## Java(상속 생성자) (1회)
 
@@ -1808,7 +1968,11 @@ class Main {
 
 실행 순서 : 5 → ( ) → ( ) → ( ) → ( ) → ( )
 
+<details><summary>정답 보기</summary>
+
 **정답:** 6 → 3 → 1 → 7 → 2 (괄호 순서대로)
+
+</details>
 
 ## Java(참조 비교) (1회)
 
@@ -1841,7 +2005,11 @@ class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** NNN
+
+</details>
 
 ## Java(인터페이스) (1회)
 
@@ -1876,7 +2044,11 @@ class ODDNumber implements Number {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 25, 20
+
+</details>
 
 ## Java(문자열 split) (1회)
 
@@ -1896,7 +2068,11 @@ class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** S
+
+</details>
 
 ## Java(필드 은닉) (1회)
 
@@ -1934,7 +2110,11 @@ class Derivate extends Base{
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 52
+
+</details>
 
 ## Java(예외 처리) (1회)
 
@@ -1966,7 +2146,11 @@ public class ExceptionHandling {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 101
+
+</details>
 
 ## Java(제네릭 오버로딩) (1회)
 
@@ -2011,7 +2195,11 @@ class Main {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** B0
+
+</details>
 
 ## Java(예외 try-finally) (1회)
 
@@ -2045,7 +2233,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 출력1출력5
+
+</details>
 
 ## Java(상속 static) (1회)
 
@@ -2097,7 +2289,11 @@ class Child extends Parent {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 54
+
+</details>
 
 ## Java(오버로딩) (1회)
 
@@ -2126,7 +2322,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 4
+
+</details>
 
 ## Java(예외) (1회)
 
@@ -2166,7 +2366,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 19
+
+</details>
 
 ## Java(객체 참조 배열) (1회)
 
@@ -2199,7 +2403,11 @@ public class Main{
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1a3b3
+
+</details>
 
 ## Java(인터페이스 implements) (1회)
 
@@ -2234,7 +2442,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** implements
+
+</details>
 
 ## Java(enum) (1회)
 
@@ -2268,7 +2480,11 @@ public class Main {
 
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** AB
+
+</details>
 
 ## Java(문자열 연결) (1회)
 
@@ -2289,7 +2505,11 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 1123
+
+</details>
 
 ## Java(상속 접근제어자) (1회)
 
@@ -2331,4 +2551,8 @@ public class Main {
 }
 ```
 
+<details><summary>정답 보기</summary>
+
 **정답:** 509
+
+</details>
