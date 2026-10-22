@@ -6,25 +6,11 @@
 
 | 카테고리 | 횟수 | 출제 회차-번호 (최신순) |
 |---|:--:|---|
-| python(문자열 슬라이싱) | 4 | 26-2-06, 24-2-06, 23-2-19, 22-2-13 |
-| python(집합) | 2 | 23-1-15, 20-2-02 |
-| python(list) | 2 | 26-1-08, 26-1-13 |
-| python(2차원 리스트) | 1 | 20-4-09 |
-| python(클래스 변수) | 1 | 21-1-05 |
-| python(비트 시프트) | 1 | 21-2-07 |
-| python(비교 연산) | 1 | 21-3-14 |
-| python(기본 매개변수) | 1 | 22-1-06 |
-| python(리스트 메서드) | 1 | 22-1-07 |
-| python(map lambda) | 1 | 22-3-09 |
-| python(입출력) | 1 | 23-3-14 |
-| python(문자열 인덱싱) | 1 | 24-1-12 |
-| python(리스트 슬라이싱) | 1 | 24-3-02 |
-| python(자료형) | 1 | 24-3-10 |
-| python(트리 클래스) | 1 | 25-1-17 |
-| python(dict/set) | 1 | 25-2-17 |
-| python(enumerate 리스트) | 1 | 25-3-09 |
-| python(list 얕은 복사) | 1 | 26-1-14 |
-| python(딕셔너리) | 1 | 26-2-05 |
+| python(리스트) | 8 | 26-1-08, 26-1-13, 26-1-14, 25-3-09, 24-3-02, 22-3-09, 22-1-07, 20-4-09 |
+| python(문자열) | 5 | 26-2-06, 24-2-06, 24-1-12, 23-2-19, 22-2-13 |
+| python(딕셔너리·집합) | 4 | 26-2-05, 25-2-17, 23-1-15, 20-2-02 |
+| python(연산·자료형) | 4 | 24-3-10, 23-3-14, 21-3-14, 21-2-07 |
+| python(함수·클래스) | 3 | 25-1-17, 22-1-06, 21-1-05 |
 
 ---
 
@@ -105,36 +91,241 @@ a[:4]  = "_THI"    a[6:8] = "IS"    a[18:] = "ING"
 
 | 회차-번호 | 카테고리 | 정답 |
 |---|---|---|
-| [26-2-06](../2026년%202회/06.md) | python(문자열 슬라이싱) | _THIISING (맨 앞의 밑줄 _을 빠뜨리지 말 것. 문서에서는 마크다운 때문에 \_THIISING로 표기됨) |
-| [24-2-06](../2024년%202회/06.md) | python(문자열 슬라이싱) | ab3ca3 |
-| [23-2-19](../2023년%202회/19.md) | python(문자열 슬라이싱) | engneing |
-| [22-2-13](../2022년%202회/13.md) | python(문자열 슬라이싱) | REMEMBER AND STR |
-| [23-1-15](../2023년%201회/15.md) | python(집합) | {'한국', '중국', '베트남', '홍콩', '태국'} (순서 무관) |
-| [20-2-02](../2020년%202회/02.md) | python(집합) | {'중국','한국','베트남','홍콩','태국'} (순서 무관) |
-| [26-1-08](../2026년%201회/08.md) | python(list) | veDamuH |
-| [26-1-13](../2026년%201회/13.md) | python(list) | 9A7A5A3A1A |
-| [20-4-09](../2020년%204회/09.md) | python(2차원 리스트) | [1, 2, 3] 7 123 45 6789 |
-| [21-1-05](../2021년%201회/05.md) | python(클래스 변수) | skiddp |
-| [21-2-07](../2021년%202회/07.md) | python(비트 시프트) | 26 |
-| [21-3-14](../2021년%203회/14.md) | python(비교 연산) | False (첫 글자 대문자!) |
-| [22-1-06](../2022년%201회/06.md) | python(기본 매개변수) | a= 20 b= 2 |
-| [22-1-07](../2022년%201회/07.md) | python(리스트 메서드) | 1. extend 2. pop 3. reverse |
-| [22-3-09](../2022년%203회/09.md) | python(map lambda) | [101, 102, 103, 104, 105] |
-| [23-3-14](../2023년%203회/14.md) | python(입출력) | split |
-| [24-1-12](../2024년%201회/12.md) | python(문자열 인덱싱) | Seynaau |
-| [24-3-02](../2024년%203회/02.md) | python(리스트 슬라이싱) | 3 |
-| [24-3-10](../2024년%203회/10.md) | python(자료형) | 45 |
-| [25-1-17](../2025년%201회/17.md) | python(트리 클래스) | 13 |
-| [25-2-17](../2025년%202회/17.md) | python(dict/set) | 2 |
-| [25-3-09](../2025년%203회/09.md) | python(enumerate 리스트) | ① 15, ② 5, ③ 10, ④ 3, ⑤ 18, ⑥ 5, ⑦ 9, ⑧ 2 |
-| [26-1-14](../2026년%201회/14.md) | python(list 얕은 복사) | 10 |
-| [26-2-05](../2026년%202회/05.md) | python(딕셔너리) | CNNLRPYT |
+| [26-1-08](../2026년%201회/08.md) | python(리스트) | veDamuH |
+| [26-1-13](../2026년%201회/13.md) | python(리스트) | 9A7A5A3A1A |
+| [26-1-14](../2026년%201회/14.md) | python(리스트) | 10 |
+| [25-3-09](../2025년%203회/09.md) | python(리스트) | ① 15, ② 5, ③ 10, ④ 3, ⑤ 18, ⑥ 5, ⑦ 9, ⑧ 2 |
+| [24-3-02](../2024년%203회/02.md) | python(리스트) | 3 |
+| [22-3-09](../2022년%203회/09.md) | python(리스트) | [101, 102, 103, 104, 105] |
+| [22-1-07](../2022년%201회/07.md) | python(리스트) | 1. extend 2. pop 3. reverse |
+| [20-4-09](../2020년%204회/09.md) | python(리스트) | [1, 2, 3] 7 123 45 6789 |
+| [26-2-06](../2026년%202회/06.md) | python(문자열) | _THIISING (맨 앞의 밑줄 _을 빠뜨리지 말 것. 문서에서는 마크다운 때문에 \_THIISING로 표기됨) |
+| [24-2-06](../2024년%202회/06.md) | python(문자열) | ab3ca3 |
+| [24-1-12](../2024년%201회/12.md) | python(문자열) | Seynaau |
+| [23-2-19](../2023년%202회/19.md) | python(문자열) | engneing |
+| [22-2-13](../2022년%202회/13.md) | python(문자열) | REMEMBER AND STR |
+| [26-2-05](../2026년%202회/05.md) | python(딕셔너리·집합) | CNNLRPYT |
+| [25-2-17](../2025년%202회/17.md) | python(딕셔너리·집합) | 2 |
+| [23-1-15](../2023년%201회/15.md) | python(딕셔너리·집합) | {'한국', '중국', '베트남', '홍콩', '태국'} (순서 무관) |
+| [20-2-02](../2020년%202회/02.md) | python(딕셔너리·집합) | {'중국','한국','베트남','홍콩','태국'} (순서 무관) |
+| [24-3-10](../2024년%203회/10.md) | python(연산·자료형) | 45 |
+| [23-3-14](../2023년%203회/14.md) | python(연산·자료형) | split |
+| [21-3-14](../2021년%203회/14.md) | python(연산·자료형) | False (첫 글자 대문자!) |
+| [21-2-07](../2021년%202회/07.md) | python(연산·자료형) | 26 |
+| [25-1-17](../2025년%201회/17.md) | python(함수·클래스) | 13 |
+| [22-1-06](../2022년%201회/06.md) | python(함수·클래스) | a= 20 b= 2 |
+| [21-1-05](../2021년%201회/05.md) | python(함수·클래스) | skiddp |
 
 ---
 
 # D. 기출문제 원문
 
-## python(문자열 슬라이싱) (4회)
+## python(리스트) (8회)
+
+### 2026년 1회 08번
+
+[해설 보기](../2026년%201회/08.md)
+
+아래 파이썬 코드가 있다. 입력값으로 HumanDev를 주었을 때 출력되는 결과를 쓰시오.
+
+```
+i = input()
+x = []
+
+for word in i.split():
+    x.append(word)
+
+y = ''.join(x)
+z = ''.join(c for c in y[::-1] if c not in 'ong')
+
+print(z)
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** veDamuH
+
+</details>
+
+### 2026년 1회 13번
+
+[해설 보기](../2026년%201회/13.md)
+
+다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+lst = list(range(10))
+for c in lst[::-2]:
+    print(c, end='A')
+print()
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 9A7A5A3A1A
+
+</details>
+
+### 2026년 1회 14번
+
+[해설 보기](../2026년%201회/14.md)
+
+아래 파이썬 코드를 실행했을 때 출력되는 값을 쓰시오.
+
+```
+def f(a):
+    m = [[x] for x in a]
+    b = m[:]
+    for i in range(len(b) - 1):
+        b[i+1] += b[i]
+    return sum(len(x) for x in m)
+
+print(f([1, 2, 3, 4]))
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 10
+
+</details>
+
+### 2025년 3회 09번
+
+[해설 보기](../2025년%203회/09.md)
+
+다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 출력값에 알맞는 값을 작성하시오.
+
+```
+data = [
+    [3, 5, 2, 4, 1],
+    [4, 5, 1],
+    [4, 4, 1, 5, 4],
+    [4, 5]
+]
+
+result = {}
+
+for index, lis in enumerate(data):
+    list_sum = sum(lis)
+    list_len = len(lis)
+
+    result[index] = (list_sum, list_len)
+
+print(result)
+
+```
+
+[ 출력값 ]
+
+{0: (①, ②), 1: (③, ④), 2: (⑤, ⑥), 3: (⑦, ⑧)}
+
+<details><summary>정답 보기</summary>
+
+**정답:** ① 15, ② 5, ③ 10, ④ 3, ⑤ 18, ⑥ 5, ⑦ 9, ⑧ 2
+
+</details>
+
+### 2024년 3회 02번
+
+[해설 보기](../2024년%203회/02.md)
+
+다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+def func(lst):
+  for i in range(len(lst) //2):
+    lst[i], lst[-i-1] = lst[-i-1], lst[i]
+
+lst = [1,2,3,4,5,6]
+func(lst)
+print(sum(lst[::2]) - sum(lst[1::2]))
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 3
+
+</details>
+
+### 2022년 3회 09번
+
+[해설 보기](../2022년%203회/09.md)
+
+다음 파이썬 코드에 대한 출력값을 작성하시오.
+
+```
+
+
+
+
+
+1
+2
+3
+4
+
+
+
+
+TestList = [1,2,3,4,5]
+TestList = list(map(lambda num : num + 100, TestList)))
+
+print(TestList)
+
+Colored by Color Scripter
+
+cs
+
+
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** [101, 102, 103, 104, 105]
+
+</details>
+
+### 2022년 1회 07번
+
+[해설 보기](../2022년%201회/07.md)
+
+다음 설명과 관련된 답을 보기에서 골라 작성하시오.  
+(실제 기출문제에서는 답의 보기가 주어집니다.(오답 중, remove, sort 등..))
+
+1. 요소를 확장해준다는 의미를 가지고 있으며, 모든 항목을 하나의 요소로 추가  
+2. 리스트 내부 요소를 꺼내주는 함수로써, 그 요소는 리스트 안에서 삭제하고 그 값을 반환  
+3. 리스트 내부의 요소의 순서는 뒤집는 역할
+
+<details><summary>정답 보기</summary>
+
+**정답:** 1. extend 2. pop 3. reverse
+
+</details>
+
+### 2020년 4회 09번
+
+[해설 보기](../2020년%204회/09.md)
+
+다음은 파이썬 소스 코드이다. 출력 결과를 쓰시오.
+
+```
+lol = [[1,2,3],[4,5],[6,7,8,9]]
+print(lol[0])
+print(lol[2][1])
+	for sub in lol:
+   	for item in sub:
+        	print(item, end = '')
+      	print()
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** [1, 2, 3] 7 123 45 6789
+
+</details>
+
+## python(문자열) (5회)
 
 ### 2026년 2회 06번
 
@@ -183,6 +374,28 @@ print(out)
 <details><summary>정답 보기</summary>
 
 **정답:** ab3ca3
+
+</details>
+
+### 2024년 1회 12번
+
+[해설 보기](../2024년%201회/12.md)
+
+다음 파이썬 코드에 대한 알맞는 출력 값을 작성하시오.
+
+```
+a = ["Seoul", "Kyeonggi", "Incheon", "Daejun", "Daegu", "Pusan"]
+str = "S"
+
+for i in a:
+    str = str + i[1]
+
+print(str)
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** Seynaau
 
 </details>
 
@@ -266,7 +479,60 @@ cs
 
 </details>
 
-## python(집합) (2회)
+## python(딕셔너리·집합) (4회)
+
+### 2026년 2회 05번
+
+[해설 보기](../2026년%202회/05.md)
+
+다음은 파이썬 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class LocationDict:
+    locations = {
+        "NYC": "New York",
+        "LON": "London",
+        "PAR": "Paris",
+        "TKY": "Tokyo"
+    }
+
+tmpdict = LocationDict()
+str01 = ""
+for key, location in tmpdict.locations.items():
+    keyk = key[-1]
+    locationk = location[0]
+    str01 += keyk + locationk
+
+print(str01, end="")
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** CNNLRPYT
+
+</details>
+
+### 2025년 2회 17번
+
+[해설 보기](../2025년%202회/17.md)
+
+다음은 Pyhon언어의 문제이다. 아래 코드를 보고 알맞는 출력값을 작성하시오.
+
+```
+lst = [1,2,3]
+dst = {i : i* 2 for i in lst}
+s = set(dst.values())
+lst[0] = 99
+dst[2]=7
+s.add(99)
+print(len(s & set(dst.values())))
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 2
+
+</details>
 
 ### 2023년 1회 15번
 
@@ -310,225 +576,37 @@ print(a)
 
 </details>
 
-## python(list) (2회)
+## python(연산·자료형) (4회)
 
-### 2026년 1회 08번
+### 2024년 3회 10번
 
-[해설 보기](../2026년%201회/08.md)
-
-아래 파이썬 코드가 있다. 입력값으로 HumanDev를 주었을 때 출력되는 결과를 쓰시오.
-
-```
-i = input()
-x = []
-
-for word in i.split():
-    x.append(word)
-
-y = ''.join(x)
-z = ''.join(c for c in y[::-1] if c not in 'ong')
-
-print(z)
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** veDamuH
-
-</details>
-
-### 2026년 1회 13번
-
-[해설 보기](../2026년%201회/13.md)
+[해설 보기](../2024년%203회/10.md)
 
 다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
 
 ```
-lst = list(range(10))
-for c in lst[::-2]:
-    print(c, end='A')
-print()
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 9A7A5A3A1A
-
-</details>
-
-## python(2차원 리스트) (1회)
-
-### 2020년 4회 09번
-
-[해설 보기](../2020년%204회/09.md)
-
-다음은 파이썬 소스 코드이다. 출력 결과를 쓰시오.
-
-```
-lol = [[1,2,3],[4,5],[6,7,8,9]]
-print(lol[0])
-print(lol[2][1])
-	for sub in lol:
-   	for item in sub:
-        	print(item, end = '')
-      	print()
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** [1, 2, 3] 7 123 45 6789
-
-</details>
-
-## python(클래스 변수) (1회)
-
-### 2021년 1회 05번
-
-[해설 보기](../2021년%201회/05.md)
-
-다음은 파이썬 코드이다. 출력 결과를 쓰시오.
-
-```
-class good :
-	li = ["seoul", "kyeonggi","inchon","daejeon","daegu","pusan"]
-
-g = good()
-str01 = ''
-for i in g.li:
-	str01 = str01 + i[0]
-
-print(str01)
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** skiddp
-
-</details>
-
-## python(비트 시프트) (1회)
-
-### 2021년 2회 07번
-
-[해설 보기](../2021년%202회/07.md)
-
-파이썬 비트 연산자 코드 결과
-
-```
-a = 100
-result = 0
-for i in range(1,3);
-   result = a >> i
-   result = result + 1
-pirnt(result)
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 26
-
-</details>
-
-## python(비교 연산) (1회)
-
-### 2021년 3회 14번
-
-[해설 보기](../2021년%203회/14.md)
-
-다음 파이썬 코드이다. 알맞는 출력값을 쓰시오.
-
-```
-a,b = 100, 200
-print(a==b)
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** False (첫 글자 대문자!)
-
-</details>
-
-## python(기본 매개변수) (1회)
-
-### 2022년 1회 06번
-
-[해설 보기](../2022년%201회/06.md)
-
-다음은 파이썬 코드에서 출력되는 a와 b의 값을 작성하시오.
-
-```
-def exam(num1, num2=2):
-  print('a=', num1, 'b=', num2)
-exam(20)
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** a= 20 b= 2
-
-</details>
-
-## python(리스트 메서드) (1회)
-
-### 2022년 1회 07번
-
-[해설 보기](../2022년%201회/07.md)
-
-다음 설명과 관련된 답을 보기에서 골라 작성하시오.  
-(실제 기출문제에서는 답의 보기가 주어집니다.(오답 중, remove, sort 등..))
-
-1. 요소를 확장해준다는 의미를 가지고 있으며, 모든 항목을 하나의 요소로 추가  
-2. 리스트 내부 요소를 꺼내주는 함수로써, 그 요소는 리스트 안에서 삭제하고 그 값을 반환  
-3. 리스트 내부의 요소의 순서는 뒤집는 역할
-
-<details><summary>정답 보기</summary>
-
-**정답:** 1. extend 2. pop 3. reverse
-
-</details>
-
-## python(map lambda) (1회)
-
-### 2022년 3회 09번
-
-[해설 보기](../2022년%203회/09.md)
-
-다음 파이썬 코드에 대한 출력값을 작성하시오.
-
-```
-
-
-
-
-
-1
-2
-3
-4
-
-
-
-
-TestList = [1,2,3,4,5]
-TestList = list(map(lambda num : num + 100, TestList)))
-
-print(TestList)
-
-Colored by Color Scripter
-
-cs
-
-
+def func(value):
+    if type(value) == type(100):
+        return 100
+    elif type(value) == type(""):
+        return len(value)
+    else:
+        return 20
+
+
+a = '100.0'
+b = 100.0
+c = (100, 200)
+
+print(func(a) + func(b) + func(c))
 
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** [101, 102, 103, 104, 105]
+**정답:** 45
 
 </details>
-
-## python(입출력) (1회)
 
 ### 2023년 3회 14번
 
@@ -564,87 +642,45 @@ print(num1 + " + "  + num2 + " = " + num3)
 
 </details>
 
-## python(문자열 인덱싱) (1회)
+### 2021년 3회 14번
 
-### 2024년 1회 12번
+[해설 보기](../2021년%203회/14.md)
 
-[해설 보기](../2024년%201회/12.md)
-
-다음 파이썬 코드에 대한 알맞는 출력 값을 작성하시오.
+다음 파이썬 코드이다. 알맞는 출력값을 쓰시오.
 
 ```
-a = ["Seoul", "Kyeonggi", "Incheon", "Daejun", "Daegu", "Pusan"]
-str = "S"
-
-for i in a:
-    str = str + i[1]
-
-print(str)
+a,b = 100, 200
+print(a==b)
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** Seynaau
+**정답:** False (첫 글자 대문자!)
 
 </details>
 
-## python(리스트 슬라이싱) (1회)
+### 2021년 2회 07번
 
-### 2024년 3회 02번
+[해설 보기](../2021년%202회/07.md)
 
-[해설 보기](../2024년%203회/02.md)
-
-다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+파이썬 비트 연산자 코드 결과
 
 ```
-def func(lst):
-  for i in range(len(lst) //2):
-    lst[i], lst[-i-1] = lst[-i-1], lst[i]
-
-lst = [1,2,3,4,5,6]
-func(lst)
-print(sum(lst[::2]) - sum(lst[1::2]))
+a = 100
+result = 0
+for i in range(1,3);
+   result = a >> i
+   result = result + 1
+pirnt(result)
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 3
+**정답:** 26
 
 </details>
 
-## python(자료형) (1회)
-
-### 2024년 3회 10번
-
-[해설 보기](../2024년%203회/10.md)
-
-다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-def func(value):
-    if type(value) == type(100):
-        return 100
-    elif type(value) == type(""):
-        return len(value)
-    else:
-        return 20
-
-
-a = '100.0'
-b = 100.0
-c = (100, 200)
-
-print(func(a) + func(b) + func(c))
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 45
-
-</details>
-
-## python(트리 클래스) (1회)
+## python(함수·클래스) (3회)
 
 ### 2025년 1회 17번
 
@@ -682,122 +718,44 @@ print(calc(root))
 
 </details>
 
-## python(dict/set) (1회)
+### 2022년 1회 06번
 
-### 2025년 2회 17번
+[해설 보기](../2022년%201회/06.md)
 
-[해설 보기](../2025년%202회/17.md)
-
-다음은 Pyhon언어의 문제이다. 아래 코드를 보고 알맞는 출력값을 작성하시오.
+다음은 파이썬 코드에서 출력되는 a와 b의 값을 작성하시오.
 
 ```
-lst = [1,2,3]
-dst = {i : i* 2 for i in lst}
-s = set(dst.values())
-lst[0] = 99
-dst[2]=7
-s.add(99)
-print(len(s & set(dst.values())))
+def exam(num1, num2=2):
+  print('a=', num1, 'b=', num2)
+exam(20)
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 2
+**정답:** a= 20 b= 2
 
 </details>
 
-## python(enumerate 리스트) (1회)
+### 2021년 1회 05번
 
-### 2025년 3회 09번
+[해설 보기](../2021년%201회/05.md)
 
-[해설 보기](../2025년%203회/09.md)
-
-다음은 파이썬에 대한 문제이다. 아래 코드를 확인하여 출력값에 알맞는 값을 작성하시오.
+다음은 파이썬 코드이다. 출력 결과를 쓰시오.
 
 ```
-data = [
-    [3, 5, 2, 4, 1],
-    [4, 5, 1],
-    [4, 4, 1, 5, 4],
-    [4, 5]
-]
+class good :
+	li = ["seoul", "kyeonggi","inchon","daejeon","daegu","pusan"]
 
-result = {}
+g = good()
+str01 = ''
+for i in g.li:
+	str01 = str01 + i[0]
 
-for index, lis in enumerate(data):
-    list_sum = sum(lis)
-    list_len = len(lis)
-
-    result[index] = (list_sum, list_len)
-
-print(result)
-
-```
-
-[ 출력값 ]
-
-{0: (①, ②), 1: (③, ④), 2: (⑤, ⑥), 3: (⑦, ⑧)}
-
-<details><summary>정답 보기</summary>
-
-**정답:** ① 15, ② 5, ③ 10, ④ 3, ⑤ 18, ⑥ 5, ⑦ 9, ⑧ 2
-
-</details>
-
-## python(list 얕은 복사) (1회)
-
-### 2026년 1회 14번
-
-[해설 보기](../2026년%201회/14.md)
-
-아래 파이썬 코드를 실행했을 때 출력되는 값을 쓰시오.
-
-```
-def f(a):
-    m = [[x] for x in a]
-    b = m[:]
-    for i in range(len(b) - 1):
-        b[i+1] += b[i]
-    return sum(len(x) for x in m)
-
-print(f([1, 2, 3, 4]))
+print(str01)
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 10
-
-</details>
-
-## python(딕셔너리) (1회)
-
-### 2026년 2회 05번
-
-[해설 보기](../2026년%202회/05.md)
-
-다음은 파이썬 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-class LocationDict:
-    locations = {
-        "NYC": "New York",
-        "LON": "London",
-        "PAR": "Paris",
-        "TKY": "Tokyo"
-    }
-
-tmpdict = LocationDict()
-str01 = ""
-for key, location in tmpdict.locations.items():
-    keyk = key[-1]
-    locationk = location[0]
-    str01 += keyk + locationk
-
-print(str01, end="")
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** CNNLRPYT
+**정답:** skiddp
 
 </details>

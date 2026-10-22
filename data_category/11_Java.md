@@ -6,45 +6,11 @@
 
 | 카테고리 | 횟수 | 출제 회차-번호 (최신순) |
 |---|:--:|---|
-| Java(오버라이딩) | 5 | 26-1-07, 25-2-10, 24-1-16, 23-3-01, 21-2-19 |
-| Java(static) | 3 | 23-3-13, 23-1-01, 21-2-17 |
-| Java(배열) | 2 | 22-3-19, 20-1-13 |
-| Java(switch) | 2 | 22-2-07, 20-1-14 |
-| Java(추상 클래스) | 2 | 23-1-17, 20-3-15 |
-| Java(2차원 배열) | 2 | 21-1-07, 20-4-06 |
-| Java(재귀 오버라이딩) | 2 | 23-3-11, 20-4-19 |
-| Java(반복문) | 2 | 22-3-20, 21-1-17 |
-| Java(싱글톤) | 2 | 24-1-01, 21-3-01 |
-| Java(참조 전달) | 2 | 25-2-05, 22-1-03 |
-| Java(문자열 비교) | 2 | 24-3-01, 23-2-14 |
-| Java(재귀) | 2 | 25-1-16, 24-2-17 |
-| Java(상속 super 생성자) | 2 | 26-2-02, 25-3-12 |
-| Java(업캐스팅) | 1 | 20-2-05 |
-| Java(생성자 super) | 1 | 20-2-19 |
-| Java(continue) | 1 | 20-3-17 |
-| Java(진수 변환) | 1 | 20-4-05 |
-| Java(논리 연산) | 1 | 21-3-11 |
-| Java(스레드) | 1 | 22-1-11 |
-| Java(필드) | 1 | 22-2-17 |
-| Java(버블 정렬) | 1 | 23-1-14 |
-| Java(생성자 필드 은닉) | 1 | 23-1-20 |
-| Java(몫과 나머지) | 1 | 23-2-02 |
-| Java(상속 생성자) | 1 | 24-1-10 |
-| Java(참조 비교) | 1 | 24-2-01 |
-| Java(인터페이스) | 1 | 24-2-14 |
-| Java(문자열 split) | 1 | 24-2-20 |
-| Java(필드 은닉) | 1 | 24-3-11 |
-| Java(예외 처리) | 1 | 24-3-18 |
-| Java(제네릭 오버로딩) | 1 | 24-3-19 |
-| Java(예외 try-finally) | 1 | 25-1-05 |
-| Java(상속 static) | 1 | 25-1-13 |
-| Java(오버로딩) | 1 | 25-1-20 |
-| Java(예외) | 1 | 25-2-09 |
-| Java(객체 참조 배열) | 1 | 25-2-15 |
-| Java(인터페이스 implements) | 1 | 25-3-08 |
-| Java(enum) | 1 | 25-3-17 |
-| Java(문자열 연결) | 1 | 26-1-17 |
-| Java(상속 접근제어자) | 1 | 26-2-15 |
+| Java(상속·다형성) | 19 | 26-2-02, 26-2-15, 26-1-07, 25-3-12, 25-2-10, 25-1-13, 25-1-20, 24-3-11, 24-3-19, 24-1-10, 24-1-16, 23-3-01 … |
+| Java(제어문·배열·알고리즘) | 16 | 25-1-16, 24-2-17, 23-2-02, 23-1-14, 22-3-19, 22-3-20, 22-2-07, 22-1-11, 21-3-11, 21-1-07, 21-1-17, 20-4-05 … |
+| Java(클래스 구조) | 10 | 25-3-08, 25-3-17, 24-2-14, 24-1-01, 23-3-13, 23-1-01, 23-1-17, 21-3-01, 21-2-17, 20-3-15 |
+| Java(참조·문자열) | 8 | 26-1-17, 25-2-05, 25-2-15, 24-3-01, 24-2-01, 24-2-20, 23-2-14, 22-1-03 |
+| Java(예외 처리) | 3 | 25-2-09, 25-1-05, 24-3-18 |
 
 ---
 
@@ -52,7 +18,7 @@
 > **풀이 공식**: ① **선언 타입 vs 실제 객체** 구분 ② 필드/static/메서드를 따로 판단 ③ `+`가 덧셈인지 문자열 연결인지 확인.
 
 ## 1. 객체지향 (기출 최다)
-### 오버라이딩·오버로딩·바인딩 [🔥 26년 1회 7번](../2026년%201회/07.md) 외 9회
+### 오버라이딩·오버로딩·바인딩 [🔥 26년 2회 2번](../2026년%202회/02.md) 외 18회
 | 대상 | 무엇을 기준으로? |
 |---|---|
 | **인스턴스 메서드(오버라이딩)** | **실제 객체 타입** (동적 바인딩). 부모 안에서 호출해도 자식 것이 실행 |
@@ -64,10 +30,10 @@
 - 제네릭 `T value` → 컴파일 시 **Object**로 보므로 `print(Object)` 선택 (`B0`).
 - `super.메서드()`는 **부모 것 지정**, `super(...)`/`this(...)`는 **생성자 첫 줄**.
 
-### 생성자 호출 순서 [🔥 26년 2회 2번](../2026년%202회/02.md) 외 6회
+### 생성자 호출 순서 [🔥 26년 2회 2번](../2026년%202회/02.md) 외 18회
 **부모 생성자 → 자식 필드 초기화 → 자식 생성자 본문**. 부모 생성자 안의 `show()` 호출도 **자식 오버라이딩** 메서드가 실행(자식 필드는 아직 초기화 전). `this(500)` 체이닝, 같은 이름 필드는 **각자 따로**(Parent.x=500, Child.x=5000이면 `getX()`(부모 정의)는 **500**).
 
-### 접근 제어자·static·싱글톤 [🔥 26년 2회 15번](../2026년%202회/15.md) 외 14회
+### 접근 제어자·static·싱글톤 [🔥 25년 3회 8번](../2025년%203회/08.md) 외 9회
 - `private` < default < `protected` < `public`. private은 자식 직접 접근 불가(→ getter/setter, 부모 메서드 경유).
 - **static 메서드는 인스턴스 변수 사용 불가**(컴파일 에러). `static` = 객체 없이 `클래스.메서드()`.
 - **싱글톤**: `get()`이 항상 같은 객체 → 여러 변수로 호출해도 **count 누적**(3번이면 3, 4번이면 4).
@@ -75,7 +41,7 @@
 - **enum**: `values()`(선언 순서 배열), `name()`, `Tri.values()[Tri.A.name().length()]`.
 - 업캐스팅 `Parent pa = new Child();` — 호출은 실제 객체 기준.
 
-## 2. 값 전달·문자열 [🔥 26년 1회 17번](../2026년%201회/17.md) 외 11회
+## 2. 값 전달·문자열 [🔥 26년 1회 17번](../2026년%201회/17.md) 외 7회
 - **Java는 항상 값 전달**: 객체(배열) **참조값이 복사** → **내용 수정은 반영**, 참조 변수 재대입(`s="Z"`)은 호출자 영향 ✕. String은 불변.
 - 배열 `==`는 **같은 객체인가**(내용 같아도 N), 문자열은 **리터럴 풀**: `"a"=="a"` true, `new String("a")==` false, `equals`는 내용 비교.
 - `+` 연산: **왼쪽부터**, 숫자+숫자=덧셈, 문자열이 끼면 연결: `9+2+"2"+"3"`=`1123`. `5 + "P"` → `5P`.
@@ -141,68 +107,159 @@
 
 | 회차-번호 | 카테고리 | 정답 |
 |---|---|---|
-| [26-1-07](../2026년%201회/07.md) | Java(오버라이딩) | 2 |
-| [25-2-10](../2025년%202회/10.md) | Java(오버라이딩) | 5P |
-| [24-1-16](../2024년%201회/16.md) | Java(오버라이딩) | 9 |
-| [23-3-01](../2023년%203회/01.md) | Java(오버라이딩) | BDCDD |
-| [21-2-19](../2021년%202회/19.md) | Java(오버라이딩) | 11 |
-| [23-3-13](../2023년%203회/13.md) | Java(static) | 7 (번 줄) |
-| [23-1-01](../2023년%201회/01.md) | Java(static) | 10 11 10 20 |
-| [21-2-17](../2021년%202회/17.md) | Java(static) | static |
-| [22-3-19](../2022년%203회/19.md) | Java(배열) | 0123 |
-| [20-1-13](../2020년%201회/13.md) | Java(배열) | 0 1 2 3 (마지막에 공백 하나가 더 붙는다) |
-| [22-2-07](../2022년%202회/07.md) | Java(switch) | -8 |
-| [20-1-14](../2020년%201회/14.md) | Java(switch) | -8 |
-| [23-1-17](../2023년%201회/17.md) | Java(추상 클래스) | Vehicle name: Spark |
-| [20-3-15](../2020년%203회/15.md) | Java(추상 클래스) | vehicle name:Spark (원문 정답은 대소문자·공백이 다르게 표기되어 있으나, 코드 기준 출력은 vehicle name: 뒤에 Spark가 이어지는 형… |
-| [21-1-07](../2021년%201회/07.md) | Java(2차원 배열) | 3 1 45 50 89 (println이므로 각각 줄바꿈되어 출력) |
-| [20-4-06](../2020년%204회/06.md) | Java(2차원 배열) | (1) 3 (2) 5 → new int[3][5] |
-| [23-3-11](../2023년%203회/11.md) | Java(재귀 오버라이딩) | 2 |
-| [20-4-19](../2020년%204회/19.md) | Java(재귀 오버라이딩) | 1 |
-| [22-3-20](../2022년%203회/20.md) | Java(반복문) | 993 |
-| [21-1-17](../2021년%201회/17.md) | Java(반복문) | 0+1+2+3+4+5=15 (공백 없이 출력됨) |
-| [24-1-01](../2024년%201회/01.md) | Java(싱글톤) | 4 |
-| [21-3-01](../2021년%203회/01.md) | Java(싱글톤) | 3 |
-| [25-2-05](../2025년%202회/05.md) | Java(참조 전달) | BB |
-| [22-1-03](../2022년%201회/03.md) | Java(참조 전달) | 2000 |
-| [24-3-01](../2024년%203회/01.md) | Java(문자열 비교) | OOAAA |
-| [23-2-14](../2023년%202회/14.md) | Java(문자열 비교) | true false true true (원문 코드는 '로 작성된 오타 등이 있으나 "Programming" 문자열 기준) |
-| [25-1-16](../2025년%201회/16.md) | Java(재귀) | 20 |
-| [24-2-17](../2024년%202회/17.md) | Java(재귀) | dcba |
-| [26-2-02](../2026년%202회/02.md) | Java(상속 super 생성자) | 10a20b |
-| [25-3-12](../2025년%203회/12.md) | Java(상속 super 생성자) | super (출력 결과는 100) |
-| [20-2-05](../2020년%202회/05.md) | Java(업캐스팅) | new |
-| [20-2-19](../2020년%202회/19.md) | Java(생성자 super) | a=10 (원문 정답은 a = 10으로 공백이 있으나, 코드 "a=" + a 기준 출력은 a=10) |
-| [20-3-17](../2020년%203회/17.md) | Java(continue) | 30 |
-| [20-4-05](../2020년%204회/05.md) | Java(진수 변환) | (1) n > 0 (2) n % 2 |
-| [21-3-11](../2021년%203회/11.md) | Java(논리 연산) | 7 |
-| [22-1-11](../2022년%201회/11.md) | Java(스레드) | Car |
-| [22-2-17](../2022년%202회/17.md) | Java(필드) | 61 |
-| [23-1-14](../2023년%201회/14.md) | Java(버블 정렬) | (1) idx2 (2) nx |
-| [23-1-20](../2023년%201회/20.md) | Java(생성자 필드 은닉) | 500 |
-| [23-2-02](../2023년%202회/02.md) | Java(몫과 나머지) | a: m / 1000 b: (m % 1000) / 500 c: (m % 500) / 100 d: (m % 100) / 10 |
-| [24-1-10](../2024년%201회/10.md) | Java(상속 생성자) | 6 → 3 → 1 → 7 → 2 (괄호 순서대로) |
-| [24-2-01](../2024년%202회/01.md) | Java(참조 비교) | NNN |
-| [24-2-14](../2024년%202회/14.md) | Java(인터페이스) | 25, 20 |
-| [24-2-20](../2024년%202회/20.md) | Java(문자열 split) | S |
-| [24-3-11](../2024년%203회/11.md) | Java(필드 은닉) | 52 |
+| [26-2-02](../2026년%202회/02.md) | Java(상속·다형성) | 10a20b |
+| [26-2-15](../2026년%202회/15.md) | Java(상속·다형성) | 509 |
+| [26-1-07](../2026년%201회/07.md) | Java(상속·다형성) | 2 |
+| [25-3-12](../2025년%203회/12.md) | Java(상속·다형성) | super (출력 결과는 100) |
+| [25-2-10](../2025년%202회/10.md) | Java(상속·다형성) | 5P |
+| [25-1-13](../2025년%201회/13.md) | Java(상속·다형성) | 54 |
+| [25-1-20](../2025년%201회/20.md) | Java(상속·다형성) | 4 |
+| [24-3-11](../2024년%203회/11.md) | Java(상속·다형성) | 52 |
+| [24-3-19](../2024년%203회/19.md) | Java(상속·다형성) | B0 |
+| [24-1-10](../2024년%201회/10.md) | Java(상속·다형성) | 6 → 3 → 1 → 7 → 2 (괄호 순서대로) |
+| [24-1-16](../2024년%201회/16.md) | Java(상속·다형성) | 9 |
+| [23-3-01](../2023년%203회/01.md) | Java(상속·다형성) | BDCDD |
+| [23-3-11](../2023년%203회/11.md) | Java(상속·다형성) | 2 |
+| [23-1-20](../2023년%201회/20.md) | Java(상속·다형성) | 500 |
+| [22-2-17](../2022년%202회/17.md) | Java(상속·다형성) | 61 |
+| [21-2-19](../2021년%202회/19.md) | Java(상속·다형성) | 11 |
+| [20-4-19](../2020년%204회/19.md) | Java(상속·다형성) | 1 |
+| [20-2-05](../2020년%202회/05.md) | Java(상속·다형성) | new |
+| [20-2-19](../2020년%202회/19.md) | Java(상속·다형성) | a=10 (원문 정답은 a = 10으로 공백이 있으나, 코드 "a=" + a 기준 출력은 a=10) |
+| [25-1-16](../2025년%201회/16.md) | Java(제어문·배열·알고리즘) | 20 |
+| [24-2-17](../2024년%202회/17.md) | Java(제어문·배열·알고리즘) | dcba |
+| [23-2-02](../2023년%202회/02.md) | Java(제어문·배열·알고리즘) | a: m / 1000 b: (m % 1000) / 500 c: (m % 500) / 100 d: (m % 100) / 10 |
+| [23-1-14](../2023년%201회/14.md) | Java(제어문·배열·알고리즘) | (1) idx2 (2) nx |
+| [22-3-19](../2022년%203회/19.md) | Java(제어문·배열·알고리즘) | 0123 |
+| [22-3-20](../2022년%203회/20.md) | Java(제어문·배열·알고리즘) | 993 |
+| [22-2-07](../2022년%202회/07.md) | Java(제어문·배열·알고리즘) | -8 |
+| [22-1-11](../2022년%201회/11.md) | Java(제어문·배열·알고리즘) | Car |
+| [21-3-11](../2021년%203회/11.md) | Java(제어문·배열·알고리즘) | 7 |
+| [21-1-07](../2021년%201회/07.md) | Java(제어문·배열·알고리즘) | 3 1 45 50 89 (println이므로 각각 줄바꿈되어 출력) |
+| [21-1-17](../2021년%201회/17.md) | Java(제어문·배열·알고리즘) | 0+1+2+3+4+5=15 (공백 없이 출력됨) |
+| [20-4-05](../2020년%204회/05.md) | Java(제어문·배열·알고리즘) | (1) n > 0 (2) n % 2 |
+| [20-4-06](../2020년%204회/06.md) | Java(제어문·배열·알고리즘) | (1) 3 (2) 5 → new int[3][5] |
+| [20-3-17](../2020년%203회/17.md) | Java(제어문·배열·알고리즘) | 30 |
+| [20-1-13](../2020년%201회/13.md) | Java(제어문·배열·알고리즘) | 0 1 2 3 (마지막에 공백 하나가 더 붙는다) |
+| [20-1-14](../2020년%201회/14.md) | Java(제어문·배열·알고리즘) | -8 |
+| [25-3-08](../2025년%203회/08.md) | Java(클래스 구조) | implements |
+| [25-3-17](../2025년%203회/17.md) | Java(클래스 구조) | AB |
+| [24-2-14](../2024년%202회/14.md) | Java(클래스 구조) | 25, 20 |
+| [24-1-01](../2024년%201회/01.md) | Java(클래스 구조) | 4 |
+| [23-3-13](../2023년%203회/13.md) | Java(클래스 구조) | 7 (번 줄) |
+| [23-1-01](../2023년%201회/01.md) | Java(클래스 구조) | 10 11 10 20 |
+| [23-1-17](../2023년%201회/17.md) | Java(클래스 구조) | Vehicle name: Spark |
+| [21-3-01](../2021년%203회/01.md) | Java(클래스 구조) | 3 |
+| [21-2-17](../2021년%202회/17.md) | Java(클래스 구조) | static |
+| [20-3-15](../2020년%203회/15.md) | Java(클래스 구조) | vehicle name:Spark (원문 정답은 대소문자·공백이 다르게 표기되어 있으나, 코드 기준 출력은 vehicle name: 뒤에 Spark가 이어지는 형… |
+| [26-1-17](../2026년%201회/17.md) | Java(참조·문자열) | 1123 |
+| [25-2-05](../2025년%202회/05.md) | Java(참조·문자열) | BB |
+| [25-2-15](../2025년%202회/15.md) | Java(참조·문자열) | 1a3b3 |
+| [24-3-01](../2024년%203회/01.md) | Java(참조·문자열) | OOAAA |
+| [24-2-01](../2024년%202회/01.md) | Java(참조·문자열) | NNN |
+| [24-2-20](../2024년%202회/20.md) | Java(참조·문자열) | S |
+| [23-2-14](../2023년%202회/14.md) | Java(참조·문자열) | true false true true (원문 코드는 '로 작성된 오타 등이 있으나 "Programming" 문자열 기준) |
+| [22-1-03](../2022년%201회/03.md) | Java(참조·문자열) | 2000 |
+| [25-2-09](../2025년%202회/09.md) | Java(예외 처리) | 19 |
+| [25-1-05](../2025년%201회/05.md) | Java(예외 처리) | 출력1출력5 |
 | [24-3-18](../2024년%203회/18.md) | Java(예외 처리) | 101 |
-| [24-3-19](../2024년%203회/19.md) | Java(제네릭 오버로딩) | B0 |
-| [25-1-05](../2025년%201회/05.md) | Java(예외 try-finally) | 출력1출력5 |
-| [25-1-13](../2025년%201회/13.md) | Java(상속 static) | 54 |
-| [25-1-20](../2025년%201회/20.md) | Java(오버로딩) | 4 |
-| [25-2-09](../2025년%202회/09.md) | Java(예외) | 19 |
-| [25-2-15](../2025년%202회/15.md) | Java(객체 참조 배열) | 1a3b3 |
-| [25-3-08](../2025년%203회/08.md) | Java(인터페이스 implements) | implements |
-| [25-3-17](../2025년%203회/17.md) | Java(enum) | AB |
-| [26-1-17](../2026년%201회/17.md) | Java(문자열 연결) | 1123 |
-| [26-2-15](../2026년%202회/15.md) | Java(상속 접근제어자) | 509 |
 
 ---
 
 # D. 기출문제 원문
 
-## Java(오버라이딩) (5회)
+## Java(상속·다형성) (19회)
+
+### 2026년 2회 02번
+
+[해설 보기](../2026년%202회/02.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class A {
+    private int a;
+
+    public A(int a) {
+        this.a = a;
+    }
+
+    void print() {
+        System.out.print(a + "a");
+    }
+}
+
+class B extends A {
+    private int b;
+
+    B(int a, int b) {
+        super(a);
+        this.b = b;
+    }
+
+    void print() {
+        super.print();
+        System.out.print(b + "b");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        B obj = new B(10, 20);
+        obj.print();
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 10a20b
+
+</details>
+
+### 2026년 2회 15번
+
+[해설 보기](../2026년%202회/15.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class A {
+    int a;
+    private int b;
+    protected int c;
+
+    void set(int aa, int bb, int cc) {
+        a = aa;
+        b = bb;
+        c = cc;
+    }
+
+    int hap() { return a + b + c; }
+}
+
+class B extends A {
+    public int hap() { return a * c; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        A aaa = new A();
+        B bbb = new B();
+
+        aaa.set(1, 5, 3);
+        bbb.set(10, 30, 50);
+
+        System.out.print(aaa.hap() + bbb.hap());
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 509
+
+</details>
 
 ### 2026년 1회 07번
 
@@ -245,6 +302,49 @@ public class Main {
 
 </details>
 
+### 2025년 3회 12번
+
+[해설 보기](../2025년%203회/12.md)
+
+다음은 Java의 상속과 생성자 호출에 관한 코드이다. 밑줄에 알맞은 단어를 작성하시오.
+
+```
+class Rectangle {
+
+    int width, height;
+
+    Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+}
+
+class Square extends Rectangle {
+
+    Square(int a) {
+        ____(a,a);
+    }
+
+    int getSquareArea() {
+        return width * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Square sq = new Square(10);
+        System.out.println(sq.getSquareArea());
+    }
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** super (출력 결과는 100)
+
+</details>
+
 ### 2025년 2회 10번
 
 [해설 보기](../2025년%202회/10.md)
@@ -282,6 +382,232 @@ public class Main{
 <details><summary>정답 보기</summary>
 
 **정답:** 5P
+
+</details>
+
+### 2025년 1회 13번
+
+[해설 보기](../2025년%201회/13.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+public class Main {
+    public static void main(String[] args) {
+        new Child();
+        System.out.println(Parent.total);
+    }
+}
+
+
+class Parent {
+    static int total = 0;
+    int v = 1;
+
+    public Parent() {
+        total += (++v);
+        show();
+    }
+
+    public void show() {
+        total += total;
+    }
+}
+
+
+class Child extends Parent {
+    int v = 10;
+
+    public Child() {
+        v += 2;
+        total += v++;
+        show();
+    }
+
+    @Override
+    public void show() {
+        total += total * 2;
+    }
+}
+
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 54
+
+</details>
+
+### 2025년 1회 20번
+
+[해설 보기](../2025년%201회/20.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+public class Main {
+  public static void main(String[] args) {
+    System.out.println(calc("5"));
+  }
+
+  static int calc(int value) {
+    if (value <= 1) return value;
+    return calc(value - 1) + calc(value - 2);
+  }
+
+  static int calc(String str) {
+    int value = Integer.valueOf(str);
+    if (value <= 1) return value;
+    return calc(value - 1) + calc(value - 3);
+  }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 4
+
+</details>
+
+### 2024년 3회 11번
+
+[해설 보기](../2024년%203회/11.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+public class Main{
+  public static void main(String[] args){
+    Base a =  new Derivate();
+    Derivate b = new Derivate();
+
+    System.out.print(a.getX() + a.x + b.getX() + b.x);
+  }
+}
+
+
+class Base{
+  int x = 3;
+
+  int getX(){
+     return x * 2;
+  }
+}
+
+class Derivate extends Base{
+  int x = 7;
+
+  int getX(){
+     return x * 3;
+  }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 52
+
+</details>
+
+### 2024년 3회 19번
+
+[해설 보기](../2024년%203회/19.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class Main {
+
+  public static class Collection<T>{
+    T value;
+
+    public Collection(T t){
+        value = t;
+    }
+
+    public void print(){
+       new Printer().print(value);
+    }
+
+   class Printer{
+      void print(Integer a){
+        System.out.print("A" + a);
+      }
+      void print(Object a){
+        System.out.print("B" + a);
+      }
+      void print(Number a){
+        System.out.print("C" + a);
+      }
+   }
+ }
+
+  public static void main(String[] args) {
+      new Collection<>(0).print();
+  }
+
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** B0
+
+</details>
+
+### 2024년 1회 10번
+
+[해설 보기](../2024년%201회/10.md)
+
+아래 JAVA언어 코드의 실행 순서를 중복 번호없이 작성하시오.
+
+```
+class Parent {
+    int x, y;
+
+    Parent(int x, int y) { ①
+        this.x=x;
+        this y=y;
+    }
+
+    int getT() { ②
+        return x*y;
+    }
+}
+
+
+
+​class Child extend Parent {
+    int x;
+
+    Child (int x) { ③
+        super(x+1, x);
+        this.x=x;
+    }
+
+    int getT(int n){ ④
+        return super.getT()+n;
+    }
+}
+
+
+
+class Main {
+    public static void main(String[] args) { ⑤
+        Parent parent = new Child(3); ⑥
+        System.out.println(parent.getT()); ⑦
+    }
+}
+
+```
+
+실행 순서 : 5 → ( ) → ( ) → ( ) → ( ) → ( )
+
+<details><summary>정답 보기</summary>
+
+**정답:** 6 → 3 → 1 → 7 → 2 (괄호 순서대로)
 
 </details>
 
@@ -376,6 +702,165 @@ class B extends A {
 
 </details>
 
+### 2023년 3회 11번
+
+[해설 보기](../2023년%203회/11.md)
+
+다음은 Java 코드에 대한 알맞는 출력값을 작성하시오.
+
+```
+class Parent {
+    int compute(int num) {
+        if(num <= 1)
+            return num;
+        return compute(num-1) + compute(num-2);
+    }
+}
+
+class Child extends Parent {
+    int compute(int num) {
+        if(num <= 1)
+            return num;
+        return compute(num-1) + compute(num-3);
+    }
+}
+
+public class main {
+    public static void main(String args[]) {
+        Parent obj = new Child();
+        System.out.print(obj.compute(7));
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 2
+
+</details>
+
+### 2023년 1회 20번
+
+[해설 보기](../2023년%201회/20.md)
+
+다음 자바 코드에 대한 출력 값을 작성하시오.
+
+```
+class Parent {
+    int x = 100;
+
+    Parent() {
+        this(500);
+    }
+
+    Parent(int x) {
+        this.x = x;
+    }
+
+    int getX() {
+        return x;
+    }
+}
+
+class Child extends Parent {
+    int x = 4000;
+
+    Child() {
+        this(5000);
+    }
+
+    Child(int x) {
+        this.x = x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child obj = new Child();
+        System.out.println(obj.getX());
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 500
+
+</details>
+
+### 2022년 2회 17번
+
+[해설 보기](../2022년%202회/17.md)
+
+다음 자바코드에서 알맞는 출력값을 작성하시오.
+
+```
+
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+
+
+
+
+public class Conv{
+public Conv(int a) {
+this.a = a;
+}
+int func() {
+int b =1;
+for (int i=1; i<a; i++){
+b = a * i + b
+}
+return a +b;
+}
+int a;
+}
+
+public static void main(String[] args){
+Conv obj = new Conv(3);
+obj.a=5;
+int b = obj.func();
+system.out.print(obj.a + b);
+i
+}
+
+Colored by Color Scripter
+
+cs
+
+
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 61
+
+</details>
+
 ### 2021년 2회 19번
 
 [해설 보기](../2021년%202회/19.md)
@@ -410,107 +895,298 @@ class ovr2 extends ovr1 {
 
 </details>
 
-## Java(static) (3회)
+### 2020년 4회 19번
 
-### 2023년 3회 13번
+[해설 보기](../2020년%204회/19.md)
 
-[해설 보기](../2023년%203회/13.md)
-
-다음 자바 코드를 실행할 경우 에러가 발생이 된다. 에러가 발생하는 라인명을 작성하시오.
+다음은 자바 소스 코드이다. 출력 결과를 쓰시오.
 
 ```
-class Person {
-    private String name;
-    public Person(String val) {
-        name = val;
+class parent{
+	public int compute(int num){
+    	if(num <=1) return num;
+        return compute(num-1) + compute(num-2);
     }
-    public static String get() {
-    return name;
-    }
-    public void print() {
-        System.out.println(name);
-    }
-}
-public class main {
-    public static void main(String[] args) {
-        Person obj = new Person("Kim");
-        obj.print();
-    }
-}
-```
+ }
 
-<details><summary>정답 보기</summary>
-
-**정답:** 7 (번 줄)
-
-</details>
-
-### 2023년 1회 01번
-
-[해설 보기](../2023년%201회/01.md)
-
-아래 자바 코드에서 출력되는 값을 작성하시오.
-
-```
-class Static{
-
-    public int a = 20;
-    static int b = 0;
-
-}
-
-public class Main{
-    public static void main(String[] args) {
-
-        int a;
-        a = 10;
-        Static.b = a;
-
-        Static st = new Static();
-
-        System.out.println(Static.b++);
-        System.out.println(st.b);
-        System.out.println(a);
-        System.out.print(st.a);
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 10 11 10 20
-
-</details>
-
-### 2021년 2회 17번
-
-[해설 보기](../2021년%202회/17.md)
-
-클래스 내에서 객체 생성 없이 사용할 수 있는 메소드로써 출력 결과를 작성하시오.
-
-```
-public class Test {
-   public static void main(String[] args){
-      system.out.print(Test.check(1));
+ class Child extends parent {
+ 	public int compute(int num){
+    	if(num<=1) return num;
+        	return compute(num-1) + compute(num-3);
+        }
    }
 
-   (    )  String check (int num) {
-      return (num >= 0) ? "positive" : "negative";
+  class good{
+  	public static void main (String[] args){
+    parent obj = new Child();
+    System.out.print(obj.compute(4));
    }
-}
+ }
 
-[출력결과]
-positive
+
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** static
+**정답:** 1
 
 </details>
 
-## Java(배열) (2회)
+### 2020년 2회 05번
+
+[해설 보기](../2020년%202회/05.md)
+
+다음은 자바 코드이다. 다음 밑줄에 들어갈 키워드를 쓰시오.
+
+```
+class parent
+	public void show(){
+    	system.out.println("Parent");
+    }
+}
+
+class Child extends Parent{
+	public void show(){
+    	system.out.println("Child");
+    }
+}
+
+public class good{
+	public static void main(String[] args){
+    	Parent pa = ____  Child();
+        pa.show();
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** new
+
+</details>
+
+### 2020년 2회 19번
+
+[해설 보기](../2020년%202회/19.md)
+
+다음은 자바 코드이다. 출력 결과를 쓰시오.
+
+```
+class A{
+	private int a;
+    public A(int a){
+    	this.a = a;
+    }
+    public void display(){
+    	system.out.println("a=" + a);
+    }
+}
+
+class B extends A {
+	public B(int a){
+    	super(a);
+        super.display();
+    }
+}
+
+
+public class good {
+	public static void main(String[] args){
+    	B obj = new B(10);
+    }
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** a=10 (원문 정답은 a = 10으로 공백이 있으나, 코드 "a=" + a 기준 출력은 a=10)
+
+</details>
+
+## Java(제어문·배열·알고리즘) (16회)
+
+### 2025년 1회 16번
+
+[해설 보기](../2025년%201회/16.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+public class Main {
+
+    public static void main(String[] args) {
+        int[] data = {3, 5, 8, 12, 17};
+        System.out.println(func(data, 0, data.length - 1));
+    }
+
+    static int func(int[] a, int st, int end) {
+        if (st >= end) return 0;
+        int mid = (st + end) / 2;
+        return a[mid] + Math.max(func(a, st, mid), func(a, mid + 1, end));
+    }
+
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 20
+
+</details>
+
+### 2024년 2회 17번
+
+[해설 보기](../2024년%202회/17.md)
+
+다음은 Java에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력 값을 작성하시오.
+
+```
+class Main {
+    public static void main(String[] args) {
+        String str = "abacabcd";
+        boolean[] seen = new boolean[256];
+        System.out.print(calculFn(str, str.length()-1, seen));
+    }
+
+    public static String calculFn(String str, int index, boolean[] seen) {
+        if(index < 0) return "";
+        char c = str.charAt(index);
+        String result = calculFn(str, index-1, seen);
+        if(!seen[c]) {
+            seen[c] = true;
+            return c + result;
+        }
+        return result;
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** dcba
+
+</details>
+
+### 2023년 2회 02번
+
+[해설 보기](../2023년%202회/02.md)
+
+다음은 JAVA 코드 문제이다. 가지고 있는 돈이 총 4620원일 경우 1000원, 500원, 100원, 10원의 지폐 및 동전을 이용하여 보기의 조건에 맞춰 최소한의 코드를 통해 괄호안을 작성하시오.
+
+보기
+
+아래 주어진 항목들을 갖고 괄호안의 코드를 작성
+
+변수 : m  
+연산자 : / , %  
+괄호 : [ , ] , ( , )  
+정수 : 1000, 500, 100, 10
+
+```
+
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+
+
+
+
+public class Problem{
+    public static void main(String[] args){
+ m = 4620;
+
+ a = (              );
+ b = (              );
+ c = (              );
+ d = (              );
+
+ System.out.println(a); //천원짜리     4장 출력
+ System.out.println(b); //오백원짜리  1개 출력
+ System.out.println(c); //백원짜리     1개 출력
+ System.out.println(d); //십원짜리     2개 출력
+    }
+}
+
+
+Colored by Color Scripter
+
+cs
+
+
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** a: m / 1000 b: (m % 1000) / 500 c: (m % 500) / 100 d: (m % 100) / 10
+
+</details>
+
+### 2023년 1회 14번
+
+[해설 보기](../2023년%201회/14.md)
+
+다음 코드에서 괄호안에 알맞는 값을 변수명으로 작성하시오.
+
+(코드가 해깔려 시험문제와 동일하지 않지만 패턴이 비슷하다는 점만 참고해주세요.)
+
+```
+public class Sort {
+
+    public static void swap(int[] arr, int idx1, int idx2){
+        int temp = arr[idx1];
+        arr[idx1] = arr[idx2];
+        arr[( 1 )] = temp;
+    }
+
+    public static void Usort(int[] array, int length){
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] item = new int[] { 5, 3, 8, 1, 2, 7 };
+        int nx = 6;
+        Usort(item, ( 2 ));
+
+        for (int data : item) {
+            System.out.print(data + " ");
+        }
+    }
+
+}
+```
+
+출력 값 : 1 2 3 5 7 8
+
+<details><summary>정답 보기</summary>
+
+**정답:** (1) idx2 (2) nx
+
+</details>
 
 ### 2022년 3회 19번
 
@@ -587,31 +1263,58 @@ cs
 
 </details>
 
-### 2020년 1회 13번
+### 2022년 3회 20번
 
-[해설 보기](../2020년%201회/13.md)
+[해설 보기](../2022년%203회/20.md)
 
-다음은 자바 소스코드이다. 출력 결과를 쓰시오.
+다음 자바 코드에 대한 출력 값을 작성하시오.
 
 ```
-public class good {
-	public static void main(String[] args){
-    	int i;
-        int[] a = {0,1,2,3};
-        for(i=0; i<4; i++){
-        	System.out.print(a[i] + " ");
-        }
-     }
- }
+
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+
+
+
+
+public class Exam {
+  public static void main(String[] args){
+
+  int a = 0;
+  for(int i=1; i<999; i++){
+    if(i%3==0 && i%2!=0)
+      a = i;
+    }
+    System.out.print(a);
+  }
+}
+
+Colored by Color Scripter
+
+cs
+
+
+
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 0 1 2 3 (마지막에 공백 하나가 더 붙는다)
+**정답:** 993
 
 </details>
-
-## Java(switch) (2회)
 
 ### 2022년 2회 07번
 
@@ -674,138 +1377,72 @@ cs
 
 </details>
 
-### 2020년 1회 14번
+### 2022년 1회 11번
 
-[해설 보기](../2020년%201회/14.md)
+[해설 보기](../2022년%201회/11.md)
 
-다음은 자바 소스코드이다. 출력 결과를 쓰시오.
+다음 Java 코드 중에서 밑줄에 들어갈 알맞는 코드를 작성하시오.
 
 ```
-public class good {
-	public static void main(String[] args){
-    	int i = 3;
-        int k = 1;
-        swich (i) {
-        case 0;
-        case 1;
-        case 2;
-        case 3 k = 0;
-        case 4 k += 3;
-        case 5 k -= 10;
-        default: k--;
-        }
-        system.out.print(k);
-     }
+class Car implements Runnable{
+  int a;
+
+  public void run(){
+     system.out.println("message")
+  }
+}
+
+public class Main{
+  public static void main(String args[]){
+    Thread t1 = new Thread(new ___());
+    t1.start();
+  }
+}
+
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** Car
+
+</details>
+
+### 2021년 3회 11번
+
+[해설 보기](../2021년%203회/11.md)
+
+다음 Java 코드에 대한 알맞는 출력값을 쓰시오.
+
+```
+public class testco {
+ public static void main(String[] args) {
+  int a = 3, b = 4, c = 3, d = 5;
+  if((a == 2 | a == c) & !(c > d) & (1 == b ^ c != d)) {
+   a = b + c;
+    if(7 == b ^ c != a) {
+     System.out.println(a);
+    } else {
+    System.out.println(b);
+    }
+  } else {
+    a = c + d;
+    if(7 == c ^ d != a) {
+    System.out.println(a);
+    } else {
+    System.out.println(d);
+    }
+  }
+ }
 }
 
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** -8
+**정답:** 7
 
 </details>
-
-## Java(추상 클래스) (2회)
-
-### 2023년 1회 17번
-
-[해설 보기](../2023년%201회/17.md)
-
-다음 JAVA 코드에서 알맞는 출력 값을 작성하시오.
-
-```
-abstact class Vehicle {
-
-    String name;
-    abstract public String getName(String val);
-
-    public String getName() {
-            return "Vehicle name: " + name;
-    }
-}
-
-
-
-class Car extends Vehicle {
-
-    public Car(String val) {
-            name=super.name=val;
-    }
-
-    public String getName(String val) {
-            return "Car name:" + val;
-    }
-
-    public String getName(byte val[]) {
-            return "Car name:" + val;
-    }
-}
-
-
-public class Main {
-
-    public static void main(String[] args) {
-
-    Vehicle obj = new Car("Spark");
-    System.out.println(obj.getName());
-
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** Vehicle name: Spark
-
-</details>
-
-### 2020년 3회 15번
-
-[해설 보기](../2020년%203회/15.md)
-
-다음은 자바 코드이다. 출력 결과를 쓰시오.
-
-```
-abstract class vehicle{
-	private String name;
-    abstract public String getName(String val);
-    public String getName(){
-    	return "vehicle name:" + name;
-    }
-	public void setName(String val){
-    	name = val;
-    }
-}
-
-class Car extends Vehicle{
-	public Car(String val){
-    	setName(val);
-   }
-public String getName(String val){
-	return "Car name : " + val;
-   }
-public String getName(byte val[]){
-	return "Car name : " + val;
-   }
-}
-
-public class good {
-	public Static void main(String[] args){
-    Vehicle obj = new Car("Spark");
-    System.out.print(obj.getName());
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** vehicle name:Spark (원문 정답은 대소문자·공백이 다르게 표기되어 있으나, 코드 기준 출력은 vehicle name: 뒤에 Spark가 이어지는 형…
-
-</details>
-
-## Java(2차원 배열) (2회)
 
 ### 2021년 1회 07번
 
@@ -827,6 +1464,67 @@ public class good{
 <details><summary>정답 보기</summary>
 
 **정답:** 3 1 45 50 89 (println이므로 각각 줄바꿈되어 출력)
+
+</details>
+
+### 2021년 1회 17번
+
+[해설 보기](../2021년%201회/17.md)
+
+다음은 Java 프로그램이다. 실행 결과를 쓰시오.
+
+```
+public class good {
+	public static void main(String[] args){
+    int i, j;
+    for(j=0, i=0; i<=5; i++){
+    j+=i;
+    System.out.print(i);
+    if(i==5){
+    System.out.print("=");
+    System.out.print(j);
+   }else{
+   	System.out.print("+");
+	}
+   }
+  }
+ }
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 0+1+2+3+4+5=15 (공백 없이 출력됨)
+
+</details>
+
+### 2020년 4회 05번
+
+[해설 보기](../2020년%204회/05.md)
+
+다음은 n이 10일 때, 10을 2진수로 변환하는 자바 소스 코드이다. 1,2에 알맞는 값을 적으시오.
+
+[출력결과] : 00001010
+
+```
+class good {
+	public static void main (String[] args) {
+    	int[]a = new int[8];
+        int i=0; int n=10;
+        while (  1.  ) {
+        	a[i++] = (  2.  );
+            n /= 2;
+        }
+        for(i=7; i>=0; i--){
+         System.out.print(a[i]);
+        }
+     }
+  }
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** (1) n > 0 (2) n % 2
 
 </details>
 
@@ -865,169 +1563,201 @@ public class good {
 
 </details>
 
-## Java(재귀 오버라이딩) (2회)
+### 2020년 3회 17번
 
-### 2023년 3회 11번
+[해설 보기](../2020년%203회/17.md)
 
-[해설 보기](../2023년%203회/11.md)
-
-다음은 Java 코드에 대한 알맞는 출력값을 작성하시오.
-
-```
-class Parent {
-    int compute(int num) {
-        if(num <= 1)
-            return num;
-        return compute(num-1) + compute(num-2);
-    }
-}
-
-class Child extends Parent {
-    int compute(int num) {
-        if(num <= 1)
-            return num;
-        return compute(num-1) + compute(num-3);
-    }
-}
-
-public class main {
-    public static void main(String args[]) {
-        Parent obj = new Child();
-        System.out.print(obj.compute(7));
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 2
-
-</details>
-
-### 2020년 4회 19번
-
-[해설 보기](../2020년%204회/19.md)
-
-다음은 자바 소스 코드이다. 출력 결과를 쓰시오.
-
-```
-class parent{
-	public int compute(int num){
-    	if(num <=1) return num;
-        return compute(num-1) + compute(num-2);
-    }
- }
-
- class Child extends parent {
- 	public int compute(int num){
-    	if(num<=1) return num;
-        	return compute(num-1) + compute(num-3);
-        }
-   }
-
-  class good{
-  	public static void main (String[] args){
-    parent obj = new Child();
-    System.out.print(obj.compute(4));
-   }
- }
-
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 1
-
-</details>
-
-## Java(반복문) (2회)
-
-### 2022년 3회 20번
-
-[해설 보기](../2022년%203회/20.md)
-
-다음 자바 코드에 대한 출력 값을 작성하시오.
-
-```
-
-
-
-
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-
-
-
-
-public class Exam {
-  public static void main(String[] args){
-
-  int a = 0;
-  for(int i=1; i<999; i++){
-    if(i%3==0 && i%2!=0)
-      a = i;
-    }
-    System.out.print(a);
-  }
-}
-
-Colored by Color Scripter
-
-cs
-
-
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 993
-
-</details>
-
-### 2021년 1회 17번
-
-[해설 보기](../2021년%201회/17.md)
-
-다음은 Java 프로그램이다. 실행 결과를 쓰시오.
+다음은 자바 코드이다. 출력 결과를 쓰시오.
 
 ```
 public class good {
 	public static void main(String[] args){
-    int i, j;
-    for(j=0, i=0; i<=5; i++){
-    j+=i;
-    System.out.print(i);
-    if(i==5){
-    System.out.print("=");
-    System.out.print(j);
-   }else{
-   	System.out.print("+");
-	}
+    int i=0;
+    int sum=0;
+    while (i<10){
+    	i++;
+        if(i%2 ==1)
+        	continue;
+        sum += i;
+     }
+     System.out.println(sum);
    }
-  }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 30
+
+</details>
+
+### 2020년 1회 13번
+
+[해설 보기](../2020년%201회/13.md)
+
+다음은 자바 소스코드이다. 출력 결과를 쓰시오.
+
+```
+public class good {
+	public static void main(String[] args){
+    	int i;
+        int[] a = {0,1,2,3};
+        for(i=0; i<4; i++){
+        	System.out.print(a[i] + " ");
+        }
+     }
  }
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 0 1 2 3 (마지막에 공백 하나가 더 붙는다)
+
+</details>
+
+### 2020년 1회 14번
+
+[해설 보기](../2020년%201회/14.md)
+
+다음은 자바 소스코드이다. 출력 결과를 쓰시오.
+
+```
+public class good {
+	public static void main(String[] args){
+    	int i = 3;
+        int k = 1;
+        swich (i) {
+        case 0;
+        case 1;
+        case 2;
+        case 3 k = 0;
+        case 4 k += 3;
+        case 5 k -= 10;
+        default: k--;
+        }
+        system.out.print(k);
+     }
+}
 
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 0+1+2+3+4+5=15 (공백 없이 출력됨)
+**정답:** -8
 
 </details>
 
-## Java(싱글톤) (2회)
+## Java(클래스 구조) (10회)
+
+### 2025년 3회 08번
+
+[해설 보기](../2025년%203회/08.md)
+
+아래 코드는 Machine 이라는 인터페이스를 정의하고 WashingMachine 클래스에서 해당 인터페이스를 사용하고자 한다. 빈칸에 들어갈 올바른 키워드를 작성하시오.
+
+```
+interface Machine {
+    void run();
+}
+
+class WashingMachine (____빈칸____) Machine {
+    private String name;
+
+    public WashingMachine() {
+        this.name = "LG Washer";
+    }
+
+    public void run() {
+        System.out.println("Washing machine running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        WashingMachine wm = new WashingMachine();
+        wm.run();
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** implements
+
+</details>
+
+### 2025년 3회 17번
+
+[해설 보기](../2025년%203회/17.md)
+
+다음은 Java에 대한 코드이다. 알맞는 출력값을 작성하시오.
+
+```
+enum Tri {
+    A("A"), B("AB"), C("ABC");
+
+    private String code;
+
+    Tri(String code) {
+        this.code = code;
+    }
+
+    public String code() {
+        return code;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tri t = Tri.values()[Tri.A.name().length()];
+        System.out.print(t.code());
+    }
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** AB
+
+</details>
+
+### 2024년 2회 14번
+
+[해설 보기](../2024년%202회/14.md)
+
+다음은 Java 언어에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class Main {
+    public static void main(String[] args) {
+        int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        ODDNumber OE = new ODDNumber();
+        System.out.print(OE.sum(a, true) + ", " + OE.sum(a, false));
+    }
+}
+
+interface Number {
+    int sum(int[] a, boolean odd);
+}
+
+class ODDNumber implements Number {
+    public int sum(int[] a, boolean odd) {
+        int result = 0;
+        for(int i=0; i < a.length; i++){
+            if((odd && a[i] % 2 != 0) || (!odd && a[i] % 2 == 0))
+                result += a[i];
+        }
+        return result;
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 25, 20
+
+</details>
 
 ### 2024년 1회 01번
 
@@ -1085,6 +1815,129 @@ public class main {
 
 </details>
 
+### 2023년 3회 13번
+
+[해설 보기](../2023년%203회/13.md)
+
+다음 자바 코드를 실행할 경우 에러가 발생이 된다. 에러가 발생하는 라인명을 작성하시오.
+
+```
+class Person {
+    private String name;
+    public Person(String val) {
+        name = val;
+    }
+    public static String get() {
+    return name;
+    }
+    public void print() {
+        System.out.println(name);
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        Person obj = new Person("Kim");
+        obj.print();
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 7 (번 줄)
+
+</details>
+
+### 2023년 1회 01번
+
+[해설 보기](../2023년%201회/01.md)
+
+아래 자바 코드에서 출력되는 값을 작성하시오.
+
+```
+class Static{
+
+    public int a = 20;
+    static int b = 0;
+
+}
+
+public class Main{
+    public static void main(String[] args) {
+
+        int a;
+        a = 10;
+        Static.b = a;
+
+        Static st = new Static();
+
+        System.out.println(Static.b++);
+        System.out.println(st.b);
+        System.out.println(a);
+        System.out.print(st.a);
+    }
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 10 11 10 20
+
+</details>
+
+### 2023년 1회 17번
+
+[해설 보기](../2023년%201회/17.md)
+
+다음 JAVA 코드에서 알맞는 출력 값을 작성하시오.
+
+```
+abstact class Vehicle {
+
+    String name;
+    abstract public String getName(String val);
+
+    public String getName() {
+            return "Vehicle name: " + name;
+    }
+}
+
+
+
+class Car extends Vehicle {
+
+    public Car(String val) {
+            name=super.name=val;
+    }
+
+    public String getName(String val) {
+            return "Car name:" + val;
+    }
+
+    public String getName(byte val[]) {
+            return "Car name:" + val;
+    }
+}
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+    Vehicle obj = new Car("Spark");
+    System.out.println(obj.getName());
+
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** Vehicle name: Spark
+
+</details>
+
 ### 2021년 3회 01번
 
 [해설 보기](../2021년%203회/01.md)
@@ -1127,7 +1980,102 @@ public class testcon {
 
 </details>
 
-## Java(참조 전달) (2회)
+### 2021년 2회 17번
+
+[해설 보기](../2021년%202회/17.md)
+
+클래스 내에서 객체 생성 없이 사용할 수 있는 메소드로써 출력 결과를 작성하시오.
+
+```
+public class Test {
+   public static void main(String[] args){
+      system.out.print(Test.check(1));
+   }
+
+   (    )  String check (int num) {
+      return (num >= 0) ? "positive" : "negative";
+   }
+}
+
+[출력결과]
+positive
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** static
+
+</details>
+
+### 2020년 3회 15번
+
+[해설 보기](../2020년%203회/15.md)
+
+다음은 자바 코드이다. 출력 결과를 쓰시오.
+
+```
+abstract class vehicle{
+	private String name;
+    abstract public String getName(String val);
+    public String getName(){
+    	return "vehicle name:" + name;
+    }
+	public void setName(String val){
+    	name = val;
+    }
+}
+
+class Car extends Vehicle{
+	public Car(String val){
+    	setName(val);
+   }
+public String getName(String val){
+	return "Car name : " + val;
+   }
+public String getName(byte val[]){
+	return "Car name : " + val;
+   }
+}
+
+public class good {
+	public Static void main(String[] args){
+    Vehicle obj = new Car("Spark");
+    System.out.print(obj.getName());
+    }
+}
+
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** vehicle name:Spark (원문 정답은 대소문자·공백이 다르게 표기되어 있으나, 코드 기준 출력은 vehicle name: 뒤에 Spark가 이어지는 형…
+
+</details>
+
+## Java(참조·문자열) (8회)
+
+### 2026년 1회 17번
+
+[해설 보기](../2026년%201회/17.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int x1 = 9;
+        int x2 = 2;
+        String x3 = "3";
+        System.out.println(x1 + x2 + "2" + x3);
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** 1123
+
+</details>
 
 ### 2025년 2회 05번
 
@@ -1158,51 +2106,40 @@ public class Main {
 
 </details>
 
-### 2022년 1회 03번
+### 2025년 2회 15번
 
-[해설 보기](../2022년%201회/03.md)
+[해설 보기](../2025년%202회/15.md)
 
-다음 자바 문법에 알맞는 출력 결과를 작성하시오.
+다음은 Java언어의 문제이다. 아래 코드를 보고 알맞는 출력값을 작성하시오.
 
 ```
-class A {
-  int a;
-  int b;
-}
-
-  public class Main {
-
-  static void func1(A m){
-   m.a *= 10;
-  }
-
-  static void func2(A m){
-    m.a += m.b;
-  }
-
-  public static void main(String args[]){
-
-  A m = new A();
-
-  m.a = 100;
-  func1(m);
-  m.b = m.a;
-  func2(m);
-
-  System.out.printf("%d", m.a);
-
-  }
+public class Main{
+    public static class BO {
+        public int v;
+        public BO(int v) {
+            this.v = v;
+        }
+    }
+    public static void main(String[] args) {
+        BO a = new BO(1);
+        BO b = new BO(2);
+        BO c = new BO(3);
+        BO[] arr = {a, b, c};
+        BO t = arr[0];
+        arr[0] = arr[2];
+        arr[2] = t;
+        arr[1].v = arr[0].v;
+        System.out.println(a.v + "a" + b.v + "b" + c.v);
+    }
 }
 
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 2000
+**정답:** 1a3b3
 
 </details>
-
-## Java(문자열 비교) (2회)
 
 ### 2024년 3회 01번
 
@@ -1241,6 +2178,63 @@ public class Main{
 <details><summary>정답 보기</summary>
 
 **정답:** OOAAA
+
+</details>
+
+### 2024년 2회 01번
+
+[해설 보기](../2024년%202회/01.md)
+
+다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+
+```
+class Main {
+    public static void main(String[] args) {
+        int[] a = new int[]{1, 2, 3, 4};
+        int[] b = new int[]{1, 2, 3, 4};
+        int[] c = new int[]{1, 2, 3};
+
+        check(a, b);
+        check(a, c);
+        check(b, c);
+    }
+
+    public static void check(int[] a, int[] b) {
+        if (a==b) {
+            System.out.print("O");
+        }else{
+            System.out.print("N");
+        }
+
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** NNN
+
+</details>
+
+### 2024년 2회 20번
+
+[해설 보기](../2024년%202회/20.md)
+
+다음은 Java에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력 값을 작성하시오.
+
+```
+class Main {
+    public static void main(String[] args) {
+        String str = "ITISTESTSTRING";
+        String[] result = str.split("T");
+        System.out.print(result[3]);
+    }
+}
+```
+
+<details><summary>정답 보기</summary>
+
+**정답:** S
 
 </details>
 
@@ -1303,1032 +2297,51 @@ cs
 
 </details>
 
-## Java(재귀) (2회)
+### 2022년 1회 03번
 
-### 2025년 1회 16번
+[해설 보기](../2022년%201회/03.md)
 
-[해설 보기](../2025년%201회/16.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class Main {
-
-    public static void main(String[] args) {
-        int[] data = {3, 5, 8, 12, 17};
-        System.out.println(func(data, 0, data.length - 1));
-    }
-
-    static int func(int[] a, int st, int end) {
-        if (st >= end) return 0;
-        int mid = (st + end) / 2;
-        return a[mid] + Math.max(func(a, st, mid), func(a, mid + 1, end));
-    }
-
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 20
-
-</details>
-
-### 2024년 2회 17번
-
-[해설 보기](../2024년%202회/17.md)
-
-다음은 Java에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력 값을 작성하시오.
-
-```
-class Main {
-    public static void main(String[] args) {
-        String str = "abacabcd";
-        boolean[] seen = new boolean[256];
-        System.out.print(calculFn(str, str.length()-1, seen));
-    }
-
-    public static String calculFn(String str, int index, boolean[] seen) {
-        if(index < 0) return "";
-        char c = str.charAt(index);
-        String result = calculFn(str, index-1, seen);
-        if(!seen[c]) {
-            seen[c] = true;
-            return c + result;
-        }
-        return result;
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** dcba
-
-</details>
-
-## Java(상속 super 생성자) (2회)
-
-### 2026년 2회 02번
-
-[해설 보기](../2026년%202회/02.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
+다음 자바 문법에 알맞는 출력 결과를 작성하시오.
 
 ```
 class A {
-    private int a;
-
-    public A(int a) {
-        this.a = a;
-    }
-
-    void print() {
-        System.out.print(a + "a");
-    }
-}
-
-class B extends A {
-    private int b;
-
-    B(int a, int b) {
-        super(a);
-        this.b = b;
-    }
-
-    void print() {
-        super.print();
-        System.out.print(b + "b");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        B obj = new B(10, 20);
-        obj.print();
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 10a20b
-
-</details>
-
-### 2025년 3회 12번
-
-[해설 보기](../2025년%203회/12.md)
-
-다음은 Java의 상속과 생성자 호출에 관한 코드이다. 밑줄에 알맞은 단어를 작성하시오.
-
-```
-class Rectangle {
-
-    int width, height;
-
-    Rectangle(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
-}
-
-class Square extends Rectangle {
-
-    Square(int a) {
-        ____(a,a);
-    }
-
-    int getSquareArea() {
-        return width * height;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Square sq = new Square(10);
-        System.out.println(sq.getSquareArea());
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** super (출력 결과는 100)
-
-</details>
-
-## Java(업캐스팅) (1회)
-
-### 2020년 2회 05번
-
-[해설 보기](../2020년%202회/05.md)
-
-다음은 자바 코드이다. 다음 밑줄에 들어갈 키워드를 쓰시오.
-
-```
-class parent
-	public void show(){
-    	system.out.println("Parent");
-    }
-}
-
-class Child extends Parent{
-	public void show(){
-    	system.out.println("Child");
-    }
-}
-
-public class good{
-	public static void main(String[] args){
-    	Parent pa = ____  Child();
-        pa.show();
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** new
-
-</details>
-
-## Java(생성자 super) (1회)
-
-### 2020년 2회 19번
-
-[해설 보기](../2020년%202회/19.md)
-
-다음은 자바 코드이다. 출력 결과를 쓰시오.
-
-```
-class A{
-	private int a;
-    public A(int a){
-    	this.a = a;
-    }
-    public void display(){
-    	system.out.println("a=" + a);
-    }
-}
-
-class B extends A {
-	public B(int a){
-    	super(a);
-        super.display();
-    }
-}
-
-
-public class good {
-	public static void main(String[] args){
-    	B obj = new B(10);
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** a=10 (원문 정답은 a = 10으로 공백이 있으나, 코드 "a=" + a 기준 출력은 a=10)
-
-</details>
-
-## Java(continue) (1회)
-
-### 2020년 3회 17번
-
-[해설 보기](../2020년%203회/17.md)
-
-다음은 자바 코드이다. 출력 결과를 쓰시오.
-
-```
-public class good {
-	public static void main(String[] args){
-    int i=0;
-    int sum=0;
-    while (i<10){
-    	i++;
-        if(i%2 ==1)
-        	continue;
-        sum += i;
-     }
-     System.out.println(sum);
-   }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 30
-
-</details>
-
-## Java(진수 변환) (1회)
-
-### 2020년 4회 05번
-
-[해설 보기](../2020년%204회/05.md)
-
-다음은 n이 10일 때, 10을 2진수로 변환하는 자바 소스 코드이다. 1,2에 알맞는 값을 적으시오.
-
-[출력결과] : 00001010
-
-```
-class good {
-	public static void main (String[] args) {
-    	int[]a = new int[8];
-        int i=0; int n=10;
-        while (  1.  ) {
-        	a[i++] = (  2.  );
-            n /= 2;
-        }
-        for(i=7; i>=0; i--){
-         System.out.print(a[i]);
-        }
-     }
-  }
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** (1) n > 0 (2) n % 2
-
-</details>
-
-## Java(논리 연산) (1회)
-
-### 2021년 3회 11번
-
-[해설 보기](../2021년%203회/11.md)
-
-다음 Java 코드에 대한 알맞는 출력값을 쓰시오.
-
-```
-public class testco {
- public static void main(String[] args) {
-  int a = 3, b = 4, c = 3, d = 5;
-  if((a == 2 | a == c) & !(c > d) & (1 == b ^ c != d)) {
-   a = b + c;
-    if(7 == b ^ c != a) {
-     System.out.println(a);
-    } else {
-    System.out.println(b);
-    }
-  } else {
-    a = c + d;
-    if(7 == c ^ d != a) {
-    System.out.println(a);
-    } else {
-    System.out.println(d);
-    }
-  }
- }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 7
-
-</details>
-
-## Java(스레드) (1회)
-
-### 2022년 1회 11번
-
-[해설 보기](../2022년%201회/11.md)
-
-다음 Java 코드 중에서 밑줄에 들어갈 알맞는 코드를 작성하시오.
-
-```
-class Car implements Runnable{
   int a;
-
-  public void run(){
-     system.out.println("message")
-  }
+  int b;
 }
 
-public class Main{
+  public class Main {
+
+  static void func1(A m){
+   m.a *= 10;
+  }
+
+  static void func2(A m){
+    m.a += m.b;
+  }
+
   public static void main(String args[]){
-    Thread t1 = new Thread(new ___());
-    t1.start();
+
+  A m = new A();
+
+  m.a = 100;
+  func1(m);
+  m.b = m.a;
+  func2(m);
+
+  System.out.printf("%d", m.a);
+
   }
 }
 
-
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** Car
+**정답:** 2000
 
 </details>
 
-## Java(필드) (1회)
-
-### 2022년 2회 17번
-
-[해설 보기](../2022년%202회/17.md)
-
-다음 자바코드에서 알맞는 출력값을 작성하시오.
-
-```
-
-
-
-
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-
-
-
-
-public class Conv{
-public Conv(int a) {
-this.a = a;
-}
-int func() {
-int b =1;
-for (int i=1; i<a; i++){
-b = a * i + b
-}
-return a +b;
-}
-int a;
-}
-
-public static void main(String[] args){
-Conv obj = new Conv(3);
-obj.a=5;
-int b = obj.func();
-system.out.print(obj.a + b);
-i
-}
-
-Colored by Color Scripter
-
-cs
-
-
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 61
-
-</details>
-
-## Java(버블 정렬) (1회)
-
-### 2023년 1회 14번
-
-[해설 보기](../2023년%201회/14.md)
-
-다음 코드에서 괄호안에 알맞는 값을 변수명으로 작성하시오.
-
-(코드가 해깔려 시험문제와 동일하지 않지만 패턴이 비슷하다는 점만 참고해주세요.)
-
-```
-public class Sort {
-
-    public static void swap(int[] arr, int idx1, int idx2){
-        int temp = arr[idx1];
-        arr[idx1] = arr[idx2];
-        arr[( 1 )] = temp;
-    }
-
-    public static void Usort(int[] array, int length){
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    swap(array, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] item = new int[] { 5, 3, 8, 1, 2, 7 };
-        int nx = 6;
-        Usort(item, ( 2 ));
-
-        for (int data : item) {
-            System.out.print(data + " ");
-        }
-    }
-
-}
-```
-
-출력 값 : 1 2 3 5 7 8
-
-<details><summary>정답 보기</summary>
-
-**정답:** (1) idx2 (2) nx
-
-</details>
-
-## Java(생성자 필드 은닉) (1회)
-
-### 2023년 1회 20번
-
-[해설 보기](../2023년%201회/20.md)
-
-다음 자바 코드에 대한 출력 값을 작성하시오.
-
-```
-class Parent {
-    int x = 100;
-
-    Parent() {
-        this(500);
-    }
-
-    Parent(int x) {
-        this.x = x;
-    }
-
-    int getX() {
-        return x;
-    }
-}
-
-class Child extends Parent {
-    int x = 4000;
-
-    Child() {
-        this(5000);
-    }
-
-    Child(int x) {
-        this.x = x;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Child obj = new Child();
-        System.out.println(obj.getX());
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 500
-
-</details>
-
-## Java(몫과 나머지) (1회)
-
-### 2023년 2회 02번
-
-[해설 보기](../2023년%202회/02.md)
-
-다음은 JAVA 코드 문제이다. 가지고 있는 돈이 총 4620원일 경우 1000원, 500원, 100원, 10원의 지폐 및 동전을 이용하여 보기의 조건에 맞춰 최소한의 코드를 통해 괄호안을 작성하시오.
-
-보기
-
-아래 주어진 항목들을 갖고 괄호안의 코드를 작성
-
-변수 : m  
-연산자 : / , %  
-괄호 : [ , ] , ( , )  
-정수 : 1000, 500, 100, 10
-
-```
-
-
-
-
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-
-
-
-
-public class Problem{
-    public static void main(String[] args){
- m = 4620;
-
- a = (              );
- b = (              );
- c = (              );
- d = (              );
-
- System.out.println(a); //천원짜리     4장 출력
- System.out.println(b); //오백원짜리  1개 출력
- System.out.println(c); //백원짜리     1개 출력
- System.out.println(d); //십원짜리     2개 출력
-    }
-}
-
-
-Colored by Color Scripter
-
-cs
-
-
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** a: m / 1000 b: (m % 1000) / 500 c: (m % 500) / 100 d: (m % 100) / 10
-
-</details>
-
-## Java(상속 생성자) (1회)
-
-### 2024년 1회 10번
-
-[해설 보기](../2024년%201회/10.md)
-
-아래 JAVA언어 코드의 실행 순서를 중복 번호없이 작성하시오.
-
-```
-class Parent {
-    int x, y;
-
-    Parent(int x, int y) { ①
-        this.x=x;
-        this y=y;
-    }
-
-    int getT() { ②
-        return x*y;
-    }
-}
-
-
-
-​class Child extend Parent {
-    int x;
-
-    Child (int x) { ③
-        super(x+1, x);
-        this.x=x;
-    }
-
-    int getT(int n){ ④
-        return super.getT()+n;
-    }
-}
-
-
-
-class Main {
-    public static void main(String[] args) { ⑤
-        Parent parent = new Child(3); ⑥
-        System.out.println(parent.getT()); ⑦
-    }
-}
-
-```
-
-실행 순서 : 5 → ( ) → ( ) → ( ) → ( ) → ( )
-
-<details><summary>정답 보기</summary>
-
-**정답:** 6 → 3 → 1 → 7 → 2 (괄호 순서대로)
-
-</details>
-
-## Java(참조 비교) (1회)
-
-### 2024년 2회 01번
-
-[해설 보기](../2024년%202회/01.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-class Main {
-    public static void main(String[] args) {
-        int[] a = new int[]{1, 2, 3, 4};
-        int[] b = new int[]{1, 2, 3, 4};
-        int[] c = new int[]{1, 2, 3};
-
-        check(a, b);
-        check(a, c);
-        check(b, c);
-    }
-
-    public static void check(int[] a, int[] b) {
-        if (a==b) {
-            System.out.print("O");
-        }else{
-            System.out.print("N");
-        }
-
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** NNN
-
-</details>
-
-## Java(인터페이스) (1회)
-
-### 2024년 2회 14번
-
-[해설 보기](../2024년%202회/14.md)
-
-다음은 Java 언어에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-class Main {
-    public static void main(String[] args) {
-        int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        ODDNumber OE = new ODDNumber();
-        System.out.print(OE.sum(a, true) + ", " + OE.sum(a, false));
-    }
-}
-
-interface Number {
-    int sum(int[] a, boolean odd);
-}
-
-class ODDNumber implements Number {
-    public int sum(int[] a, boolean odd) {
-        int result = 0;
-        for(int i=0; i < a.length; i++){
-            if((odd && a[i] % 2 != 0) || (!odd && a[i] % 2 == 0))
-                result += a[i];
-        }
-        return result;
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 25, 20
-
-</details>
-
-## Java(문자열 split) (1회)
-
-### 2024년 2회 20번
-
-[해설 보기](../2024년%202회/20.md)
-
-다음은 Java에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력 값을 작성하시오.
-
-```
-class Main {
-    public static void main(String[] args) {
-        String str = "ITISTESTSTRING";
-        String[] result = str.split("T");
-        System.out.print(result[3]);
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** S
-
-</details>
-
-## Java(필드 은닉) (1회)
-
-### 2024년 3회 11번
-
-[해설 보기](../2024년%203회/11.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class Main{
-  public static void main(String[] args){
-    Base a =  new Derivate();
-    Derivate b = new Derivate();
-
-    System.out.print(a.getX() + a.x + b.getX() + b.x);
-  }
-}
-
-
-class Base{
-  int x = 3;
-
-  int getX(){
-     return x * 2;
-  }
-}
-
-class Derivate extends Base{
-  int x = 7;
-
-  int getX(){
-     return x * 3;
-  }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 52
-
-</details>
-
-## Java(예외 처리) (1회)
-
-### 2024년 3회 18번
-
-[해설 보기](../2024년%203회/18.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class ExceptionHandling {
-  public static void main(String[] args) {
-      int sum = 0;
-      try {
-          func();
-      } catch (NullPointerException e) {
-          sum = sum + 1;
-      } catch (Exception e) {
-          sum = sum + 10;
-      } finally {
-          sum = sum + 100;
-      }
-      System.out.print(sum);
-  }
-
-  static void func() throws Exception {
-      throw new NullPointerException();
-  }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 101
-
-</details>
-
-## Java(제네릭 오버로딩) (1회)
-
-### 2024년 3회 19번
-
-[해설 보기](../2024년%203회/19.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-class Main {
-
-  public static class Collection<T>{
-    T value;
-
-    public Collection(T t){
-        value = t;
-    }
-
-    public void print(){
-       new Printer().print(value);
-    }
-
-   class Printer{
-      void print(Integer a){
-        System.out.print("A" + a);
-      }
-      void print(Object a){
-        System.out.print("B" + a);
-      }
-      void print(Number a){
-        System.out.print("C" + a);
-      }
-   }
- }
-
-  public static void main(String[] args) {
-      new Collection<>(0).print();
-  }
-
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** B0
-
-</details>
-
-## Java(예외 try-finally) (1회)
-
-### 2025년 1회 05번
-
-[해설 보기](../2025년%201회/05.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class Main {
-
-  public static void main(String[] args) {
-
-    int a=5,b=0;
-
-    try{
-      System.out.print(a/b);
-    }catch(ArithmeticException e){
-      System.out.print("출력1");
-    }catch(ArrayIndexOutOfBoundsException e) {
-      System.out.print("출력2");
-    }catch(NumberFormatException e) {
-      System.out.print("출력3");
-    }catch(Exception e){
-      System.out.print("출력4");
-    }finally{
-      System.out.print("출력5");
-    }
-  }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 출력1출력5
-
-</details>
-
-## Java(상속 static) (1회)
-
-### 2025년 1회 13번
-
-[해설 보기](../2025년%201회/13.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class Main {
-    public static void main(String[] args) {
-        new Child();
-        System.out.println(Parent.total);
-    }
-}
-
-
-class Parent {
-    static int total = 0;
-    int v = 1;
-
-    public Parent() {
-        total += (++v);
-        show();
-    }
-
-    public void show() {
-        total += total;
-    }
-}
-
-
-class Child extends Parent {
-    int v = 10;
-
-    public Child() {
-        v += 2;
-        total += v++;
-        show();
-    }
-
-    @Override
-    public void show() {
-        total += total * 2;
-    }
-}
-
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 54
-
-</details>
-
-## Java(오버로딩) (1회)
-
-### 2025년 1회 20번
-
-[해설 보기](../2025년%201회/20.md)
-
-다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
-
-```
-public class Main {
-  public static void main(String[] args) {
-    System.out.println(calc("5"));
-  }
-
-  static int calc(int value) {
-    if (value <= 1) return value;
-    return calc(value - 1) + calc(value - 2);
-  }
-
-  static int calc(String str) {
-    int value = Integer.valueOf(str);
-    if (value <= 1) return value;
-    return calc(value - 1) + calc(value - 3);
-  }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 4
-
-</details>
-
-## Java(예외) (1회)
+## Java(예외 처리) (3회)
 
 ### 2025년 2회 09번
 
@@ -2372,187 +2385,72 @@ public class Main {
 
 </details>
 
-## Java(객체 참조 배열) (1회)
+### 2025년 1회 05번
 
-### 2025년 2회 15번
-
-[해설 보기](../2025년%202회/15.md)
-
-다음은 Java언어의 문제이다. 아래 코드를 보고 알맞는 출력값을 작성하시오.
-
-```
-public class Main{
-    public static class BO {
-        public int v;
-        public BO(int v) {
-            this.v = v;
-        }
-    }
-    public static void main(String[] args) {
-        BO a = new BO(1);
-        BO b = new BO(2);
-        BO c = new BO(3);
-        BO[] arr = {a, b, c};
-        BO t = arr[0];
-        arr[0] = arr[2];
-        arr[2] = t;
-        arr[1].v = arr[0].v;
-        System.out.println(a.v + "a" + b.v + "b" + c.v);
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** 1a3b3
-
-</details>
-
-## Java(인터페이스 implements) (1회)
-
-### 2025년 3회 08번
-
-[해설 보기](../2025년%203회/08.md)
-
-아래 코드는 Machine 이라는 인터페이스를 정의하고 WashingMachine 클래스에서 해당 인터페이스를 사용하고자 한다. 빈칸에 들어갈 올바른 키워드를 작성하시오.
-
-```
-interface Machine {
-    void run();
-}
-
-class WashingMachine (____빈칸____) Machine {
-    private String name;
-
-    public WashingMachine() {
-        this.name = "LG Washer";
-    }
-
-    public void run() {
-        System.out.println("Washing machine running");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        WashingMachine wm = new WashingMachine();
-        wm.run();
-    }
-}
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** implements
-
-</details>
-
-## Java(enum) (1회)
-
-### 2025년 3회 17번
-
-[해설 보기](../2025년%203회/17.md)
-
-다음은 Java에 대한 코드이다. 알맞는 출력값을 작성하시오.
-
-```
-enum Tri {
-    A("A"), B("AB"), C("ABC");
-
-    private String code;
-
-    Tri(String code) {
-        this.code = code;
-    }
-
-    public String code() {
-        return code;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Tri t = Tri.values()[Tri.A.name().length()];
-        System.out.print(t.code());
-    }
-}
-
-```
-
-<details><summary>정답 보기</summary>
-
-**정답:** AB
-
-</details>
-
-## Java(문자열 연결) (1회)
-
-### 2026년 1회 17번
-
-[해설 보기](../2026년%201회/17.md)
+[해설 보기](../2025년%201회/05.md)
 
 다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
 
 ```
 public class Main {
-    public static void main(String[] args) {
-        int x1 = 9;
-        int x2 = 2;
-        String x3 = "3";
-        System.out.println(x1 + x2 + "2" + x3);
+
+  public static void main(String[] args) {
+
+    int a=5,b=0;
+
+    try{
+      System.out.print(a/b);
+    }catch(ArithmeticException e){
+      System.out.print("출력1");
+    }catch(ArrayIndexOutOfBoundsException e) {
+      System.out.print("출력2");
+    }catch(NumberFormatException e) {
+      System.out.print("출력3");
+    }catch(Exception e){
+      System.out.print("출력4");
+    }finally{
+      System.out.print("출력5");
     }
+  }
 }
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 1123
+**정답:** 출력1출력5
 
 </details>
 
-## Java(상속 접근제어자) (1회)
+### 2024년 3회 18번
 
-### 2026년 2회 15번
-
-[해설 보기](../2026년%202회/15.md)
+[해설 보기](../2024년%203회/18.md)
 
 다음은 Java 코드에 대한 문제이다. 아래 코드를 확인하여 알맞는 출력값을 작성하시오.
 
 ```
-class A {
-    int a;
-    private int b;
-    protected int c;
+public class ExceptionHandling {
+  public static void main(String[] args) {
+      int sum = 0;
+      try {
+          func();
+      } catch (NullPointerException e) {
+          sum = sum + 1;
+      } catch (Exception e) {
+          sum = sum + 10;
+      } finally {
+          sum = sum + 100;
+      }
+      System.out.print(sum);
+  }
 
-    void set(int aa, int bb, int cc) {
-        a = aa;
-        b = bb;
-        c = cc;
-    }
-
-    int hap() { return a + b + c; }
-}
-
-class B extends A {
-    public int hap() { return a * c; }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        A aaa = new A();
-        B bbb = new B();
-
-        aaa.set(1, 5, 3);
-        bbb.set(10, 30, 50);
-
-        System.out.print(aaa.hap() + bbb.hap());
-    }
+  static void func() throws Exception {
+      throw new NullPointerException();
+  }
 }
 ```
 
 <details><summary>정답 보기</summary>
 
-**정답:** 509
+**정답:** 101
 
 </details>
